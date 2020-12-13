@@ -1,0 +1,119 @@
+ .Breadcrumb
+{
+font-family: Geneva, Arial, Helvetica, sans-serif;
+font-size: 10pt;
+}
+ .SkylineWhite
+{
+color: white; 
+font-family: Arial, Helvetica, sans-serif;
+font-size: 14pt;
+font-weight: bold;
+}
+ .SkylineWhite Big
+{
+color: white; 
+font-family: Arial, Helvetica, sans-serif;
+font-size: 18pt;
+font-weight: bold;
+}
+ .Error
+{
+color: red;
+font-family: Arial, Helvetica, sans-serif;
+font-size: 10pt;
+font-weight: bold;
+}
+ .Head1
+{
+font-family: Arial, Helvetica, sans-serif;
+font-size: 18pt;
+font-weight: bold;
+}
+ .Head2
+{
+font-family: Arial, Helvetica, sans-serif;
+font-size: 14pt;
+font-weight: bold;
+}
+ .Head3
+{
+font-family: Arial, Helvetica, sans-serif;
+font-size: 11pt;
+font-weight: bold;
+}
+ .Head4
+{
+font-family: Arial, Helvetica, sans-serif;
+font-size: 10pt;
+font-weight: bold;
+}
+ .Head5
+{
+font-family: Arial, Helvetica, sans-serif;
+font-size: 8pt;
+font-weight: bold;
+}
+ .Text1
+{
+font-family: Arial, Helvetica, sans-serif;
+font-size: 18pt;
+}
+ .Text2
+{
+font-family: Arial, Helvetica, sans-serif;
+font-size: 14pt;
+}
+ .Text3
+{
+font-family: Arial, Helvetica, sans-serif;
+font-size: 11pt;
+}
+ .Text4
+{
+font-family: Arial, Helvetica, sans-serif;
+font-size: 10pt;
+}
+ .Text5
+{
+font-family: Arial, Helvetica, sans-serif;
+font-size: 8pt;
+}
+.bodyNorm10 { font-family: Arial, Helvetica, sans-serif; font-size: 10pt; }
+.bodyNorm11 { font-family: Arial, Helvetica, sans-serif; font-size: 11pt; ; font-weight: normal }
+.bodyNorm08 { font-family: Arial, Helvetica, sans-serif; font-size: 8pt; ; font-weight: normal }
+.LeftMenu { font-family: Arial, Helvetica, sans-serif; font-size: 10pt; ; font-weight: bold }
+.LeftMenuAdmin
+{ 
+font-family: Arial, Helvetica, sans-serif;
+font-size: 10pt; 
+font-weight: bold
+}
+.LeftMenuAdmin A
+{ 
+font-family: Arial, Helvetica, sans-serif; 
+font-size: 10pt; 
+font-weight: bold;
+color: #228822
+}
+.LeftMenuAdmin A:visited
+{ 
+font-family: Arial, Helvetica, sans-serif; 
+font-size: 10pt; 
+font-weight: bold;
+color: #33cc33
+}
+.AdminHeader
+{
+font-family: Geneva, Arial, Helvetica, sans-serif;
+font-size: 8pt;
+font-weight: bold;
+color: #ffffff
+}
+.LeftMenuNorm11-U { font-family: Arial, Helvetica, sans-serif; font-size: 11pt; ; font-weight: normal }
+.bodyBold10 {  font-family: Arial, Helvetica, sans-serif; font-size: 10px; font-weight: bold}
+.bodyBold11 { font-family: Arial, Helvetica, sans-serif; font-size: 11px; font-weight: bold }
+.bodyBold12 { font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-weight: bold }
+.bodyNorm12 { font-family: Arial, Helvetica, sans-serif; font-size: 11px; font-weight: normal}
+.bodyBold09 { font-family: Arial, Helvetica, sans-serif; font-size: 9px; font-weight: bold }
+.bodyNorm09 { font-family: Arial, Helvetica, sans-serif; font-size: 9pt; ; font-weight: normal }

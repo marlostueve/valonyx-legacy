@@ -1,0 +1,3590 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN"
+          "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+
+<struts-config>
+
+  <form-beans>
+
+    <!-- SCORM forms start -->
+    <form-bean name="scormInitializeForm" type="com.badiyan.uk.conformance.scorm.rte.server.struts.InitializeActionForm"/>
+    <form-bean name="scormLaunchForm" type="com.badiyan.uk.conformance.scorm.rte.server.struts.LaunchActionForm"/>
+    <form-bean name="scormCommitForm" type="com.badiyan.uk.conformance.scorm.rte.server.struts.CommitActionForm"/>
+    <!-- SCORM forms end -->
+
+    <form-bean       name="loginForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="username" type="java.lang.String"/>
+      <form-property name="password" type="java.lang.String"/>
+    </form-bean>
+
+    <form-bean       name="clientLoginForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="password" type="java.lang.String"/>
+    </form-bean>
+
+    <form-bean       name="lostPasswordForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="email" type="java.lang.String"/>
+    </form-bean>
+    
+    <form-bean       name="registrationForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="username" type="java.lang.String"/>
+    </form-bean>
+    
+    <form-bean       name="changePasswordForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="password" type="java.lang.String"/>
+      <form-property name="confirm_password" type="java.lang.String"/>
+    </form-bean>
+    
+    <form-bean       name="scheduleFilterForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="practitioner_id" type="java.lang.Integer"/>
+      <form-property name="appointment_type_id" type="java.lang.Integer"/>
+    </form-bean>
+    
+    <form-bean       name="scheduleConfirmForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="start" type="java.lang.String"/>
+    </form-bean>
+    
+    <form-bean       name="dustToDiamondsOrderForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="first" type="java.lang.String"/>
+      <form-property name="last" type="java.lang.String"/>
+      <form-property name="street" type="java.lang.String"/>
+      <form-property name="city" type="java.lang.String"/>
+      <form-property name="state" type="java.lang.String"/>
+      <form-property name="zip" type="java.lang.String"/>
+      <form-property name="email" type="java.lang.String"/>
+      <form-property name="qty" type="java.lang.Integer"/>
+      <form-property name="ccnumber" type="java.lang.String"/>
+      <form-property name="name_on_card" type="java.lang.String"/>
+      <form-property name="exp_month" type="java.lang.Integer"/>
+      <form-property name="exp_year" type="java.lang.Integer"/>
+      <form-property name="ccv" type="java.lang.String"/>
+      <form-property name="select" type="java.lang.String"/>
+    </form-bean>
+    
+    <form-bean       name="organizationRegistrationForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="organization" type="java.lang.String"/>
+      <form-property name="username" type="java.lang.String"/>
+      <form-property name="password" type="java.lang.String"/>
+      <form-property name="confirmPassword" type="java.lang.String"/>
+      <form-property name="firstName" type="java.lang.String"/>
+      <form-property name="lastName" type="java.lang.String"/>
+      <form-property name="email" type="java.lang.String"/>
+    </form-bean>
+    
+    <form-bean       name="synchronizeForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="status" type="java.lang.String"/>
+      <form-property name="username" type="java.lang.String"/>
+    </form-bean>
+
+    <form-bean       name="synchronizeCourseForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="status" type="java.lang.String"/>
+    </form-bean>
+    
+    <form-bean       name="synchronizeResourceForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="status" type="java.lang.String"/>
+    </form-bean>
+    
+    <form-bean       name="personSearchForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="lastNameSearch" type="java.lang.String"/>
+    </form-bean>
+    
+    <form-bean       name="personLocationSearchForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="department" type="java.lang.Integer"/>
+    </form-bean>
+    
+    <form-bean       name="personLocationSearchXForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="username" type="java.lang.String"/>
+      <form-property name="password" type="java.lang.String"/>
+      <form-property name="confirm_password" type="java.lang.String"/>
+      <form-property name="first_name" type="java.lang.String"/>
+      <form-property name="last_name" type="java.lang.String"/>
+      <form-property name="employee_number" type="java.lang.String"/>
+      <form-property name="email" type="java.lang.String"/>
+      <form-property name="user_group" type="java.lang.Integer"/>
+      <form-property name="department" type="java.lang.Integer"/>
+      <form-property name="job_title" type="java.lang.Integer"/>
+      <form-property name="managers" type="java.lang.Integer[]"/>
+      <form-property name="cost_center" type="java.lang.String"/>
+    </form-bean>
+    
+    <form-bean       name="userProfileEditForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="password" type="java.lang.String"/>
+      <form-property name="first_name" type="java.lang.String"/>
+      <form-property name="last_name" type="java.lang.String"/>
+      <form-property name="employee_number" type="java.lang.String"/>
+      <form-property name="email" type="java.lang.String"/>
+    </form-bean>
+    
+    <form-bean       name="userProfileEditNewForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="password" type="java.lang.String"/>
+      <form-property name="confirm_password" type="java.lang.String"/>
+      <form-property name="first_name" type="java.lang.String"/>
+      <form-property name="last_name" type="java.lang.String"/>
+      <form-property name="employee_number" type="java.lang.String"/>
+      <form-property name="email" type="java.lang.String"/>
+    </form-bean>
+    
+    <form-bean       name="userGroupForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="userGroupSelect" type="java.lang.Integer"/>
+    </form-bean>
+    
+    <form-bean       name="courseSearchForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="typeActivityELRN" type="java.lang.Boolean"/>
+      <form-property name="typeActivityMNTR" type="java.lang.Boolean"/>
+      <form-property name="typeActivityILED" type="java.lang.Boolean"/>
+      <form-property name="typeActivityASMT" type="java.lang.Boolean"/>
+      <form-property name="keyword" type="java.lang.String"/>
+    </form-bean>
+    
+    <form-bean       name="courseBasicForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="titleInput" type="java.lang.String"/>
+      <form-property name="categorySelect" type="java.lang.Integer"/>
+      <form-property name="groupSelect" type="java.lang.Integer"/>
+      <form-property name="typeSelect" type="java.lang.String"/>
+      <form-property name="descriptionInput" type="java.lang.String"/>
+      <form-property name="durationHoursInput" type="java.lang.Integer"/>
+      <form-property name="durationMinutesInput" type="java.lang.Integer"/>
+      <form-property name="creditsInput" type="java.lang.Integer"/>
+      <form-property name="interoperabilitySelect" type="java.lang.Integer"/>
+      <form-property name="statusSelect" type="java.lang.Integer"/>
+      <form-property name="visibilitySelect" type="java.lang.Integer"/>
+      <form-property name="releasedDateInput" type="java.lang.String"/>
+      <form-property name="scheduleActive" type="java.lang.Boolean"/>
+      <form-property name="activeDateInput" type="java.lang.String"/>
+      <form-property name="displayAsNew" type="java.lang.Boolean"/>
+      <form-property name="displayAsNewInput" type="java.lang.Integer"/>
+      <form-property name="expiresDateInput" type="java.lang.String"/>
+      <form-property name="updateNotesInput" type="java.lang.String"/>
+      <form-property name="contactSelect" type="java.lang.Integer"/>
+      <form-property name="passFailPercent" type="java.lang.String"/>
+      <form-property name="allowRetakes" type="java.lang.Boolean"/>
+      <form-property name="introduction" type="java.lang.String"/>
+      <form-property name="instructions" type="java.lang.String"/>
+    </form-bean>
+    
+    <form-bean       name="userSoapNotesForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="dateInput" type="java.lang.String"/>
+      <form-property name="s_notes" type="java.lang.String"/>
+      <form-property name="o_notes" type="java.lang.String"/>
+      <form-property name="a_notes" type="java.lang.String"/>
+      <form-property name="p_notes" type="java.lang.String"/>
+    </form-bean>
+    
+    <form-bean       name="userHairAnalysisForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="dateInput" type="java.lang.String"/>
+      <form-property name="CA" type="java.lang.String"/>
+      <form-property name="K" type="java.lang.String"/>
+      <form-property name="CU" type="java.lang.String"/>
+      <form-property name="HG" type="java.lang.String"/>
+      <form-property name="CA_MG" type="java.lang.String"/>
+      <form-property name="CA_K" type="java.lang.String"/>
+      <form-property name="NA_MG" type="java.lang.String"/>
+      <form-property name="NA_K" type="java.lang.String"/>
+      <form-property name="ZN_CU" type="java.lang.String"/>
+      <form-property name="CA_P" type="java.lang.String"/>
+      <form-property name="oxidationType" type="java.lang.Integer"/>
+      <form-property name="notes" type="java.lang.String"/>
+    </form-bean>
+    
+    <form-bean       name="userMineralRatiosForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="dateInput" type="java.lang.String"/>
+      <form-property name="initial_recommendations" type="java.lang.String"/>
+      <form-property name="supplements_herbal_mixtures" type="java.lang.String"/>
+      <form-property name="detox_exercise_diet_stress_management" type="java.lang.String"/>
+      <form-property name="next_appointment" type="java.lang.String"/>
+      <form-property name="template" type="java.lang.String"/>
+      <form-property name="dateInputPhaseI" type="java.lang.String"/>
+      <form-property name="dateInputPhaseII" type="java.lang.String"/>
+      <form-property name="dateInputPhaseIII" type="java.lang.String"/>
+      <form-property name="dateInputPhaseIV" type="java.lang.String"/>
+      <form-property name="supplements_header_phaseI" type="java.lang.String"/>
+      <form-property name="detox_header_phaseI" type="java.lang.String"/>
+      <form-property name="exercise_header_phaseI" type="java.lang.String"/>
+      <form-property name="diet_header_phaseI" type="java.lang.String"/>
+      <form-property name="stress_header_phaseI" type="java.lang.String"/>
+      <form-property name="supplements_phaseI" type="java.lang.String[]"/>
+      <form-property name="detox_phaseI" type="java.lang.String[]"/>
+      <form-property name="exercise_phaseI" type="java.lang.String[]"/>
+      <form-property name="diet_phaseI" type="java.lang.String[]"/>
+      <form-property name="stress_phaseI" type="java.lang.String[]"/>
+      <form-property name="supplements_header_phaseII" type="java.lang.String"/>
+      <form-property name="detox_header_phaseII" type="java.lang.String"/>
+      <form-property name="exercise_header_phaseII" type="java.lang.String"/>
+      <form-property name="diet_header_phaseII" type="java.lang.String"/>
+      <form-property name="stress_header_phaseII" type="java.lang.String"/>
+      <form-property name="supplements_phaseII" type="java.lang.String[]"/>
+      <form-property name="detox_phaseII" type="java.lang.String[]"/>
+      <form-property name="exercise_phaseII" type="java.lang.String[]"/>
+      <form-property name="diet_phaseII" type="java.lang.String[]"/>
+      <form-property name="stress_phaseII" type="java.lang.String[]"/>
+      <form-property name="supplements_header_phaseIII" type="java.lang.String"/>
+      <form-property name="detox_header_phaseIII" type="java.lang.String"/>
+      <form-property name="exercise_header_phaseIII" type="java.lang.String"/>
+      <form-property name="diet_header_phaseIII" type="java.lang.String"/>
+      <form-property name="stress_header_phaseIII" type="java.lang.String"/>
+      <form-property name="supplements_phaseIII" type="java.lang.String[]"/>
+      <form-property name="detox_phaseIII" type="java.lang.String[]"/>
+      <form-property name="exercise_phaseIII" type="java.lang.String[]"/>
+      <form-property name="diet_phaseIII" type="java.lang.String[]"/>
+      <form-property name="stress_phaseIII" type="java.lang.String[]"/>
+      <form-property name="supplements_header_phaseIV" type="java.lang.String"/>
+      <form-property name="detox_header_phaseIV" type="java.lang.String"/>
+      <form-property name="exercise_header_phaseIV" type="java.lang.String"/>
+      <form-property name="diet_header_phaseIV" type="java.lang.String"/>
+      <form-property name="stress_header_phaseIV" type="java.lang.String"/>
+      <form-property name="supplements_phaseIV" type="java.lang.String[]"/>
+      <form-property name="detox_phaseIV" type="java.lang.String[]"/>
+      <form-property name="exercise_phaseIV" type="java.lang.String[]"/>
+      <form-property name="diet_phaseIV" type="java.lang.String[]"/>
+      <form-property name="stress_phaseIV" type="java.lang.String[]"/>
+      <form-property name="new_template" type="java.lang.String"/>
+    </form-bean>
+    
+    <form-bean       name="newActivityForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="titleInput" type="java.lang.String"/>
+      <form-property name="groupSelect" type="java.lang.Integer"/>
+      <form-property name="typeSelect" type="java.lang.String"/>
+      <form-property name="descriptionInput" type="java.lang.String"/>
+      <form-property name="contactSelect" type="java.lang.Integer"/>
+    </form-bean>
+    
+    <form-bean       name="certificationBasicForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="createExternal" type="java.lang.Boolean"/>
+      <form-property name="titleInput" type="java.lang.String"/>
+      <form-property name="manufacturerSelect" type="java.lang.String"/>
+      <form-property name="categorySelect" type="java.lang.String"/>
+      <form-property name="descriptionInput" type="java.lang.String"/>
+      <form-property name="durationHoursInput" type="java.lang.Integer"/>
+      <form-property name="durationMinutesInput" type="java.lang.Integer"/>
+      <form-property name="creditsInput" type="java.lang.Integer"/>
+      <form-property name="AICCSelect" type="java.lang.Integer"/>
+      <form-property name="rewardsSelect" type="java.lang.Integer"/>
+      <form-property name="rewardDescInput" type="java.lang.String"/>
+      <form-property name="surveySelect" type="java.lang.Integer"/>
+      <form-property name="surveyURLInput" type="java.lang.String"/>
+      <form-property name="statusSelect" type="java.lang.Integer"/>
+      <form-property name="releasedDateInput" type="java.lang.String"/>
+      <form-property name="scheduleActive" type="java.lang.Boolean"/>
+      <form-property name="activeDateInput" type="java.lang.String"/>
+      <form-property name="displayAsNew" type="java.lang.Boolean"/>
+      <form-property name="displayAsNewInput" type="java.lang.Integer"/>
+      <form-property name="expiresDateInput" type="java.lang.String"/>
+    </form-bean>
+    
+    <form-bean       name="courseAudienceForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="audienceSelect" type="java.lang.Integer"/>
+      <form-property name="courseIsSelect" type="java.lang.String"/>
+      <form-property name="completeByDateInput" type="java.lang.String"/>
+    </form-bean>
+    
+    <form-bean       name="courseInstructorsForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="instructorSelect" type="java.lang.Integer[]"/>
+    </form-bean>
+    
+    <form-bean       name="courseSectionForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="nameInput" type="java.lang.String"/>
+      <form-property name="status" type="java.lang.Integer"/>
+      <form-property name="room" type="java.lang.Integer"/>
+      <form-property name="capacity" type="java.lang.Short"/>
+      <form-property name="enable_waitlisting" type="java.lang.Boolean"/>
+      
+      <form-property name="allow_drop" type="java.lang.Boolean"/>
+      <form-property name="require_drop_reason" type="java.lang.Boolean"/>
+      
+      <form-property name="language" type="java.lang.Integer"/>
+      <form-property name="instructors" type="java.lang.Integer[]"/>
+      <form-property name="instructor_comment" type="java.lang.String"/>
+      <form-property name="schedule" type="java.lang.String"/>
+      <form-property name="comment" type="java.lang.String"/>
+      
+      <form-property name="section_start_date" type="java.lang.String"/>
+      <form-property name="section_end_date" type="java.lang.String"/>
+      <form-property name="section_drop_deadline_date" type="java.lang.String"/>
+    </form-bean>
+    
+    <form-bean       name="courseSectionStatusForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="nameInput" type="java.lang.String"/>
+    </form-bean>
+    
+    <form-bean       name="courseSectionPeriodForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      
+      <form-property name="period_start_time_hour" type="java.lang.Short"/>
+      <form-property name="period_start_time_minute" type="java.lang.Short"/>
+      <form-property name="period_start_time_am_pm" type="java.lang.Short"/>
+      <form-property name="duration" type="java.lang.Short"/>
+      <form-property name="duration_type" type="java.lang.Short"/>
+      
+      <form-property name="recurrence_pattern" type="java.lang.Short"/>
+      <form-property name="recurrence_pattern_daily" type="java.lang.Short"/>
+      <form-property name="recurrence_pattern_monthly" type="java.lang.Short"/>
+      <form-property name="recurrence_pattern_yearly" type="java.lang.Short"/>
+      
+      <form-property name="recurrence_frequency_daily" type="java.lang.Short"/>
+      
+      <form-property name="recurrence_frequency_weekly" type="java.lang.Short"/>
+      <form-property name="sunday" type="java.lang.Boolean"/>
+      <form-property name="monday" type="java.lang.Boolean"/>
+      <form-property name="tuesday" type="java.lang.Boolean"/>
+      <form-property name="wednesday" type="java.lang.Boolean"/>
+      <form-property name="thursday" type="java.lang.Boolean"/>
+      <form-property name="friday" type="java.lang.Boolean"/>
+      <form-property name="saturday" type="java.lang.Boolean"/>
+      
+      <form-property name="recurrence_day_of_month" type="java.lang.Short"/>
+      <form-property name="recurrence_frequency_monthly" type="java.lang.Short"/>
+      <form-property name="recurrence_month_sel" type="java.lang.Short"/>
+      <form-property name="recurrence_month_week_day" type="java.lang.Short"/>
+      <form-property name="recurrence_frequency_monthly_alt" type="java.lang.Short"/>
+      
+      <form-property name="recurrence_year_month" type="java.lang.Short"/>
+      <form-property name="recurrence_year_date" type="java.lang.Short"/>
+      <form-property name="recurrence_year_sel" type="java.lang.Short"/>
+      <form-property name="recurrence_year_week" type="java.lang.Short"/>
+      <form-property name="recurrence_year_month_sel" type="java.lang.Short"/>
+      
+      <form-property name="period_start_date" type="java.lang.String"/>
+      <form-property name="period_end_date" type="java.lang.String"/>
+      
+      <form-property name="room" type="java.lang.Integer"/>
+    </form-bean>
+    
+    <form-bean       name="certificationAudienceForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="audienceNameInput" type="java.lang.String"/>
+      <form-property name="userGroupSelect" type="java.lang.String[]"/>
+      <form-property name="subGroupSelect" type="java.lang.String"/>
+      <form-property name="regionSelect" type="java.lang.Integer[]"/>
+      <form-property name="locationSelect" type="java.lang.Integer[]"/>
+      <form-property name="jobTitleSelect" type="java.lang.String[]"/>
+      <form-property name="courseIsSelect" type="java.lang.String"/>
+      <form-property name="completeByDateInput" type="java.lang.String"/>
+    </form-bean>
+    
+    <form-bean       name="coursePrerequisiteForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="activities" type="java.lang.Integer[]"/>
+    </form-bean>
+    
+    <form-bean       name="certificationPrerequisiteForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="typeSelect" type="java.lang.Integer"/>
+      <form-property name="manufacturerSelect" type="java.lang.String"/>
+      <form-property name="categorySelect" type="java.lang.String"/>
+      <form-property name="titleSelect" type="java.lang.String"/>
+    </form-bean>
+    
+    <form-bean       name="courseUploadForm"
+                     type="com.badiyan.uk.online.struts.CourseUploadForm">
+      <form-property name="uploadInput" type="java.lang.String"/>
+    </form-bean>
+    
+    <form-bean       name="userUploadForm"
+                     type="com.badiyan.uk.online.struts.UserUploadForm">
+      <form-property name="uploadInput" type="java.lang.String"/>
+    </form-bean>
+    
+    <form-bean       name="courseUrlForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="urlInput" type="java.lang.String"/>
+    </form-bean>
+            
+    <form-bean       name="courseWindowForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="displayFullscreen" type="java.lang.Boolean"/>
+      <form-property name="displayToolbar" type="java.lang.Boolean"/>
+      <form-property name="displayLocation" type="java.lang.Boolean"/>
+      <form-property name="displayStatusBar" type="java.lang.Boolean"/>
+      <form-property name="displayMenuBar" type="java.lang.Boolean"/>
+      <form-property name="displayScrollBars" type="java.lang.Boolean"/>
+      <form-property name="isResizable" type="java.lang.Boolean"/>
+      <form-property name="width" type="java.lang.Integer"/>
+      <form-property name="height" type="java.lang.Integer"/>
+      <form-property name="top" type="java.lang.Integer"/>
+      <form-property name="left" type="java.lang.Integer"/>
+    </form-bean>
+    
+    <form-bean       name="coursePeopleForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="ownerSelect" type="java.lang.Integer"/>
+      <form-property name="contactNameInput" type="java.lang.String"/>
+      <form-property name="contactEmailInput" type="java.lang.String"/>
+      <form-property name="contactDescInput" type="java.lang.String"/>
+    </form-bean>
+    
+    <form-bean       name="certificationPeopleForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="ownerSelect" type="java.lang.Integer"/>
+      <form-property name="contactNameInput" type="java.lang.String"/>
+      <form-property name="contactEmailInput" type="java.lang.String"/>
+      <form-property name="contactDescInput" type="java.lang.String"/>
+    </form-bean>
+    
+    <form-bean       name="certificationCoursesForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="manufacturerSelect" type="java.lang.String"/>
+      <form-property name="categorySelect" type="java.lang.String"/>
+      <form-property name="titleSelect" type="java.lang.String"/>
+    </form-bean>
+    
+    <form-bean       name="organizationMainForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="nameInput" type="java.lang.String"/>
+    </form-bean>
+
+    <form-bean       name="setup01Form"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="nameInput" type="java.lang.String"/>
+      <form-property name="addressInput" type="java.lang.String"/>
+      <form-property name="cityInput" type="java.lang.String"/>
+      <form-property name="stateInput" type="java.lang.String"/>
+      <form-property name="zipInput" type="java.lang.String"/>
+      <form-property name="log_in_method" type="java.lang.String"/>
+      <form-property name="emailInput" type="java.lang.String"/>
+      <form-property name="usernameInput" type="java.lang.String"/>
+      <form-property name="firstNameInput" type="java.lang.String"/>
+      <form-property name="lastNameInput" type="java.lang.String"/>
+      <form-property name="is_practitioner" type="java.lang.Boolean"/>
+      <form-property name="password" type="java.lang.String"/>
+      <form-property name="confirmPassword" type="java.lang.String"/>
+      <form-property name="is_quickbooks" type="java.lang.Boolean"/>
+      <form-property name="qb_username" type="java.lang.String"/>
+      <form-property name="qb_password" type="java.lang.String"/>
+      <form-property name="is_pos" type="java.lang.Boolean"/>
+      <form-property name="x_login" type="java.lang.String"/>
+      <form-property name="x_tran_key" type="java.lang.String"/>
+    </form-bean>
+
+    <form-bean       name="setup02Form"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="emailInput" type="java.lang.String"/>
+      <form-property name="usernameInput" type="java.lang.String"/>
+      <form-property name="password" type="java.lang.String"/>
+      <form-property name="firstNameInput" type="java.lang.String"/>
+      <form-property name="lastNameInput" type="java.lang.String"/>
+      <form-property name="is_administrator" type="java.lang.Boolean"/>
+      <form-property name="already_exists" type="java.lang.Boolean"/>
+      <form-property name="allow_client_scheduling" type="java.lang.Boolean"/>
+    </form-bean>
+
+    <form-bean       name="setup02RoomForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="roomNameInput" type="java.lang.String"/>
+      <form-property name="allow_client_scheduling" type="java.lang.Boolean"/>
+    </form-bean>
+
+    <form-bean       name="setup06Form"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="startHour" type="java.lang.Short"/>
+      <form-property name="startMinute" type="java.lang.Short"/>
+      <form-property name="startAMPM" type="java.lang.Integer"/>
+      <form-property name="endHour" type="java.lang.Short"/>
+      <form-property name="endMinute" type="java.lang.Short"/>
+      <form-property name="endAMPM" type="java.lang.Integer"/>
+      <form-property name="state" type="java.lang.String"/>
+      <form-property name="time_zone" type="java.lang.String"/>
+    </form-bean>
+
+    <form-bean       name="eod01Form"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="nameInput" type="java.lang.String"/>
+      <form-property name="is_primary" type="java.lang.Boolean"/>
+    </form-bean>
+
+    <form-bean       name="eod02Form"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="start_date" type="java.lang.String"/>
+      <form-property name="end_date" type="java.lang.String"/>
+    </form-bean>
+
+    <form-bean       name="eod04Form"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="begin" type="java.lang.String"/>
+	  <form-property name="count" type="java.lang.String"/>
+	  <form-property name="leave" type="java.lang.String"/>
+      <form-property name="count_100" type="java.lang.Short"/>
+      <form-property name="count_50" type="java.lang.Short"/>
+      <form-property name="count_20" type="java.lang.Short"/>
+      <form-property name="count_10" type="java.lang.Short"/>
+      <form-property name="count_5" type="java.lang.Short"/>
+      <form-property name="count_1" type="java.lang.Short"/>
+      <form-property name="count_50cent" type="java.lang.Short"/>
+      <form-property name="count_25cent" type="java.lang.Short"/>
+      <form-property name="count_10cent" type="java.lang.Short"/>
+      <form-property name="count_5cent" type="java.lang.Short"/>
+      <form-property name="count_1cent" type="java.lang.Short"/>
+    </form-bean>
+    
+    <form-bean       name="certificationMainForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="nameInput" type="java.lang.String"/>
+      <form-property name="active" type="java.lang.Boolean"/>
+      <form-property name="description" type="java.lang.String"/>
+      <form-property name="contact" type="java.lang.Integer"/>
+    </form-bean>
+    
+    <form-bean       name="certificationNewForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="nameInput" type="java.lang.String"/>
+      <form-property name="active" type="java.lang.Boolean"/>
+      <form-property name="description" type="java.lang.String"/>
+      <form-property name="contact" type="java.lang.Integer"/>
+    </form-bean>
+    
+    <form-bean       name="organizationDepartmentTypesForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="nameInput" type="java.lang.String"/>
+    </form-bean>
+    
+    <form-bean       name="organizationDepartmentsForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="parent" type="java.lang.Integer"/>
+      <form-property name="nameInput" type="java.lang.String"/>
+      <form-property name="type" type="java.lang.Integer"/>
+    </form-bean>
+    
+    <form-bean       name="courseLessonForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="parent" type="java.lang.Integer"/>
+      <form-property name="nameInput" type="java.lang.String"/>
+      <form-property name="type" type="java.lang.String"/>
+    </form-bean>
+    
+    <form-bean       name="organizationClassroomsForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="nameInput" type="java.lang.String"/>
+      <form-property name="building" type="java.lang.Integer"/>
+      <form-property name="type" type="java.lang.Integer"/>
+      <form-property name="status" type="java.lang.Integer"/>
+      <form-property name="capacity" type="java.lang.Short"/>
+      <form-property name="comment" type="java.lang.String"/>
+    </form-bean>
+    
+    <form-bean       name="organizationClassroomTypesForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="nameInput" type="java.lang.String"/>
+    </form-bean>
+    
+    <form-bean       name="organizationClassroomStatusForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="nameInput" type="java.lang.String"/>
+    </form-bean>
+    
+    <form-bean       name="organizationBuildingsForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="nameInput" type="java.lang.String"/>
+      <form-property name="map_url" type="java.lang.String"/>
+      <form-property name="address" type="java.lang.Integer"/>
+      <form-property name="comment" type="java.lang.String"/>
+      <form-property name="location" type="java.lang.Integer"/>
+    </form-bean>
+    
+    <form-bean       name="organizationLocationsForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="nameInput" type="java.lang.String"/>
+      <form-property name="map_url" type="java.lang.String"/>
+      <form-property name="address" type="java.lang.Integer"/>
+      <form-property name="comment" type="java.lang.String"/>
+    </form-bean>
+    
+    <form-bean       name="organizationAddressesForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="address_1" type="java.lang.String"/>
+      <form-property name="address_2" type="java.lang.String"/>
+      <form-property name="address_3" type="java.lang.String"/>
+      <form-property name="city" type="java.lang.String"/>
+      <form-property name="state" type="java.lang.String"/>
+      <form-property name="intlstateprovince" type="java.lang.String"/>
+      <form-property name="country" type="java.lang.String"/>
+      <form-property name="zip" type="java.lang.String"/>
+    </form-bean>
+    
+    <form-bean       name="organizationLanguagesForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="language" type="java.lang.Integer"/>
+    </form-bean>
+    
+    <form-bean       name="organizationJobTitlesForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="nameInput" type="java.lang.String"/>
+    </form-bean>
+    
+    <form-bean       name="organizationRolesForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="nameInput" type="java.lang.String"/>
+    </form-bean>
+    
+    <form-bean       name="organizationGroupsForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="nameInput" type="java.lang.String"/>
+    </form-bean>
+    
+    <form-bean       name="organizationCategoryTypesForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="nameInput" type="java.lang.String"/>
+    </form-bean>
+    
+    <form-bean       name="organizationCategoriesForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="nameInput" type="java.lang.String"/>
+      <form-property name="category_type" type="java.lang.Integer"/>
+    </form-bean>
+    
+    <form-bean       name="organizationAudiencesForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="nameInput" type="java.lang.String"/>
+      <form-property name="userGroupSelect" type="java.lang.Integer[]"/>
+      <form-property name="departmentSelect" type="java.lang.Integer[]"/>
+      <form-property name="jobTitleSelect" type="java.lang.Integer[]"/>
+    </form-bean>
+    
+    <form-bean       name="practiceAreasForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="nameInput" type="java.lang.String"/>
+      <form-property name="parent" type="java.lang.Integer"/>
+      <form-property name="practitionerSelect" type="java.lang.Integer[]"/>
+    </form-bean>
+
+    <form-bean       name="taxCodeForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="code" type="java.lang.String"/>
+      <form-property name="itemDescInput" type="java.lang.String"/>
+      <form-property name="percentage" type="java.lang.String"/>
+      <form-property name="sales_tax_code" type="java.lang.Integer"/>
+      <form-property name="vendorSelect" type="java.lang.Integer"/>
+      <form-property name="default" type="java.lang.Boolean"/>
+    </form-bean>
+
+    <form-bean       name="paymentTypeForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="paymentName" type="java.lang.String"/>
+      <form-property name="paymentMethodMapping" type="java.lang.Short"/>
+      <form-property name="creditCardMapping" type="java.lang.Short"/>
+      <form-property name="depositToAccountSelect" type="java.lang.Integer"/>
+    </form-bean>
+
+    <form-bean       name="vendorForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="name" type="java.lang.String"/>
+      <form-property name="street" type="java.lang.String"/>
+      <form-property name="street2" type="java.lang.String"/>
+      <form-property name="city" type="java.lang.String"/>
+      <form-property name="state" type="java.lang.String"/>
+      <form-property name="zip" type="java.lang.String"/>
+      <form-property name="phone" type="java.lang.String"/>
+      <form-property name="fax" type="java.lang.String"/>
+      <form-property name="accountNumber" type="java.lang.String"/>
+    </form-bean>
+
+    <form-bean       name="inventoryDepartmentsForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="name" type="java.lang.String"/>
+    </form-bean>
+    
+    <form-bean       name="appointmentTypesForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="nameInput" type="java.lang.String"/>
+      <form-property name="duration" type="java.lang.String"/>
+      <form-property name="image_url" type="java.lang.String"/>
+      <form-property name="bg_color" type="java.lang.String"/>
+      <form-property name="text_color" type="java.lang.String"/>
+      <form-property name="allow_double_booking" type="java.lang.Boolean"/>
+      <form-property name="allow_off_hours" type="java.lang.Boolean"/>
+      <form-property name="allow_client_scheduling" type="java.lang.Boolean"/>
+      <form-property name="is_active" type="java.lang.Boolean"/>
+      <form-property name="appointment_type_type" type="java.lang.Short"/>
+      <form-property name="practice_area" type="java.lang.Integer"/>
+    </form-bean>
+
+    <form-bean       name="siteContentForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="page_select" type="java.lang.Integer"/>
+      <form-property name="propertySelect" type="java.lang.String"/>
+      <form-property name="valueInput" type="java.lang.String"/>
+    </form-bean>
+    
+    <form-bean       name="appointmentForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="appointmentSelect" type="java.lang.Integer"/>
+      <form-property name="statusSelect" type="java.lang.Short"/>
+      <form-property name="clientSelect" type="java.lang.Integer[]"/>
+      <form-property name="practitionerSelect" type="java.lang.Integer"/>
+      <form-property name="roomSelect" type="java.lang.Integer"/>
+      <form-property name="typeSelect" type="java.lang.Integer"/>
+      <form-property name="parentSelect" type="java.lang.Integer"/>
+      <form-property name="appointmentDateInput" type="java.lang.String"/>
+      <form-property name="appointmentHourInput" type="java.lang.Integer"/>
+      <form-property name="appointmentMinuteInput" type="java.lang.Integer"/>
+      <form-property name="appointmentAMPMInput" type="java.lang.Integer"/>
+      <form-property name="duration" type="java.lang.String"/>
+      <form-property name="appt_date" type="java.lang.String"/>
+      <form-property name="hr" type="java.lang.String"/>
+      <form-property name="mn" type="java.lang.String"/>
+      <form-property name="ampm" type="java.lang.String"/>
+      <form-property name="newAppointmentTimeInput" type="java.lang.String"/>
+      <form-property name="comments" type="java.lang.String"/>
+	  
+      <form-property name="recurVal" type="java.lang.Short"/>
+      <form-property name="recurPeriod" type="java.lang.Short"/>
+      <form-property name="recurPW" type="java.lang.Short"/>
+      <form-property name="recurPWS" type="java.lang.Short"/>
+      <form-property name="stopAfterN" type="java.lang.Short"/>
+      <form-property name="stopAfterDate" type="java.lang.String"/>
+    </form-bean>
+    
+    <form-bean       name="clientInfoForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="cid" type="java.lang.Integer"/>
+      <form-property name="statusInput" type="java.lang.Integer"/>
+      <form-property name="contactInput" type="java.lang.Integer"/>
+      <form-property name="otherInput" type="java.lang.String"/>
+      <form-property name="editorInput" type="java.lang.String"/>
+    </form-bean>
+    
+    <form-bean       name="appointmentStatusForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="appointmentSelect" type="java.lang.Integer"/>
+      <form-property name="statusSelect" type="java.lang.Short"/>
+    </form-bean>
+    
+    <form-bean       name="checkoutForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="is_client" type="java.lang.Integer"/>
+    </form-bean>
+    
+    <form-bean       name="clientProfileForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="person_id" type="java.lang.Integer"/>
+      <form-property name="file_number" type="java.lang.String"/>
+      <form-property name="prefix" type="java.lang.String"/>
+      <form-property name="firstname" type="java.lang.String"/>
+      <form-property name="middle" type="java.lang.String"/>
+      <form-property name="lastname" type="java.lang.String"/>
+      <form-property name="suffix" type="java.lang.String"/>
+      <form-property name="phone" type="java.lang.String"/>
+      <form-property name="cell" type="java.lang.String"/>
+      <form-property name="email" type="java.lang.String"/>
+      <form-property name="password" type="java.lang.String"/>
+      <form-property name="ssn" type="java.lang.String"/>
+      <form-property name="address1" type="java.lang.String"/>
+      <form-property name="address2" type="java.lang.String"/>
+      <form-property name="city" type="java.lang.String"/>
+      <form-property name="state" type="java.lang.String"/>
+      <form-property name="zipcode" type="java.lang.String"/>
+      <form-property name="dob" type="java.lang.String"/>
+      <form-property name="gender" type="java.lang.String"/>
+      <form-property name="deceased" type="java.lang.Boolean"/>
+      <form-property name="client_type" type="java.lang.Integer"/>
+      <form-property name="file_type" type="java.lang.Integer"/>
+
+      <form-property name="c_prospect" type="java.lang.Boolean"/>
+      <form-property name="marketingProfileSelect" type="java.lang.Integer"/>
+      <form-property name="referralProfileSelect" type="java.lang.Integer"/>
+    </form-bean>
+    
+    <form-bean       name="clientNewForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="firstname" type="java.lang.String"/>
+      <form-property name="lastname" type="java.lang.String"/>
+      <form-property name="phone" type="java.lang.String"/>
+      <form-property name="cell" type="java.lang.String"/>
+      <form-property name="email" type="java.lang.String"/>
+      <form-property name="filenumber" type="java.lang.String"/>
+      <form-property name="prospect" type="java.lang.Boolean"/>
+      <form-property name="gender" type="java.lang.String"/>
+      <form-property name="group" type="java.lang.String"/>
+      <form-property name="relationshipSelect" type="java.lang.Short"/>
+      <form-property name="group_id" type="java.lang.Integer"/>
+      <form-property name="groupSelect" type="java.lang.Integer"/>
+      <form-property name="clientFileTypeSelect" type="java.lang.Integer"/>
+      <form-property name="marketingPlanSelect" type="java.lang.Integer"/>
+      <form-property name="referralClientSelect" type="java.lang.Integer"/>
+    </form-bean>
+    
+    <form-bean       name="assignGroupUnderCareForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="clientSelect" type="java.lang.Integer"/>
+      <form-property name="groupSelect" type="java.lang.Integer"/>
+      <form-property name="relationshipSelect" type="java.lang.Integer"/>
+    </form-bean>
+    
+    <form-bean       name="clientFinancialForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="purchasePlanSelect" type="java.lang.Integer"/>
+      <form-property name="planSelect" type="java.lang.Integer"/>
+	  
+      <form-property name="includeGroupCF" type="java.lang.Boolean"/>
+      <form-property name="planStartDateCF" type="java.lang.String"/>
+      <form-property name="prepaidVisitsCF" type="java.lang.Integer"/>
+      <form-property name="visitsUsedCF" type="java.lang.Integer"/>
+      <form-property name="visitsRemainingCF" type="java.lang.Integer"/>
+      <form-property name="perVisitChargeCF" type="java.lang.Integer"/>
+      <form-property name="amountPaidCF" type="java.lang.Integer"/>
+      <form-property name="escrowAmountCF" type="java.lang.Integer"/>
+      <form-property name="dropPlanChargeCF" type="java.lang.Integer"/>
+    </form-bean>
+    
+    <form-bean       name="clientBillingForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="bill_id" type="java.lang.Integer"/>
+      <form-property name="amount" type="java.lang.String"/>
+      <form-property name="collections" type="java.lang.Boolean"/>
+      <form-property name="collections_amount" type="java.lang.String"/>
+    </form-bean>
+    
+    <form-bean       name="newPlanForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="nameInput" type="java.lang.String"/>
+      <form-property name="typeSelect" type="java.lang.Short"/>
+      <form-property name="practiceAreaSelect" type="java.lang.Integer"/>
+      <form-property name="costInput" type="java.lang.String"/>
+      <form-property name="visitsInput" type="java.lang.Integer"/>
+      <form-property name="allowMonthlyPayments" type="java.lang.Boolean"/>
+      <form-property name="monthsInput" type="java.lang.Integer"/>
+      <form-property name="allowPooling" type="java.lang.Boolean"/>
+    </form-bean>
+
+    <form-bean       name="newMarketingPlanForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="nameInput" type="java.lang.String"/>
+      <form-property name="startDate" type="java.lang.String"/>
+      <form-property name="endDate" type="java.lang.String"/>
+      <form-property name="isBulkEmailInput" type="java.lang.Boolean"/>
+    </form-bean>
+
+    <form-bean       name="newEmailListForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="nameInput" type="java.lang.String"/>
+      <form-property name="isBulkEmailInput" type="java.lang.Boolean"/>
+      <form-property name="isAllClientsInput" type="java.lang.Boolean"/>
+    </form-bean>
+
+    <form-bean       name="bulkEmailForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="nameInput" type="java.lang.String"/>
+      <form-property name="emailInput" type="java.lang.String"/>
+      <form-property name="isAllClientsInput" type="java.lang.Boolean"/>
+    </form-bean>
+    
+    <form-bean       name="newCheckoutCodeForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="itemNumberInput" type="java.lang.String"/>
+      <form-property name="upcInput" type="java.lang.String"/>
+      <form-property name="descriptionInput" type="java.lang.String"/>
+      <form-property name="salesDescInput" type="java.lang.String"/>
+      <form-property name="isActive" type="java.lang.Boolean"/>
+      <form-property name="onHandInput" type="java.lang.Short"/>
+      <form-property name="reorderPointInput" type="java.lang.Short"/>
+      <form-property name="amountInput" type="java.lang.String"/>
+      <form-property name="costInput" type="java.lang.String"/>
+      <form-property name="unitCostInput" type="java.lang.String"/>
+      <form-property name="typeSelect" type="java.lang.Short"/>
+      <form-property name="codeInput" type="java.lang.String"/>
+      <form-property name="vendorSelect" type="java.lang.Integer"/>
+      <form-property name="departmentSelect" type="java.lang.Integer"/>
+      <form-property name="practiceAreaSelect" type="java.lang.Integer"/>
+      <form-property name="planUse" type="java.lang.Boolean"/>
+      <form-property name="commission" type="java.lang.Boolean"/>
+      <form-property name="taxCode" type="java.lang.Integer"/>
+	  
+      <form-property name="amountPerMLInput" type="java.lang.String"/>
+	  
+      <!-- <form-property name="taxItem" type="java.lang.Integer"/> -->
+      <form-property name="cogsAccountSelect" type="java.lang.Integer"/>
+      <form-property name="incomeAccountSelect" type="java.lang.Integer"/>
+      <form-property name="assetAccountSelect" type="java.lang.Integer"/>
+      <form-property name="expenseAccountSelect" type="java.lang.Integer"/>
+    </form-bean>
+
+    <form-bean       name="qbfsSetupForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="company_key" type="java.lang.String"/>
+    </form-bean>
+
+    <form-bean       name="qbfsDataRequestForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="requestInput" type="java.lang.String"/>
+      <form-property name="iterator" type="java.lang.Boolean"/>
+      <form-property name="maxReturned" type="java.lang.Integer"/>
+      <form-property name="timeModified" type="java.lang.String"/>
+      <form-property name="sync_accounts" type="java.lang.Boolean"/>
+      <form-property name="sync_vendors" type="java.lang.Boolean"/>
+      <form-property name="sync_clients" type="java.lang.Boolean"/>
+      <form-property name="sync_inventory" type="java.lang.Boolean"/>
+      <form-property name="sync_sales_receipts" type="java.lang.Boolean"/>
+      <form-property name="sync_invoices" type="java.lang.Boolean"/>
+    </form-bean>
+    
+    <form-bean       name="newClientFileTypeForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="descriptionInput" type="java.lang.String"/>
+      <!-- <form-property name="amountInput" type="java.lang.String"/> -->
+    </form-bean>
+    
+    <form-bean       name="practitionerScheduleForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="practitionerSelect" type="java.lang.Integer"/>
+      <form-property name="primarySchedule" type="java.lang.Boolean"/>
+      <form-property name="descriptionInput" type="java.lang.String"/>
+      <form-property name="startDate" type="java.lang.String"/>
+      <form-property name="endDate" type="java.lang.String"/>
+      <form-property name="dayOfWeekSelect" type="java.lang.Integer"/>
+      <form-property name="startHour" type="java.lang.Integer"/>
+      <form-property name="startMinute" type="java.lang.Integer"/>
+      <form-property name="startAMPMSelect" type="java.lang.Integer"/>
+      <form-property name="endHour" type="java.lang.Integer"/>
+      <form-property name="endMinute" type="java.lang.Integer"/>
+      <form-property name="endAMPMSelect" type="java.lang.Integer"/>
+      <form-property name="appointmentTypeSelect" type="java.lang.Integer"/>
+    </form-bean>
+    
+    <form-bean       name="visitChargeMapForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="fileTypeSelect" type="java.lang.Integer"/>
+      <form-property name="practiceAreaSelect" type="java.lang.Integer"/>
+      <form-property name="amountInput" type="java.lang.String"/>
+    </form-bean>
+    
+    <form-bean       name="newBillingForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="transactionDateInput" type="java.lang.String"/>
+      <form-property name="amountInput" type="java.lang.String"/>
+    </form-bean>
+    
+    <form-bean       name="assessmentMainForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="nameInput" type="java.lang.String"/>
+      <form-property name="passFailInput" type="java.lang.Integer"/>
+      <form-property name="allowRetakes" type="java.lang.Boolean"/>
+      <form-property name="introductionInput" type="java.lang.String"/>
+      <form-property name="instructionsInput" type="java.lang.String"/>
+    </form-bean>
+    
+    <form-bean       name="assessmentQuestionForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+                     
+      <form-property name="questionInput" type="java.lang.String"/>
+      <form-property name="correctSelect" type="java.lang.String"/>
+      
+      <form-property name="answerAInput" type="java.lang.String"/>
+      <form-property name="answerAFeedbackInput" type="java.lang.String"/>
+      
+      <form-property name="answerBInput" type="java.lang.String"/>
+      <form-property name="answerBFeedbackInput" type="java.lang.String"/>
+      
+      <form-property name="answerCInput" type="java.lang.String"/>
+      <form-property name="answerCFeedbackInput" type="java.lang.String"/>
+      
+      <form-property name="answerDInput" type="java.lang.String"/>
+      <form-property name="answerDFeedbackInput" type="java.lang.String"/>
+      
+      <form-property name="answerEInput" type="java.lang.String"/>
+      <form-property name="answerEFeedbackInput" type="java.lang.String"/>
+    </form-bean>
+
+    <form-bean       name="assessmentTFQuestionForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="questionInput" type="java.lang.String"/>
+      <form-property name="correctSelect" type="java.lang.String"/>
+      
+      <form-property name="answerAInput" type="java.lang.String"/>
+      <form-property name="answerAFeedbackInput" type="java.lang.String"/>
+      <form-property name="answerBInput" type="java.lang.String"/>
+      <form-property name="answerBFeedbackInput" type="java.lang.String"/>
+    </form-bean>
+
+	<form-bean       name="evaluationFITBQuestionForm"
+			 type="org.apache.struts.validator.DynaValidatorForm">
+	  <form-property name="headingInput" type="java.lang.String"/>
+	  <form-property name="questionInput" type="java.lang.String"/>
+	</form-bean>
+
+	<form-bean       name="evaluationTFQuestionForm"
+			 type="org.apache.struts.validator.DynaValidatorForm">
+	  <form-property name="questionInput" type="java.lang.String"/>
+	  <form-property name="correctSelect" type="java.lang.String"/>
+
+	  <form-property name="answerAInput" type="java.lang.String"/>
+	  <form-property name="answerAFeedbackInput" type="java.lang.String"/>
+	  <form-property name="answerBInput" type="java.lang.String"/>
+	  <form-property name="answerBFeedbackInput" type="java.lang.String"/>
+	</form-bean>
+
+	<form-bean       name="evaluationQuestionForm"
+			 type="org.apache.struts.validator.DynaValidatorForm">
+
+	  <form-property name="category" type="java.lang.Integer"/>
+	  <form-property name="headingInput" type="java.lang.String"/>
+	  <form-property name="questionInput" type="java.lang.String"/>
+	  <form-property name="correctSelect" type="java.lang.String"/>
+	  <form-property name="womenOnly" type="java.lang.String"/>
+
+	  <form-property name="answerAInput" type="java.lang.String"/>
+	  <form-property name="answerBInput" type="java.lang.String"/>
+	  <form-property name="answerCInput" type="java.lang.String"/>
+	  <form-property name="answerDInput" type="java.lang.String"/>
+	  <form-property name="answerEInput" type="java.lang.String"/>
+
+	  <form-property name="answerFInput" type="java.lang.String"/>
+	  <form-property name="answerGInput" type="java.lang.String"/>
+	  <form-property name="answerHInput" type="java.lang.String"/>
+	  <form-property name="answerIInput" type="java.lang.String"/>
+	  <form-property name="answerJInput" type="java.lang.String"/>
+
+	  <form-property name="correctFeedbackInput" type="java.lang.String"/>
+	  <form-property name="incorrectFeedbackInput" type="java.lang.String"/>
+	  <form-property name="timerSeconds" type="java.lang.Short"/>
+	  
+	</form-bean>
+    
+    <form-bean       name="courseAssessmentForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="assessmentSelect" type="java.lang.String"/>
+      <form-property name="mustBeCompleted" type="java.lang.Boolean"/>
+    </form-bean>
+    
+    <form-bean       name="courseSettingsForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+
+      <form-property name="allow_waitlisting" type="java.lang.Boolean"/>	
+      <form-property name="require_approval_for_enroll" type="java.lang.Boolean"/>
+      <form-property name="manager_approve_enroll" type="java.lang.Boolean"/>
+      <form-property name="instructor_approve_enroll" type="java.lang.Boolean"/>
+      <form-property name="enrolled_email_message" type="java.lang.String"/>
+	
+      <form-property name="allow_drop" type="java.lang.Boolean"/>
+      <form-property name="require_approval_for_drop" type="java.lang.Boolean"/>
+      <form-property name="manager_approve_drop" type="java.lang.Boolean"/>
+      <form-property name="instructor_approve_drop" type="java.lang.Boolean"/>
+      <form-property name="require_reason_for_drop" type="java.lang.Boolean"/>
+      <form-property name="allow_enroll_after_drop" type="java.lang.Boolean"/>
+      <form-property name="drop_course_by_datetime" type="java.lang.String"/>
+    </form-bean>
+    
+    <form-bean       name="newsItemForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="nameInput" type="java.lang.String"/>
+      <form-property name="shortDescInput" type="java.lang.String"/>
+      <form-property name="userGroupSelect" type="java.lang.Integer"/>
+      <form-property name="ownerSelect" type="java.lang.String"/>
+      <form-property name="publishedDateInput" type="java.lang.String"/>
+      <form-property name="newsTextInput" type="java.lang.String"/>
+      <form-property name="URLInput" type="java.lang.String"/>
+      <form-property name="releasedDateInput" type="java.lang.String"/>
+      <form-property name="expiresDateInput" type="java.lang.String"/>
+    </form-bean>
+    
+    <form-bean       name="faqSearchForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="courseSelect" type="java.lang.Integer"/>
+      <form-property name="certificationSelect" type="java.lang.Integer"/>
+      <form-property name="categorySelect" type="java.lang.Integer"/>
+      <form-property name="userGroupSelect" type="java.lang.Integer"/>
+      <form-property name="departmentSelect" type="java.lang.Integer"/>
+      <form-property name="jobTitleSelect" type="java.lang.Integer"/>
+      <form-property name="expiresDateInput" type="java.lang.String"/>
+      <form-property name="keywordSearchBox" type="java.lang.String"/>
+    </form-bean>
+    
+    <form-bean       name="faqBasicForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="nameInput" type="java.lang.String"/>
+      <form-property name="categorySelect" type="java.lang.Integer"/>
+      <form-property name="audienceSelect" type="java.lang.Integer[]"/>
+      <form-property name="ownerSelect" type="java.lang.String"/>
+      <form-property name="releasedDateInput" type="java.lang.String"/>
+      <form-property name="displayAsNew" type="java.lang.Boolean"/>
+      <form-property name="displayAsNewInput" type="java.lang.Integer"/>
+      <form-property name="expiresDateInput" type="java.lang.String"/>
+    </form-bean>
+    
+    <form-bean       name="faqAssCourseForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="titleSelect" type="java.lang.String"/>
+      <form-property name="manufacturerSelect" type="java.lang.String"/>
+      <form-property name="categorySelect" type="java.lang.String"/>
+    </form-bean>
+    
+    <form-bean       name="faqAssCertificationForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="titleSelect" type="java.lang.String"/>
+      <form-property name="manufacturerSelect" type="java.lang.String"/>
+      <form-property name="categorySelect" type="java.lang.String"/>
+    </form-bean>
+    
+    <form-bean       name="faqContentForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="questionInput" type="java.lang.String"/>
+      <form-property name="answerInput" type="java.lang.String"/>
+    </form-bean>
+    
+    <form-bean       name="resourceSearchForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="courseSelect" type="java.lang.Integer"/>
+      <form-property name="certificationSelect" type="java.lang.Integer"/>
+      <form-property name="categorySelect" type="java.lang.Integer"/>
+      <form-property name="userGroupSelect" type="java.lang.Integer"/>
+      <form-property name="departmentSelect" type="java.lang.Integer"/>
+      <form-property name="jobTitleSelect" type="java.lang.Integer"/>
+      <form-property name="expiresDateInput" type="java.lang.String"/>
+      <form-property name="keywordSearchBox" type="java.lang.String"/>
+      <form-property name="mediaType1" type="java.lang.Boolean"/>
+      <form-property name="mediaType2" type="java.lang.Boolean"/>
+      <form-property name="mediaType3" type="java.lang.Boolean"/>
+      <form-property name="mediaType4" type="java.lang.Boolean"/>
+      <form-property name="mediaType5" type="java.lang.Boolean"/>
+      <form-property name="mediaType6" type="java.lang.Boolean"/>
+      <form-property name="mediaType7" type="java.lang.Boolean"/>
+      <form-property name="mediaType8" type="java.lang.Boolean"/>
+    </form-bean>
+    
+    <form-bean       name="resourceNewForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="nameInput" type="java.lang.String"/>
+      <form-property name="typeSelect" type="java.lang.Integer"/>
+      <form-property name="descriptionInput" type="java.lang.String"/>
+      <form-property name="ownerSelect" type="java.lang.Integer"/>
+    </form-bean>
+    
+    <form-bean       name="resourceBasicForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="nameInput" type="java.lang.String"/>
+      <form-property name="typeSelect" type="java.lang.String"/>
+      <form-property name="audienceSelect" type="java.lang.Integer[]"/>
+      <form-property name="ownerSelect" type="java.lang.Integer"/>
+      <form-property name="releasedDateInput" type="java.lang.String"/>
+      <form-property name="displayAsNew" type="java.lang.Boolean"/>
+      <form-property name="displayAsNewInput" type="java.lang.Integer"/>
+      <form-property name="statusSelect" type="java.lang.Integer"/>
+      <form-property name="expiresDateInput" type="java.lang.String"/>
+      <form-property name="descriptionInput" type="java.lang.String"/>
+      <form-property name="updateNotesInput" type="java.lang.String"/>
+    </form-bean>
+    
+    <form-bean       name="resourceAssCourseForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="titleSelect" type="java.lang.Integer[]"/>
+    </form-bean>
+    
+    <form-bean       name="activityExportForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="titleSelect" type="java.lang.Integer[]"/>
+    </form-bean>
+    
+    <form-bean       name="resourceAssCertificationForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="titleSelect" type="java.lang.String"/>
+      <form-property name="manufacturerSelect" type="java.lang.String"/>
+      <form-property name="categorySelect" type="java.lang.String"/>
+    </form-bean>
+    
+    <form-bean       name="resourceUploadForm"
+                     type="com.badiyan.uk.online.struts.ResourceUploadForm">
+      <form-property name="uploadInput" type="java.lang.String"/>
+      <form-property name="mediaType1" type="java.lang.Boolean"/>
+      <form-property name="mediaType2" type="java.lang.Boolean"/>
+      <form-property name="mediaType3" type="java.lang.Boolean"/>
+      <form-property name="mediaType4" type="java.lang.Boolean"/>
+      <form-property name="mediaType5" type="java.lang.Boolean"/>
+      <form-property name="mediaType7" type="java.lang.Boolean"/>
+    </form-bean>
+    <form-bean       name="resourceUrlForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="urlInput" type="java.lang.String"/>
+      <form-property name="mediaType6" type="java.lang.Boolean"/>
+    </form-bean>
+    
+    <form-bean       name="courseReportFilterForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="courseSelect" type="java.lang.Integer[]"/>
+      <form-property name="userGroupSelect" type="java.lang.String"/>
+      <form-property name="locationSelect" type="java.lang.String"/>
+      <form-property name="jobTitleSelect" type="java.lang.String"/>
+      <form-property name="sort" type="java.lang.Integer"/>
+      <form-property name="status" type="java.lang.Integer"/>
+      <form-property name="displayHTML" type="java.lang.Boolean"/>
+      <form-property name="displayExcel" type="java.lang.Boolean"/>
+      <form-property name="start_date" type="java.lang.String"/>
+      <form-property name="end_date" type="java.lang.String"/>
+    </form-bean>
+    
+    <form-bean       name="patientListReportFilterForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="practitionerSelect" type="java.lang.Integer"/>
+      <form-property name="sort" type="java.lang.Integer"/>
+      <form-property name="status" type="java.lang.Integer"/>
+      <form-property name="displayHTML" type="java.lang.Boolean"/>
+      <form-property name="displayExcel" type="java.lang.Boolean"/>
+      <form-property name="start_date" type="java.lang.String"/>
+      <form-property name="end_date" type="java.lang.String"/>
+    </form-bean>
+
+    <form-bean       name="endOfDayReportFilterForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="format" type="java.lang.String"/>
+      <form-property name="sort" type="java.lang.Integer"/>
+      <form-property name="status" type="java.lang.Integer"/>
+      <form-property name="displayHTML" type="java.lang.Boolean"/>
+      <form-property name="displayExcel" type="java.lang.Boolean"/>
+      <form-property name="start_date" type="java.lang.String"/>
+      <form-property name="end_date" type="java.lang.String"/>
+    </form-bean>
+
+    <form-bean       name="clientCheckoutFormReportFilterForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="practitionerSelect" type="java.lang.Integer"/>
+      <form-property name="start_date" type="java.lang.String"/>
+      <form-property name="end_date" type="java.lang.String"/>
+      <form-property name="start_hr" type="java.lang.Integer"/>
+      <form-property name="start_mn" type="java.lang.Integer"/>
+      <form-property name="start_ampm" type="java.lang.Integer"/>
+      <form-property name="end_hr" type="java.lang.Integer"/>
+	  <form-property name="end_mn" type="java.lang.Integer"/>
+	  <form-property name="end_ampm" type="java.lang.Integer"/>
+    </form-bean>
+
+    <form-bean       name="statementReportFilterForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="clientSelect" type="java.lang.Integer"/>
+      <form-property name="start_date" type="java.lang.String"/>
+      <form-property name="end_date" type="java.lang.String"/>
+      <form-property name="typeSelect" type="java.lang.Short[]"/>
+      <form-property name="practice_areas" type="java.lang.Integer[]"/>
+    </form-bean>
+    
+    <form-bean       name="certificationAssessmentForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="assessmentSelect" type="java.lang.String"/>
+      <form-property name="mustBeCompleted" type="java.lang.Boolean"/>
+    </form-bean>
+
+    <form-bean       name="userRollAssignForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="userRoleAssignSelect" type="java.lang.Integer[]"/>
+    </form-bean>
+
+    <form-bean       name="allowedAppointmentTypesForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="appointmentTypeSelect" type="java.lang.Integer[]"/>
+    </form-bean>
+    
+    <form-bean       name="userCertificationAssignForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="userCertificationAssignSelect" type="java.lang.Integer"/>
+      <form-property name="startDateSelect" type="java.lang.String"/>
+      <form-property name="endDateSelect" type="java.lang.String"/>
+    </form-bean>
+    
+    <form-bean       name="extCourseEnrollForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="courseSelect" type="java.lang.String"/>
+    </form-bean>
+    <form-bean       name="extCertificationEnrollForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="certificationSelect" type="java.lang.String"/>
+    </form-bean>
+    <form-bean       name="intCourseEnrollForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="courseSelect" type="java.lang.String"/>
+    </form-bean>
+    <form-bean       name="intCertificationEnrollForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="certificationSelect" type="java.lang.String"/>
+    </form-bean>
+    
+    <form-bean       name="myCoursesForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+    </form-bean>
+    
+    <form-bean       name="courseCatalogForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="keywordInput" type="java.lang.String"/>
+    </form-bean>
+    
+    <form-bean       name="courseCatalogSearchForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="titleInput" type="java.lang.String"/>
+      <form-property name="manufacturerSelect" type="java.lang.String"/>
+      <form-property name="categorySelect" type="java.lang.String"/>
+      <form-property name="releasedDateInput" type="java.lang.String"/>
+      <form-property name="releasedDateSelect" type="java.lang.Integer"/>
+      <form-property name="completeByDateInput" type="java.lang.String"/>
+      <form-property name="completeByDateSelect" type="java.lang.Integer"/>
+      <form-property name="mediaType1" type="java.lang.Boolean"/>
+      <form-property name="mediaType2" type="java.lang.Boolean"/>
+      <form-property name="mediaType3" type="java.lang.Boolean"/>
+      <form-property name="mediaType4" type="java.lang.Boolean"/>
+      <form-property name="mediaType5" type="java.lang.Boolean"/>
+      <form-property name="mediaType6" type="java.lang.Boolean"/>
+      <form-property name="mediaType7" type="java.lang.Boolean"/>
+      <form-property name="titleSearchBox" type="java.lang.String"/>
+    </form-bean>
+    
+    <form-bean       name="libraryForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="categorySelect" type="java.lang.Integer"/>
+      <form-property name="mediaType1" type="java.lang.Boolean"/>
+      <form-property name="mediaType2" type="java.lang.Boolean"/>
+      <form-property name="mediaType3" type="java.lang.Boolean"/>
+      <form-property name="mediaType4" type="java.lang.Boolean"/>
+      <form-property name="mediaType5" type="java.lang.Boolean"/>
+      <form-property name="mediaType6" type="java.lang.Boolean"/>
+      <form-property name="mediaType7" type="java.lang.Boolean"/>
+      <form-property name="keywordInput" type="java.lang.String"/>
+    </form-bean>
+    
+    <form-bean       name="faqForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="categorySelect" type="java.lang.Integer"/>
+      <form-property name="keywordInput" type="java.lang.String"/>
+    </form-bean>
+    
+    <form-bean       name="courseDetailForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="courseId" type="java.lang.Integer"/>
+    </form-bean>
+    
+    <form-bean       name="courseSectionDetailForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="courseId" type="java.lang.Integer"/>
+      <form-property name="courseSectionId" type="java.lang.Integer"/>
+    </form-bean>
+    
+    <form-bean       name="courseEnrollRequestForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="courseId" type="java.lang.Integer"/>
+      <form-property name="comment" type="java.lang.String"/>
+    </form-bean>
+    
+    <form-bean       name="courseDropRequestForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="courseId" type="java.lang.Integer"/>
+      <form-property name="comment" type="java.lang.String"/>
+    </form-bean>
+    
+    <form-bean       name="courseEnrollRequestResponseForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="courseId" type="java.lang.Integer"/>
+      <form-property name="comment" type="java.lang.String"/>
+    </form-bean>
+    
+    <form-bean       name="courseDropRequestResponseForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="courseId" type="java.lang.Integer"/>
+      <form-property name="comment" type="java.lang.String"/>
+    </form-bean>
+    
+    <form-bean       name="certificationDetailForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="certificationId" type="java.lang.Integer"/>
+    </form-bean>
+    
+    <form-bean       name="advancedSearchForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+	
+      <form-property name="group1" type="java.lang.Integer"/>
+      
+      <form-property name="typeActivityELRN" type="java.lang.Boolean"/>
+      <form-property name="typeActivityMNTR" type="java.lang.Boolean"/>
+      <form-property name="typeActivityILED" type="java.lang.Boolean"/>
+      <form-property name="typeActivityASMT" type="java.lang.Boolean"/>
+      
+      <form-property name="typeResourceDOC" type="java.lang.Boolean"/>
+      <form-property name="typeResourcePPT" type="java.lang.Boolean"/>
+      <form-property name="typeResourceXLS" type="java.lang.Boolean"/>
+      <form-property name="typeResourcePDF" type="java.lang.Boolean"/>
+      <form-property name="typeResourceSWF" type="java.lang.Boolean"/>
+      <form-property name="typeResourceWEB" type="java.lang.Boolean"/>
+      <form-property name="typeResourceVID" type="java.lang.Boolean"/>
+      <form-property name="typeResourceCD" type="java.lang.Boolean"/>
+      
+      <form-property name="releaseDate" type="java.lang.String"/>
+      <form-property name="group2" type="java.lang.Integer"/>
+      
+      <form-property name="keyword" type="java.lang.String"/>
+    </form-bean>
+    
+    <form-bean       name="markCompleteForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="manager" type="java.lang.String"/>
+      <form-property name="comment" type="java.lang.String"/>
+    </form-bean>
+    
+    <form-bean       name="indexSearchForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="keyword" type="java.lang.String"/>
+    </form-bean>
+    
+    <form-bean       name="indexResourceSearchForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="keyword" type="java.lang.String"/>
+    </form-bean>
+    
+    <form-bean       name="enrollForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="course_id" type="java.lang.String"/>
+    </form-bean>
+    
+    <form-bean       name="approvalQueueForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+    </form-bean>
+    
+    <form-bean       name="assessmentDetailForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="answer" type="java.lang.Integer"/>
+    </form-bean>
+
+	<form-bean       name="evaluationFormUser"
+			 type="org.apache.struts.validator.DynaValidatorForm">
+	</form-bean>
+    
+    <form-bean       name="corporateHomeSearchForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="keywordSearchBox" type="java.lang.String"/>
+    </form-bean>
+    
+    <form-bean       name="usergroupBasicForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="nameInput" type="java.lang.String"/>
+      <form-property name="homePageTextInput" type="java.lang.String"/>
+    </form-bean>
+
+    <form-bean       name="valeoContentForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="pageSelect" type="java.lang.String"/>
+      <form-property name="areaSelect" type="java.lang.String"/>
+      <form-property name="contentInput" type="java.lang.String"/>
+    </form-bean>
+
+    <form-bean       name="tenderDetailForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="tenderId" type="java.lang.Integer"/>
+      <form-property name="amount" type="java.lang.String"/>
+    </form-bean>
+
+    <form-bean       name="emailDocForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="email" type="java.lang.String"/>
+      <form-property name="subject" type="java.lang.String"/>
+      <form-property name="text" type="java.lang.String"/>
+    </form-bean>
+
+    <form-bean       name="suggestionForm"
+                     type="org.apache.struts.validator.DynaValidatorForm">
+      <form-property name="email" type="java.lang.String"/>
+      <form-property name="message" type="java.lang.String"/>
+      <form-property name="securityCode" type="java.lang.String"/>
+    </form-bean>
+    
+  </form-beans>
+
+  <action-mappings>
+  
+    <action path="/login"
+      type="com.badiyan.uk.online.struts.LoginAction"
+      unknown="true"
+      name="loginForm"
+      scope="request"
+      input="/index.jsp">
+      <forward name="success" path="/index.jsp"/>
+      <forward name="change_password" path="/change-password.jsp"/>
+      <forward name="session_expired" path="/login.jsp"/>
+    </action>
+
+    <action path="/admin/loginSchedule"
+      type="com.badiyan.uk.online.struts.LoginAction"
+      unknown="true"
+      name="loginForm"
+      scope="request"
+      input="/admin/schedule-login.jsp">
+      <forward name="success" path="/admin/schedule-chrome.jsp"/>
+      <forward name="practitioner" path="/admin/practitioners-chrome.jsp"/>
+      <forward name="administrator" path="/admin/schedule-administration.jsp"/>
+      <forward name="change_password" path="/change-password.jsp"/>
+      <forward name="setup_incomplete" path="/admin/setup_incomplete.jsp"/>
+      <forward name="session_expired" path="/schedule-login.jsp"/>
+    </action>
+
+    <action path="/admin/login"
+      type="com.badiyan.uk.online.struts.LoginAction"
+      unknown="true"
+      name="loginForm"
+      scope="request"
+      input="/index.jsp">
+      <forward name="success" path="/admin/schedule-chrome.jsp"/>
+      <forward name="practitioner" path="/admin/practitioners-chrome.jsp"/>
+      <forward name="administrator" path="/admin/schedule-administration.jsp"/>
+      <forward name="change_password" path="/change-password.jsp"/>
+      <forward name="forgot_password" path="/forgot-password.jsp"/>
+      <forward name="setup_incomplete" path="/admin/setup_incomplete.jsp"/>
+      <forward name="session_expired" path="/schedule-login.jsp"/>
+    </action>
+
+    <action path="/client/login"
+      type="com.badiyan.uk.online.struts.LoginAction"
+      unknown="true"
+      name="clientLoginForm"
+      scope="request"
+      input="/client/index.jsp">
+      <forward name="success" path="/client/index.jsp"/>
+      <forward name="intake" path="/client/index.jsp"/>
+      <forward name="forgot_password" path="/client/forgot-password.jsp"/>
+      <forward name="enter_email" path="/client/enter-email.jsp"/>
+    </action>
+
+    <action path="/admin/lostPassword"
+      type="com.badiyan.uk.online.struts.LostPasswordAction"
+      unknown="true"
+      name="lostPasswordForm"
+      scope="request"
+      input="/admin/forgot-password.jsp">
+      <forward name="success" path="/admin/forgot-password-confirm.jsp"/>
+      <forward name="session_expired" path="/schedule-login.jsp"/>
+    </action>
+
+    <action path="/lostPassword"
+      type="com.badiyan.uk.online.struts.LostPasswordAction"
+      unknown="true"
+      name="lostPasswordForm"
+      scope="request"
+      input="/forgot-password.jsp">
+      <forward name="success" path="/forgot-password-confirm.jsp"/>
+      <forward name="session_expired" path="/schedule-login.jsp"/>
+    </action>
+
+    <action path="/client/lostPassword"
+      type="com.badiyan.uk.online.struts.LostPasswordAction"
+      unknown="true"
+      name="lostPasswordForm"
+      scope="request"
+      input="/client/forgot-password.jsp">
+      <forward name="success" path="/client/forgot-password.jsp"/>
+      <forward name="session_expired" path="/client/index.jsp"/>
+    </action>
+
+    <action path="/client/enterEmail"
+      type="com.badiyan.uk.online.struts.EnterEmailAction"
+      unknown="true"
+      name="lostPasswordForm"
+      scope="request"
+      input="/client/enter-email.jsp">
+      <forward name="success" path="/client/index.jsp"/>
+      <forward name="session_expired" path="/client/index.jsp"/>
+    </action>
+    
+    <action path="/registration"
+      type="com.badiyan.uk.online.struts.RegistrationAction"
+      name="registrationForm"
+      scope="request"
+      input="/registration.jsp">
+      <forward name="success" path="/index.jsp"/>
+      <forward name="session_expired" path="/login.jsp"/>
+    </action>
+    
+    <action path="/changePassword"
+      type="com.badiyan.uk.online.struts.ConfirmPasswordAction"
+      name="changePasswordForm"
+      scope="request"
+      input="/change-password.jsp">
+      <forward name="success" path="/index.jsp"/>
+      <forward name="session_expired" path="/login.jsp"/>
+    </action>
+    
+    <action path="/client/changePassword"
+      type="com.badiyan.uk.online.struts.ConfirmPasswordAction"
+      name="changePasswordForm"
+      scope="request"
+      input="/client/change-password.jsp">
+      <forward name="success" path="/client/index.jsp"/>
+      <forward name="session_expired" path="/client/index.jsp"/>
+    </action>
+    
+    <action path="/client/scheduleFilter"
+      type="com.badiyan.uk.online.struts.ScheduleFilterAction"
+      name="scheduleFilterForm"
+      scope="request"
+      input="/client/schedule.jsp">
+      <forward name="success1" path="/client/schedule1.jsp"/>
+      <forward name="success2" path="/client/schedule2.jsp"/>
+      <forward name="session_expired" path="/client/index.jsp"/>
+    </action>
+    
+    <action path="/client/scheduleConfirm"
+      type="com.badiyan.uk.online.struts.ScheduleConfirmAction"
+      name="scheduleConfirmForm"
+      scope="request"
+      input="/client/schedule3.jsp">
+      <forward name="success" path="/client/schedule4.jsp"/>
+      <forward name="session_expired" path="/client/index.jsp"/>
+    </action>
+    
+    <action path="/client/dustToDiamonds"
+      type="com.badiyan.uk.online.struts.DustToDiamondsAction"
+      name="dustToDiamondsOrderForm"
+      scope="request"
+      input="/client/inventory-item.jsp">
+      <forward name="success" path="/client/inventory-item-confirm.jsp"/>
+      <forward name="session_expired" path="/client/index.jsp"/>
+    </action>
+    
+    <action path="/organizationRegistration"
+      type="com.badiyan.uk.online.struts.OrganizationRegistrationAction"
+      name="organizationRegistrationForm"
+      scope="request"
+      input="/organization-registration.jsp">
+      <forward name="success" path="/index.jsp"/>
+      <forward name="session_expired" path="/login.jsp"/>
+    </action>
+    
+    <action path="/synchronize"
+      type="com.badiyan.uk.online.struts.SynchAction"
+      name="synchronizeForm"
+      scope="request"
+      input="/synchronize.jsp">
+      <forward name="success" path="/synchronize.jsp"/>
+      <forward name="session_expired" path="/login.jsp"/>
+    </action>
+    
+    <action path="/synchronizeCourse"
+      type="com.badiyan.uk.online.struts.SynchCourseAction"
+      name="synchronizeCourseForm"
+      scope="request"
+      input="/synchronize-course.jsp">
+      <forward name="success" path="/synchronize-course.jsp"/>
+      <forward name="session_expired" path="/login.jsp"/>
+    </action>
+    
+    <action path="/synchronizeResource"
+      type="com.badiyan.uk.online.struts.SynchResourceAction"
+      name="synchronizeResourceForm"
+      scope="request"
+      input="/synchronize-resource.jsp">
+      <forward name="success" path="/synchronize-resource.jsp"/>
+      <forward name="session_expired" path="/login.jsp"/>
+    </action>
+    
+    <action path="/admin/personSearch"
+      type="com.badiyan.uk.online.struts.PersonSearchAction" 
+      unknown="true"
+      name="personSearchForm"
+      scope="request"
+      input="/admin/admin-users.jsp">
+      <forward name="success" path="/admin/admin-users.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+    
+    <action path="/admin/personLocationSearch" 
+      type="com.badiyan.uk.online.struts.PersonLocationSearchAction" 
+      unknown="true"
+      name="personLocationSearchForm"
+      scope="request"
+      input="/admin/admin-users.jsp">
+      <forward name="success" path="/admin/admin-users.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+    
+    <action path="/admin/userProfileNew"
+      type="com.badiyan.uk.online.struts.PersonLocationSearchActionX" 
+      unknown="true"
+      name="userProfileEditNewForm"
+      scope="request"
+      input="/admin/admin-user-profile-new.jsp">
+      <forward name="success" path="/admin/admin-user-profile.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+    
+    <action path="/admin/userProfile"
+      type="com.badiyan.uk.online.struts.UserProfileEditAction" 
+      unknown="true"
+      name="userProfileEditForm"
+      scope="request"
+      input="/admin/admin-user-profile.jsp">
+      <forward name="success" path="/admin/admin-user-profile.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+    
+    <action path="/admin/userXProfile" 
+      type="com.badiyan.uk.online.struts.PersonLocationSearchActionX" 
+      unknown="true"
+      name="personLocationSearchXForm"
+      scope="request"
+      input="/admin/admin-user-profile.jsp">
+      <forward name="success" path="/admin/admin-user-profile.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+    
+    <action path="/admin/userSoapNotes" 
+      type="com.badiyan.uk.online.struts.SoapNotesAction" 
+      unknown="true"
+      name="userSoapNotesForm"
+      scope="request"
+      input="/admin/admin-user-soap-notes.jsp">
+      <forward name="success" path="/admin/admin-user-soap-notes.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+    
+    <action path="/admin/userHairAnalysis" 
+      type="com.badiyan.uk.online.struts.HairAnalysisAction" 
+      unknown="true"
+      name="userHairAnalysisForm"
+      scope="request"
+      input="/admin/admin-user-hair-analysis.jsp">
+      <forward name="success" path="/admin/admin-user-hair-analysis.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+    
+    <action path="/admin/userMineralRatios" 
+      type="com.badiyan.uk.online.struts.MineralRatiosAction" 
+      unknown="true"
+      name="userMineralRatiosForm"
+      scope="request"
+      input="/admin/admin-user-mineral-ratios.jsp">
+      <forward name="success" path="/admin/admin-user-mineral-ratios.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+    
+    <action path="/admin/courseBasic"
+      type="com.badiyan.uk.online.struts.CourseBasicAction" 
+      unknown="true"
+      name="courseBasicForm"
+      scope="request"
+      input="/admin/admin-course.jsp">
+      <forward name="success" path="/admin/admin-course.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+    
+    <action path="/admin/newActivity"
+      type="com.badiyan.uk.online.struts.NewActivityAction" 
+      unknown="true"
+      name="newActivityForm"
+      scope="request"
+      input="/admin/admin-activity-new.jsp">
+      <forward name="success" path="/admin/admin-course.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+    
+    <action path="/admin/certificationBasic"
+      type="com.badiyan.uk.online.struts.CertificationBasicAction" 
+      unknown="true"
+      name="certificationBasicForm"
+      scope="request"
+      input="/admin/admin-certification.jsp">
+      <forward name="success" path="/admin/admin-certification.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+    
+    <action path="/admin/courseAudience"
+      type="com.badiyan.uk.online.struts.CourseAudienceAction" 
+      unknown="true"
+      name="courseAudienceForm"
+      scope="request"
+      input="/admin/admin-course-audience.jsp">
+      <forward name="success" path="/admin/admin-course-audience.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+    
+    <action path="/admin/courseInstructors"
+      type="com.badiyan.uk.online.struts.CourseInstructorsAction" 
+      unknown="true"
+      name="courseInstructorsForm"
+      scope="request"
+      input="/admin/admin-course-instructors.jsp">
+      <forward name="success" path="/admin/admin-course-instructors.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+    
+    <action path="/admin/courseSection"
+      type="com.badiyan.uk.online.struts.CourseSectionAction" 
+      unknown="true"
+      name="courseSectionForm"
+      scope="request"
+      input="/admin/admin-course-section.jsp">
+      <forward name="success" path="/admin/admin-course-section.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+    
+    <action path="/admin/courseSectionStatus"
+      type="com.badiyan.uk.online.struts.CourseSectionStatusAction" 
+      unknown="true"
+      name="courseSectionStatusForm"
+      scope="request"
+      input="/admin/admin-course-section.jsp">
+      <forward name="success" path="/admin/admin-course-section.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+    
+    <action path="/admin/courseSectionPeriod"
+      type="com.badiyan.uk.online.struts.CourseSectionPeriodAction" 
+      unknown="true"
+      name="courseSectionPeriodForm"
+      scope="request"
+      input="/admin/admin-course-section.jsp">
+      <forward name="success" path="/admin/admin-course-section.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+    
+    <action path="/admin/certificationAudience"
+      type="com.badiyan.uk.online.struts.CertificationAudienceAction" 
+      unknown="true"
+      name="certificationAudienceForm"
+      scope="request"
+      input="/admin/admin-certification-audience.jsp">
+      <forward name="success" path="/admin/admin-certification-audience.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+    
+    <action path="/admin/coursePrerequisite"
+      type="com.badiyan.uk.online.struts.CoursePrereqAction" 
+      unknown="true"
+      name="coursePrerequisiteForm"
+      scope="request"
+      input="/admin/admin-course-prereq.jsp">
+      <forward name="success" path="/admin/admin-course-prereq.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+    
+    <action path="/admin/certificationPrerequisite"
+      type="com.badiyan.uk.online.struts.CertificationPrereqAction" 
+      unknown="true"
+      name="certificationPrerequisiteForm"
+      scope="request"
+      input="/admin/admin-certification-prereq.jsp">
+      <forward name="success" path="/admin/admin-certification-prereq.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+    
+    <action path="/admin/certificationCourses"
+      type="com.badiyan.uk.online.struts.CertificationCoursesAction" 
+      unknown="true"
+      name="certificationCoursesForm"
+      scope="request"
+      input="/admin/admin-certification-courses.jsp">
+      <forward name="success" path="/admin/admin-certification-courses.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+    
+    <action path="/admin/organizationMain" 
+      type="com.badiyan.uk.online.struts.OrganizationMainAction" 
+      unknown="true"
+      name="organizationMainForm"
+      scope="request"
+      input="/admin/admin-organization-main.jsp">
+      <forward name="success" path="/admin/admin-organization-main.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+
+    <action path="/admin/termsOfService"
+      type="com.badiyan.uk.online.struts.EOD05Action"
+      unknown="true"
+      name="eod02Form"
+      scope="request"
+      input="/admin/terms-of-service.jsp">
+      <forward name="success" path="/admin/terms-of-service.jsp"/>
+      <forward name="agree" path="/admin/subscriptions.jsp"/>
+      <forward name="ie" path="/admin/browser-ie.jsp"/>
+      <forward name="ff" path="/admin/browser-ff.jsp"/>
+      <forward name="cancel" path="/index.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+
+    <action path="/admin/browserIE"
+      type="com.badiyan.uk.online.struts.EOD05Action"
+      unknown="true"
+      name="eod02Form"
+      scope="request"
+      input="/admin/browser-ie.jsp">
+      <forward name="success" path="/admin/browser-ie.jsp"/>
+      <forward name="previous" path="/admin/terms-of-service.jsp"/>
+      <forward name="next" path="/admin/subscriptions.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+
+    <action path="/browserFF"
+      type="com.badiyan.uk.online.struts.EOD05Action"
+      unknown="true"
+      name="eod02Form"
+      scope="request"
+      input="/admin/browser-ff.jsp">
+      <forward name="success" path="/admin/browser-ff.jsp"/>
+      <forward name="cancel" path="/index.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+
+    <action path="/admin/subscriptions"
+      type="com.badiyan.uk.online.struts.EOD05Action"
+      unknown="true"
+      name="eod02Form"
+      scope="request"
+      input="/admin/subscriptions.jsp">
+      <forward name="success" path="/admin/subscriptions.jsp"/>
+      <forward name="previous" path="/admin/terms-of-service.jsp"/>
+      <forward name="next" path="/admin/setup_01.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+
+    <action path="/admin/account"
+      type="com.badiyan.uk.online.struts.AccountAction"
+      unknown="true"
+      name="eod02Form"
+      scope="request"
+      input="/admin/schedule-administration-account.jsp">
+      <forward name="success" path="/admin/schedule-administration-account.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+
+    <action path="/admin/setup01"
+      type="com.badiyan.uk.online.struts.Setup01Action"
+      unknown="true"
+      name="setup01Form"
+      scope="request"
+      input="/admin/setup_01.jsp">
+      <forward name="success" path="/admin/setup_01.jsp"/>
+      <forward name="submit" path="/admin/setup_01.jsp"/>
+      <forward name="previous" path="/admin/subscriptions.jsp"/>
+      <forward name="next" path="/admin/setup_02.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+
+    <action path="/admin/setup02"
+      type="com.badiyan.uk.online.struts.Setup02Action"
+      unknown="true"
+      name="setup02Form"
+      scope="request"
+      input="/admin/setup_02.jsp">
+      <forward name="success" path="/admin/setup_02.jsp"/>
+      <forward name="add" path="/admin/setup_02.jsp"/>
+      <forward name="next" path="/admin/setup_03.jsp"/>
+      <forward name="previous" path="/admin/setup_01.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+
+    <action path="/admin/setup02Room"
+      type="com.badiyan.uk.online.struts.Setup02RoomAction"
+      unknown="true"
+      name="setup02RoomForm"
+      scope="request"
+      input="/admin/setup_02-rooms.jsp">
+      <forward name="success" path="/admin/setup_02-rooms.jsp"/>
+      <forward name="add" path="/admin/setup_02-rooms.jsp"/>
+      <forward name="next" path="/admin/setup_03.jsp"/>
+      <forward name="previous" path="/admin/setup_01.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+
+    <action path="/admin/setup03"
+      type="com.badiyan.uk.online.struts.Setup03Action"
+      unknown="true"
+      name="setup02Form"
+      scope="request"
+      input="/admin/setup_03.jsp">
+      <forward name="success" path="/admin/setup_03.jsp"/>
+      <forward name="add" path="/admin/setup_03.jsp"/>
+      <forward name="next" path="/admin/setup_04.jsp"/>
+      <forward name="previous" path="/admin/setup_02.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+
+    <action path="/admin/setup04"
+      type="com.badiyan.uk.online.struts.Setup04Action"
+      unknown="true"
+      name="practiceAreasForm"
+      scope="request"
+      input="/admin/setup_04.jsp">
+      <forward name="success" path="/admin/setup_04.jsp"/>
+      <forward name="add" path="/admin/setup_04.jsp"/>
+      <forward name="next" path="/admin/setup_05.jsp"/>
+      <forward name="previous" path="/admin/setup_03.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+
+    <action path="/admin/setup05"
+      type="com.badiyan.uk.online.struts.Setup05Action"
+      unknown="true"
+      name="appointmentTypesForm"
+      scope="request"
+      input="/admin/setup_05.jsp">
+      <forward name="success" path="/admin/setup_05.jsp"/>
+      <forward name="add" path="/admin/setup_05.jsp"/>
+      <forward name="next" path="/admin/setup_06.jsp"/>
+      <forward name="previous" path="/admin/setup_04.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+
+    <action path="/admin/setup06"
+      type="com.badiyan.uk.online.struts.Setup06Action"
+      unknown="true"
+      name="setup06Form"
+      scope="request"
+      input="/admin/setup_06.jsp">
+      <forward name="success" path="/admin/setup_06.jsp"/>
+      <forward name="next" path="/admin/setup_07.jsp"/>
+      <forward name="previous" path="/admin/setup_05.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+
+    <action path="/admin/setup07"
+      type="com.badiyan.uk.online.struts.Setup07Action"
+      unknown="true"
+      name="practitionerScheduleForm"
+      scope="request"
+      input="/admin/setup_07.jsp">
+      <forward name="success" path="/admin/setup_07.jsp"/>
+      <forward name="add" path="/admin/setup_07.jsp"/>
+      <forward name="next" path="/admin/setup_08.jsp"/>
+      <forward name="previous" path="/admin/setup_06.jsp"/>
+      <forward name="finish" path="/admin/schedule-chrome.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+
+    <action path="/admin/setupIncomplete"
+      type="com.badiyan.uk.online.struts.SetupIncompleteAction"
+      unknown="true"
+      name="practitionerScheduleForm"
+      scope="request"
+      input="/admin/setup_incomplete.jsp">
+      <forward name="resume" path="/admin/setup_01.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+
+    <action path="/admin/eod01"
+      type="com.badiyan.uk.online.struts.EOD01Action"
+      unknown="true"
+      name="eod01Form"
+      scope="request"
+      input="/admin/end-of-day_01.jsp">
+      <forward name="success" path="/admin/end-of-day_01.jsp"/>
+      <forward name="primary" path="/admin/end-of-day_02.jsp"/>
+      <forward name="secondary" path="/admin/end-of-day_02_secondary.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+
+    <action path="/admin/eod02"
+      type="com.badiyan.uk.online.struts.EOD02Action"
+      unknown="true"
+      name="eod02Form"
+      scope="request"
+      input="/admin/end-of-day_02.jsp">
+      <forward name="success" path="/admin/end-of-day_02.jsp"/>
+      <forward name="next" path="/admin/end-of-day_03.jsp"/>
+      <forward name="previous" path="/admin/end-of-day_01.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+
+    <action path="/admin/eod03"
+      type="com.badiyan.uk.online.struts.EOD03Action"
+      unknown="true"
+      name="eod02Form"
+      scope="request"
+      input="/admin/end-of-day_03.jsp">
+      <forward name="success" path="/admin/end-of-day_03.jsp"/>
+      <forward name="next" path="/admin/end-of-day_04.jsp"/>
+      <forward name="previous" path="/admin/end-of-day_02.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+
+    <action path="/admin/eod04"
+      type="com.badiyan.uk.online.struts.EOD04Action"
+      unknown="true"
+      name="eod04Form"
+      scope="request"
+      input="/admin/end-of-day_04.jsp">
+      <forward name="success" path="/admin/end-of-day_04.jsp"/>
+      <forward name="next" path="/admin/end-of-day_05.jsp"/>
+      <forward name="previous" path="/admin/end-of-day_03.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+
+    <action path="/admin/eod05"
+      type="com.badiyan.uk.online.struts.EOD05Action"
+      unknown="true"
+      name="eod02Form"
+      scope="request"
+      input="/admin/end-of-day_05.jsp">
+      <forward name="success" path="/admin/end-of-day_05.jsp"/>
+      <forward name="next" path="/admin/end-of-day_06.jsp"/>
+      <forward name="previous" path="/admin/end-of-day_04.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+
+    <action path="/admin/eod06"
+      type="com.badiyan.uk.online.struts.EOD05Action"
+      unknown="true"
+      name="eod02Form"
+      scope="request"
+      input="/admin/end-of-day_06.jsp">
+      <forward name="success" path="/admin/end-of-day_06.jsp"/>
+      <forward name="next" path="/admin/end-of-day_07.jsp"/>
+      <forward name="previous" path="/admin/end-of-day_05.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+
+    <action path="/admin/eod07"
+      type="com.badiyan.uk.online.struts.EOD05Action"
+      unknown="true"
+      name="eod02Form"
+      scope="request"
+      input="/admin/end-of-day_07.jsp">
+      <forward name="success" path="/admin/end-of-day_07.jsp"/>
+      <forward name="next" path="/admin/end-of-day_08.jsp"/>
+      <forward name="previous" path="/admin/end-of-day_06.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+
+    <action path="/admin/eod08"
+      type="com.badiyan.uk.online.struts.EOD05Action"
+      unknown="true"
+      name="eod02Form"
+      scope="request"
+      input="/admin/end-of-day_08.jsp">
+      <forward name="success" path="/admin/end-of-day_08.jsp"/>
+      <forward name="next" path="/admin/end-of-day_09.jsp"/>
+      <forward name="finish" path="/admin/schedule-chrome.jsp"/>
+      <forward name="previous" path="/admin/end-of-day_07.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+
+    <action path="/admin/eod02Secondary"
+      type="com.badiyan.uk.online.struts.EOD02Action"
+      unknown="true"
+      name="eod02Form"
+      scope="request"
+      input="/admin/end-of-day_02_secondary.jsp">
+      <forward name="success" path="/admin/end-of-day_02_secondary.jsp"/>
+      <forward name="next" path="/admin/end-of-day_03_secondary.jsp"/>
+      <forward name="previous" path="/admin/end-of-day_01.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+
+    <action path="/admin/eod03Secondary"
+      type="com.badiyan.uk.online.struts.EOD04Action"
+      unknown="true"
+      name="eod04Form"
+      scope="request"
+      input="/admin/end-of-day_03_secondary.jsp">
+      <forward name="success" path="/admin/end-of-day_03_secondary.jsp"/>
+      <forward name="next" path="/admin/end-of-day_04_secondary.jsp"/>
+      <forward name="previous" path="/admin/end-of-day_02.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+
+    <action path="/admin/eod04Secondary"
+      type="com.badiyan.uk.online.struts.EOD05Action"
+      unknown="true"
+      name="eod02Form"
+      scope="request"
+      input="/admin/end-of-day_04_secondary.jsp">
+      <forward name="success" path="/admin/end-of-day_04_secondary.jsp"/>
+      <forward name="finish" path="/admin/schedule-chrome.jsp"/>
+      <forward name="previous" path="/admin/end-of-day_03_secondary.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+
+    <action path="/admin/purchaseOrder"
+      type="com.badiyan.uk.online.struts.PurchaseOrderAction"
+      unknown="true"
+      name="eod02Form"
+      scope="request"
+      input="/admin/schedule-administration-purchase-order.jsp">
+      <forward name="success" path="/admin/schedule-administration-purchase-order.jsp"/>
+      <forward name="itemAdded" path="/admin/schedule-administration-purchase-order.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+
+    <action path="/admin/purchaseOrderReceive"
+      type="com.badiyan.uk.online.struts.PurchaseOrderReceiveAction"
+      unknown="true"
+      name="eod02Form"
+      scope="request"
+      input="/admin/schedule-administration-purchase-order-receive.jsp">
+      <forward name="success" path="/admin/schedule-administration-purchase-orders.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+
+    <action path="/admin/inventoryCount"
+      type="com.badiyan.uk.online.struts.InventoryCountAction"
+      unknown="true"
+      name="eod02Form"
+      scope="request"
+      input="/admin/schedule-administration-inventory-count.jsp">
+      <forward name="success" path="/admin/schedule-administration-inventory-count.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+    
+    <action path="/admin/certificationMain" 
+      type="com.badiyan.uk.online.struts.CertificationMainAction" 
+      unknown="true"
+      name="certificationMainForm"
+      scope="request"
+      input="/admin/admin-certification-main.jsp">
+      <forward name="success" path="/admin/admin-certification-main.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+    
+    <action path="/admin/certificationNew" 
+      type="com.badiyan.uk.online.struts.CertificationMainAction" 
+      unknown="true"
+      name="certificationNewForm"
+      scope="request"
+      input="/admin/admin-certification-new.jsp">
+      <forward name="success" path="/admin/admin-certifications.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+    
+    <action path="/admin/organizationDepartmentTypes" 
+      type="com.badiyan.uk.online.struts.OrganizationDepartmentTypesAction" 
+      unknown="true"
+      name="organizationDepartmentTypesForm"
+      scope="request"
+      input="/admin/admin-organization-department-types.jsp">
+      <forward name="success" path="/admin/admin-organization-department-types.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+    
+    <action path="/admin/organizationDepartments" 
+      type="com.badiyan.uk.online.struts.OrganizationDepartmentsAction" 
+      unknown="true"
+      name="organizationDepartmentsForm"
+      scope="request"
+      input="/admin/admin-organization-departments.jsp">
+      <forward name="success" path="/admin/admin-organization-departments.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+    
+    <action path="/admin/courseLesson" 
+      type="com.badiyan.uk.online.struts.CourseLessonAction" 
+      unknown="true"
+      name="courseLessonForm"
+      scope="request"
+      input="/admin/admin-course-lesson.jsp">
+      <forward name="success" path="/admin/admin-course-lesson.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+    
+    <action path="/admin/organizationClassrooms" 
+      type="com.badiyan.uk.online.struts.OrganizationClassroomsAction" 
+      unknown="true"
+      name="organizationClassroomsForm"
+      scope="request"
+      input="/admin/admin-organization-classrooms.jsp">
+      <forward name="success" path="/admin/admin-organization-classrooms.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+    
+    <action path="/admin/organizationClassroomTypes" 
+      type="com.badiyan.uk.online.struts.OrganizationClassroomTypesAction" 
+      unknown="true"
+      name="organizationClassroomTypesForm"
+      scope="request"
+      input="/admin/admin-organization-classrooms.jsp">
+      <forward name="success" path="/admin/admin-organization-classrooms.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+    
+    <action path="/admin/organizationClassroomStatus" 
+      type="com.badiyan.uk.online.struts.OrganizationClassroomStatusAction"
+      unknown="true"
+      name="organizationClassroomStatusForm"
+      scope="request"
+      input="/admin/admin-organization-classrooms.jsp">
+      <forward name="success" path="/admin/admin-organization-classrooms.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+    
+    <action path="/admin/organizationBuildings" 
+      type="com.badiyan.uk.online.struts.OrganizationBuildingsAction" 
+      unknown="true"
+      name="organizationBuildingsForm"
+      scope="request"
+      input="/admin/admin-organization-classrooms.jsp">
+      <forward name="success" path="/admin/admin-organization-classrooms.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+    
+    <action path="/admin/organizationLocations" 
+      type="com.badiyan.uk.online.struts.OrganizationLocationsAction" 
+      unknown="true"
+      name="organizationLocationsForm"
+      scope="request"
+      input="/admin/admin-organization-classrooms.jsp">
+      <forward name="success" path="/admin/admin-organization-classrooms.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+    
+    <action path="/admin/organizationAddresses"
+      type="com.badiyan.uk.online.struts.OrganizationAddressesAction" 
+      unknown="true"
+      name="organizationAddressesForm"
+      scope="request"
+      input="/admin/admin-organization-addresses.jsp">
+      <forward name="success" path="/admin/admin-organization-addresses.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+    
+    <action path="/admin/organizationLanguages"
+      type="com.badiyan.uk.online.struts.OrganizationLanguagesAction" 
+      unknown="true"
+      name="organizationLanguagesForm"
+      scope="request"
+      input="/admin/admin-organization-languages.jsp">
+      <forward name="success" path="/admin/admin-organization-languages.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+    
+    <action path="/admin/organizationJobTitles" 
+      type="com.badiyan.uk.online.struts.OrganizationJobTitlesAction" 
+      unknown="true"
+      name="organizationJobTitlesForm"
+      scope="request"
+      input="/admin/admin-organization-job-titles.jsp">
+      <forward name="success" path="/admin/admin-organization-job-titles.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+    
+    <action path="/admin/organizationRoles" 
+      type="com.badiyan.uk.online.struts.OrganizationRolesAction" 
+      unknown="true"
+      name="organizationRolesForm"
+      scope="request"
+      input="/admin/admin-organization-roles.jsp">
+      <forward name="success" path="/admin/admin-organization-roles.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+    
+    <action path="/admin/organizationGroups" 
+      type="com.badiyan.uk.online.struts.UserGroupAction" 
+      unknown="true"
+      name="organizationGroupsForm"
+      scope="request"
+      input="/admin/admin-organization-groups.jsp">
+      <forward name="success" path="/admin/admin-organization-groups.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+    
+    <action path="/admin/organizationCategoryTypes" 
+      type="com.badiyan.uk.online.struts.CategoryTypesAction" 
+      unknown="true"
+      name="organizationCategoryTypesForm"
+      scope="request"
+      input="/admin/admin-organization-categories.jsp">
+      <forward name="success" path="/admin/admin-organization-categories.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+    
+    <action path="/admin/organizationCategories" 
+      type="com.badiyan.uk.online.struts.CategoryAction" 
+      unknown="true"
+      name="organizationCategoriesForm"
+      scope="request"
+      input="/admin/admin-organization-categories.jsp">
+      <forward name="success" path="/admin/admin-organization-categories.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+    
+    <action path="/admin/organizationAudiences" 
+      type="com.badiyan.uk.online.struts.OrganizationAudiencesAction" 
+      unknown="true"
+      name="organizationAudiencesForm"
+      scope="request"
+      input="/admin/admin-organization-audiences.jsp">
+      <forward name="success" path="/admin/admin-organization-audiences.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+    
+    <action path="/admin/practiceAreas" 
+      type="com.badiyan.uk.online.struts.PracticeAreasAction" 
+      unknown="true"
+      name="practiceAreasForm"
+      scope="request"
+      input="/admin/schedule-administration-practice-areas.jsp">
+      <forward name="success" path="/admin/schedule-administration-practice-areas.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+
+    <action path="/admin/taxCodes"
+      type="com.badiyan.uk.online.struts.TaxCodeAction"
+      unknown="true"
+      name="taxCodeForm"
+      scope="request"
+      input="/admin/schedule-administration-tax-codes.jsp">
+      <forward name="success" path="/admin/schedule-administration-tax-codes.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+
+    <action path="/admin/paymentTypes"
+      type="com.badiyan.uk.online.struts.PaymentTypeAction"
+      unknown="true"
+      name="paymentTypeForm"
+      scope="request"
+      input="/admin/schedule-qbfs-payment-types.jsp">
+      <forward name="success" path="/admin/schedule-qbfs-payment-types.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+
+    <action path="/admin/vendors"
+      type="com.badiyan.uk.online.struts.VendorAction"
+      unknown="true"
+      name="vendorForm"
+      scope="request"
+      input="/admin/schedule-administration-vendors.jsp">
+      <forward name="success" path="/admin/schedule-administration-vendors.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+
+    <action path="/admin/inventoryDepartments"
+      type="com.badiyan.uk.online.struts.InventoryDepartmentsAction"
+      unknown="true"
+      name="inventoryDepartmentsForm"
+      scope="request"
+      input="/admin/schedule-administration-inventory-departments.jsp">
+      <forward name="success" path="/admin/schedule-administration-inventory-departments.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+    
+    <action path="/admin/appointmentTypes" 
+      type="com.badiyan.uk.online.struts.AppointmentTypesAction" 
+      unknown="true"
+      name="appointmentTypesForm"
+      scope="request"
+      input="/admin/admin-appointment-types.jsp">
+      <forward name="success" path="/admin/admin-appointment-types.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+
+    <action path="/admin/siteContent"
+      type="com.badiyan.uk.online.struts.SiteContentAction"
+      unknown="true"
+      name="siteContentForm"
+      scope="request"
+      input="/admin/site-content.jsp">
+      <forward name="success" path="/admin/site-content.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+    
+    <action path="/admin/newAppointment" 
+      type="com.badiyan.uk.online.struts.AppointmentAction" 
+      unknown="true"
+      name="appointmentForm"
+      scope="request"
+      input="/admin/admin-appointment-new.jsp">
+      <forward name="success" path="/admin/schedule-success.jsp"/>
+      <forward name="failure" path="/admin/schedule-error.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+    
+    <action path="/admin/clientInfo" 
+      type="com.badiyan.uk.online.struts.ClientInfoAction" 
+      unknown="true"
+      name="clientInfoForm"
+      scope="request"
+      input="/admin/schedule.jsp">
+      <forward name="success" path="/admin/schedule-success.jsp"/>
+      <forward name="failure" path="/admin/schedule-error.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+    
+    <action path="/admin/appointmentStatus" 
+      type="com.badiyan.uk.online.struts.AppointmentStatusAction" 
+      unknown="true"
+      name="appointmentStatusForm"
+      scope="request"
+      input="/admin/admin-appointment-new.jsp">
+      <forward name="success" path="/admin/schedule-success.jsp"/>
+      <forward name="failure" path="/admin/schedule-error.jsp"/>
+    </action>
+    
+    <action path="/admin/checkout" 
+      type="com.badiyan.uk.online.struts.CheckoutAction" 
+      unknown="true"
+      name="checkoutForm"
+      scope="request"
+      input="/admin/checkout.jsp">
+      <forward name="success" path="/admin/schedule-success.jsp"/>
+      <forward name="failure" path="/admin/schedule-error.jsp"/>
+    </action>
+    
+    <action path="/admin/clientProfile" 
+      type="com.badiyan.uk.online.struts.ClientProfileAction" 
+      unknown="true"
+      name="clientProfileForm"
+      scope="request"
+      input="/admin/clients-new.jsp">
+      <forward name="success" path="/admin/clients-new.jsp"/>
+      <forward name="failure" path="/admin/clients-new.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+    
+    <action path="/admin/clientNew" 
+      type="com.badiyan.uk.online.struts.ClientNewAction" 
+      unknown="true"
+      name="clientNewForm"
+      scope="request"
+      input="/admin/client-new.jsp">
+      <forward name="success" path="/admin/schedule-success.jsp"/>
+      <forward name="failure" path="/admin/schedule-error.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+    
+    <action path="/admin/assignGroupUnderCare" 
+      type="com.badiyan.uk.online.struts.AssignGroupUnderCareAction" 
+      unknown="true"
+      name="assignGroupUnderCareForm"
+      scope="request"
+      input="/admin/clients.jsp">
+      <forward name="success" path="/admin/schedule-success.jsp"/>
+      <forward name="failure" path="/admin/schedule-error.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+    
+    <action path="/admin/clientFinancial" 
+      type="com.badiyan.uk.online.struts.ClientFinancialAction" 
+      unknown="true"
+      name="clientFinancialForm"
+      scope="request"
+      input="/admin/client-plan.jsp">
+      <forward name="success" path="/admin/client-plan.jsp"/>
+      <forward name="failure" path="/admin/client-plan.jsp"/>
+      <forward name="purchase_plan" path="/admin/checkout.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+    
+    <action path="/admin/clientBilling" 
+      type="com.badiyan.uk.online.struts.ClientBillingAction" 
+      unknown="true"
+      name="clientBillingForm"
+      scope="request"
+      input="/admin/client-billing.jsp">
+      <forward name="success" path="/admin/client-billing.jsp"/>
+      <forward name="failure" path="/admin/client-billing.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+    
+    <action path="/admin/newPlan" 
+      type="com.badiyan.uk.online.struts.NewPlanAction" 
+      unknown="true"
+      name="newPlanForm"
+      scope="request"
+      input="/admin/schedule-administration-payment-plan-new.jsp">
+      <forward name="success" path="/admin/schedule-administration-payment-plans.jsp"/>
+      <forward name="failure" path="/admin/schedule-administration-payment-plan-new.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+
+    <action path="/admin/updatePlan"
+      type="com.badiyan.uk.online.struts.NewPlanAction"
+      unknown="true"
+      name="newPlanForm"
+      scope="request"
+      input="/admin/schedule-administration-payment-plan.jsp">
+      <forward name="success" path="/admin/schedule-administration-payment-plans.jsp"/>
+      <forward name="failure" path="/admin/schedule-administration-payment-plan.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+
+    <action path="/admin/newMarketingPlan"
+      type="com.badiyan.uk.online.struts.NewMarketingPlanAction"
+      unknown="true"
+      name="newMarketingPlanForm"
+      scope="request"
+      input="/admin/schedule-administration-marketing-plan-new.jsp">
+      <forward name="success" path="/admin/schedule-administration-marketing-plans.jsp"/>
+      <forward name="failure" path="/admin/schedule-administration-marketing-plan-new.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+
+    <action path="/admin/newEmailList"
+      type="com.badiyan.uk.online.struts.NewEmailListAction"
+      unknown="true"
+      name="newEmailListForm"
+      scope="request"
+      input="/admin/schedule-administration-marketing-plan-new.jsp">
+      <forward name="success" path="/admin/schedule-administration-email-lists.jsp"/>
+      <forward name="failure" path="/admin/schedule-administration-email-list-new.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+
+    <action path="/admin/sendBulkEmail"
+      type="com.badiyan.uk.online.struts.SendBulkEmailAction"
+      unknown="true"
+      name="bulkEmailForm"
+      scope="request"
+      input="/admin/bulk-email.jsp">
+      <forward name="success" path="/admin/bulk-email.jsp"/>
+      <forward name="failure" path="/admin/bulk-email.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+    
+    <action path="/admin/newCheckoutCode" 
+      type="com.badiyan.uk.online.struts.NewCheckoutCodeAction" 
+      unknown="true"
+      name="newCheckoutCodeForm"
+      scope="request"
+      input="/admin/schedule-administration-checkout-code-new.jsp">
+      <forward name="success" path="/admin/schedule-administration-checkout-codes.jsp"/>
+      <forward name="failure" path="/admin/schedule-administration-checkout-code-new.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+
+    <action path="/admin/checkoutCode"
+      type="com.badiyan.uk.online.struts.CheckoutCodeAction"
+      unknown="true"
+      name="newCheckoutCodeForm"
+      scope="request"
+      input="/admin/schedule-administration-checkout-code.jsp">
+      <forward name="success" path="/admin/schedule-administration-checkout-code.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+
+    <action path="/admin/qbfsSetup"
+      type="com.badiyan.uk.online.struts.QBFSSetupAction"
+      unknown="true"
+      name="qbfsSetupForm"
+      scope="request"
+      input="/admin/schedule-qbfs.jsp">
+      <forward name="success" path="/admin/schedule-qbfs.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+
+    <action path="/admin/qbfsDataRequest"
+      type="com.badiyan.uk.online.struts.QBFSDataRequestAction"
+      unknown="true"
+      name="qbfsDataRequestForm"
+      scope="request"
+      input="/admin/schedule-qbfs-request-data.jsp">
+      <forward name="success" path="/admin/schedule-qbfs.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+    
+    <action path="/admin/newClientFileType" 
+      type="com.badiyan.uk.online.struts.NewClientFileTypeAction" 
+      unknown="true"
+      name="newClientFileTypeForm"
+      scope="request"
+      input="/admin/schedule-administration-client-file-types.jsp">
+      <forward name="success" path="/admin/schedule-administration-client-file-types.jsp"/>
+      <forward name="failure" path="/admin/schedule-administration-client-file-types.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+
+    <action path="/admin/newClientReviewReason"
+      type="com.badiyan.uk.online.struts.NewClientReviewReasonAction"
+      unknown="true"
+      name="newClientFileTypeForm"
+      scope="request"
+      input="/admin/client-review-reasons.jsp">
+      <forward name="success" path="/admin/client-review-reasons.jsp"/>
+      <forward name="failure" path="/admin/client-review-reasons.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+    
+    <action path="/admin/practitionerSchedule" 
+      type="com.badiyan.uk.online.struts.PractitionerScheduleAction" 
+      unknown="true"
+      name="practitionerScheduleForm"
+      scope="request"
+      input="/admin/schedule-administration-practitioner-schedules.jsp">
+      <forward name="success" path="/admin/schedule-administration-practitioner-schedules.jsp"/>
+      <forward name="failure" path="/admin/schedule-administration-practitioner-schedules.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+    
+    <action path="/admin/visitChargeMap" 
+      type="com.badiyan.uk.online.struts.VisitChargeMapAction" 
+      unknown="true"
+      name="visitChargeMapForm"
+      scope="request"
+      input="/admin/schedule-administration-file-type-practice-area-visit-charge.jsp">
+      <forward name="success" path="/admin/schedule-administration-file-type-practice-area-visit-charge.jsp"/>
+      <forward name="failure" path="/admin/schedule-administration-file-type-practice-area-visit-charge.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+    
+    <action path="/admin/newBilling" 
+      type="com.badiyan.uk.online.struts.NewBillingAction" 
+      unknown="true"
+      name="newBillingForm"
+      scope="request"
+      input="/admin/client-billing.jsp">
+      <forward name="success" path="/admin/schedule-success.jsp"/>
+      <forward name="failure" path="/admin/schedule-error.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+    
+    <action path="/admin/assessmentMain" 
+      type="com.badiyan.uk.online.struts.AssessmentMainAction" 
+      unknown="true"
+      name="assessmentMainForm"
+      scope="request"
+      input="/admin/admin-assessment-main.jsp">
+      <forward name="success" path="/admin/admin-assessment-main.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+    
+    <action path="/admin/assessmentQuestion" 
+      type="com.badiyan.uk.online.struts.AssessmentQuestionAction"
+      unknown="true"
+      name="assessmentQuestionForm"
+      scope="request"
+      input="/admin/admin-course-questions.jsp">
+      <forward name="success" path="/admin/admin-course-questions.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+    
+    <action path="/admin/assessmentTFQuestion"
+      type="com.badiyan.uk.online.struts.AssessmentTFQuestionAction" 
+      unknown="true"
+      name="assessmentTFQuestionForm"
+      scope="request"
+      input="/admin/admin-course-questions.jsp">
+      <forward name="success" path="/admin/admin-course-questions.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+
+	<action path="/admin/intakeFITBQuestion"
+	  type="com.badiyan.uk.online.struts.EvaluationFITBQuestionAction"
+	  unknown="true"
+	  name="evaluationFITBQuestionForm"
+	  scope="request"
+	  input="/admin/schedule-administration-client-intake-form.jsp">
+	  <forward name="success" path="/admin/schedule-administration-client-intake-form.jsp"/>
+	  <forward name="session_expired" path="/admin/login.jsp"/>
+	</action>
+
+	<action path="/admin/intakeQuestion"
+	  type="com.badiyan.uk.online.struts.EvaluationQuestionAction"
+	  unknown="true"
+	  name="evaluationQuestionForm"
+	  scope="request"
+	  input="/admin/schedule-administration-client-intake-form.jsp">
+	  <forward name="success" path="/admin/schedule-administration-client-intake-form.jsp"/>
+	  <forward name="session_expired" path="/admin/login.jsp"/>
+	</action>
+
+	<action path="/admin/wellnessFITBQuestion"
+	  type="com.badiyan.uk.online.struts.EvaluationFITBQuestionAction"
+	  unknown="true"
+	  name="evaluationFITBQuestionForm"
+	  scope="request"
+	  input="/admin/schedule-administration-client-wellness-survey.jsp">
+	  <forward name="success" path="/admin/schedule-administration-client-wellness-survey.jsp"/>
+	  <forward name="session_expired" path="/admin/login.jsp"/>
+	</action>
+
+	<action path="/admin/wellnessQuestion"
+	  type="com.badiyan.uk.online.struts.EvaluationQuestionAction"
+	  unknown="true"
+	  name="evaluationQuestionForm"
+	  scope="request"
+	  input="/admin/schedule-administration-client-wellness-survey.jsp">
+	  <forward name="success" path="/admin/schedule-administration-client-wellness-survey.jsp"/>
+	  <forward name="session_expired" path="/admin/login.jsp"/>
+	</action>
+
+	<action path="/admin/evaluationTFQuestion"
+	  type="com.badiyan.uk.online.struts.EvaluationTFQuestionAction"
+	  unknown="true"
+	  name="evaluationTFQuestionForm"
+	  scope="request"
+	  input="/admin/admin-course-evaluation.jsp">
+	  <forward name="success" path="/admin/admin-course-evaluation.jsp"/>
+	  <forward name="session_expired" path="/admin/login.jsp"/>
+	</action>
+    
+    <action path="/admin/courseAssessment" 
+      type="com.badiyan.uk.online.struts.CourseAssessmentAction" 
+      unknown="true"
+      name="courseAssessmentForm"
+      scope="request"
+      input="/admin/admin-course-assessment.jsp">
+      <forward name="success" path="/admin/admin-course-assessment.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+    
+    <action path="/admin/courseSettings" 
+      type="com.badiyan.uk.online.struts.CourseSettingsAction" 
+      unknown="true"
+      name="courseSettingsForm"
+      scope="request"
+      input="/admin/admin-course-settings.jsp">
+      <forward name="success" path="/admin/admin-course-settings.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+    
+    <action path="/admin/certificationAssessment" 
+      type="com.badiyan.uk.online.struts.CertificationAssessmentAction" 
+      unknown="true"
+      name="certificationAssessmentForm"
+      scope="request"
+      input="/admin/admin-certification-assessment.jsp">
+      <forward name="success" path="/admin/admin-certification-assessment.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+    
+    <action path="/admin/newsItem" 
+      type="com.badiyan.uk.online.struts.NewsItemAction"
+      unknown="true"
+      name="newsItemForm"
+      scope="request"
+      input="/admin/admin-news-item.jsp">
+      <forward name="success" path="/admin/admin-news.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+    
+    <action path="/admin/faqSearch" 
+      type="com.badiyan.uk.online.struts.FAQSearchAction" 
+      unknown="true"
+      name="faqSearchForm"
+      scope="request"
+      input="/admin/admin-faq-search.jsp">
+      <forward name="success" path="/admin/admin-faq-search.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+    
+    <action path="/admin/faqBasic" 
+      type="com.badiyan.uk.online.struts.FAQBasicAction" 
+      unknown="true"
+      name="faqBasicForm"
+      scope="request"
+      input="/admin/admin-faq.jsp">
+      <forward name="success" path="/admin/admin-faq.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+    
+    <action path="/admin/faqAssCourse" 
+      type="com.badiyan.uk.online.struts.FAQAssCourseAction" 
+      unknown="true"
+      name="faqAssCourseForm"
+      scope="request"
+      input="/admin/admin-faq-associations.jsp">
+      <forward name="success" path="/admin/admin-faq-associations.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+    
+    <action path="/admin/faqAssCertification" 
+      type="com.badiyan.uk.online.struts.FAQAssCertificationAction" 
+      unknown="true"
+      name="faqAssCertificationForm"
+      scope="request"
+      input="/admin/admin-faq-associations.jsp">
+      <forward name="success" path="/admin/admin-faq-associations.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+    
+    <action path="/admin/faqContent" 
+      type="com.badiyan.uk.online.struts.FAQContentAction" 
+      unknown="true"
+      name="faqContentForm"
+      scope="request"
+      input="/admin/admin-faq-content.jsp">
+      <forward name="success" path="/admin/admin-faq-content.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+    
+    <action path="/admin/resourceSearch" 
+      type="com.badiyan.uk.online.struts.ResourceSearchAction" 
+      unknown="true"
+      name="resourceSearchForm"
+      scope="request"
+      input="/admin/admin-resource-library.jsp">
+      <forward name="success" path="/admin/admin-resource-library.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+    
+    <action path="/admin/resourceBasic" 
+      type="com.badiyan.uk.online.struts.ResourceBasicAction" 
+      unknown="true"
+      name="resourceBasicForm"
+      scope="request"
+      input="/admin/admin-resource-basic.jsp">
+      <forward name="success" path="/admin/admin-resource-basic.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+    
+    <action path="/admin/resourceNew" 
+      type="com.badiyan.uk.online.struts.ResourceBasicAction" 
+      unknown="true"
+      name="resourceBasicForm"
+      scope="request"
+      input="/admin/admin-resource-new.jsp">
+      <forward name="success" path="/admin/admin-resource-basic.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+    
+    <action path="/admin/resourceAssCourse" 
+      type="com.badiyan.uk.online.struts.ResourceAssCourseAction" 
+      unknown="true"
+      name="resourceAssCourseForm"
+      scope="request"
+      input="/admin/admin-resource-associations.jsp">
+      <forward name="success" path="/admin/admin-resource-associations.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+    
+    <action path="/admin/activityExport" 
+      type="com.badiyan.uk.online.struts.ActivityExportAction" 
+      unknown="true"
+      name="activityExportForm"
+      scope="request"
+      input="/admin/admin-activity-export.jsp">
+      <forward name="success" path="/admin/admin-activity-export-results.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+    
+    <action path="/admin/resourceAssCertification" 
+      type="com.badiyan.uk.online.struts.ResourceAssCertificationAction" 
+      unknown="true"
+      name="resourceAssCertificationForm"
+      scope="request"
+      input="/admin/admin-resource-associations.jsp">
+      <forward name="success" path="/admin/admin-resource-associations.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+    
+    <action path="/admin/resourceUpload" 
+      type="com.badiyan.uk.online.struts.ResourceUploadAction" 
+      unknown="true"
+      name="resourceUploadForm"
+      scope="request"
+      input="/admin/admin-resource-upload.jsp">
+      <forward name="success" path="/admin/admin-resource-upload.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+    
+    <action path="/admin/resourceUrl" 
+      type="com.badiyan.uk.online.struts.ResourceUrlAction" 
+      unknown="true"
+      name="resourceUrlForm"
+      scope="request"
+      input="/admin/admin-resource-upload.jsp">
+      <forward name="success" path="/admin/admin-resource-upload.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+    
+    <action path="/admin/courseReportFilter"
+      type="com.badiyan.uk.actions.CourseReportFilterAction" 
+      unknown="true"
+      name="courseReportFilterForm"
+      scope="request"
+      input="/admin/admin-report-activity-filter.jsp">
+      <forward name="success" path="/admin/admin-report-activity.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+    
+    <action path="/admin/patientListReportFilter"
+      type="com.badiyan.uk.online.struts.PatientListReportFilterAction"
+      unknown="true"
+      name="patientListReportFilterForm"
+      scope="request"
+      input="/admin/schedule-administration-report-patient-list-filter.jsp">
+      <forward name="success" path="/admin/schedule-administration-report-patient-list.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+
+    <action path="/admin/endOfDayReportFilter"
+      type="com.badiyan.uk.online.struts.EndOfDayReportFilterAction"
+      unknown="true"
+      name="patientListReportFilterForm"
+      scope="request"
+      input="/admin/schedule-administration-report-end-of-day-filter.jsp">
+      <forward name="success" path="/admin/schedule-administration-report-end-of-day.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+
+    <action path="/admin/endOfDayReportFilterNew"
+      type="com.badiyan.uk.online.struts.EndOfDayReportFilterAction"
+      unknown="true"
+      name="endOfDayReportFilterForm"
+      scope="request"
+      input="/admin/report-end-of-day-filter.jsp">
+      <forward name="success" path="/admin/report-end-of-day.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+
+    <action path="/admin/endOfDayVisitFilterNew"
+      type="com.badiyan.uk.online.struts.EndOfDayReportFilterAction"
+      unknown="true"
+      name="endOfDayReportFilterForm"
+      scope="request"
+      input="/admin/report-end-of-day-filter.jsp">
+      <forward name="success" path="/admin/report-end-of-day-visits.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+
+    <action path="/admin/goodsSoldFilter"
+      type="com.badiyan.uk.online.struts.GoodsSoldReportFilterAction"
+      unknown="true"
+      name="endOfDayReportFilterForm"
+      scope="request"
+      input="/admin/report-goods-sold-filter.jsp">
+      <forward name="success" path="/admin/report-goods-sold.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+
+    <action path="/admin/clientCheckoutFormReportFilter"
+      type="com.badiyan.uk.online.struts.ClientCheckoutFormReportFilterAction"
+      unknown="true"
+      name="clientCheckoutFormReportFilterForm"
+      scope="request"
+      input="/admin/report-client-check-out-form-filter.jsp">
+      <forward name="success" path="/admin/report-client-check-out-form.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+
+    <action path="/admin/statementReportFilter"
+      type="com.badiyan.uk.online.struts.StatementReportFilterAction"
+      unknown="true"
+      name="statementReportFilterForm"
+      scope="request"
+      input="/admin/report-statement-filter.jsp">
+      <forward name="success" path="/admin/report-statement.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+
+    <action path="/admin/commissionReportFilter"
+      type="com.badiyan.uk.online.struts.CommissionReportFilterAction"
+      unknown="true"
+      name="patientListReportFilterForm"
+      scope="request"
+      input="/admin/report-commission-filter.jsp">
+      <forward name="success" path="/admin/report-commission.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+    
+    <action path="/admin/courseUpload" 
+      type="com.badiyan.uk.online.struts.CourseUploadAction" 
+      unknown="true"
+      name="courseUploadForm"
+      scope="request"
+      input="/admin/admin-course-media.jsp">
+      <forward name="success" path="/admin/admin-course-media.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+    
+    <action path="/admin/userUpload" 
+      type="com.badiyan.uk.online.struts.InphaseUploadAction"
+      unknown="true"
+      name="userUploadForm"
+      scope="request"
+      input="/admin/admin-user-import.jsp">
+      <forward name="success" path="/admin/admin-user-import-results.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+    
+    <action path="/admin/clientUpload" 
+      type="com.badiyan.uk.online.struts.ClientUploadAction"
+      unknown="true"
+      name="userUploadForm"
+      scope="request"
+      input="/admin/client-import.jsp">
+      <forward name="success" path="/admin/client-import-results.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+    
+    <action path="/admin/courseUrl" 
+      type="com.badiyan.uk.online.struts.CourseUrlAction" 
+      unknown="true"
+      name="courseUrlForm"
+      scope="request"
+      input="/admin/admin-course-media.jsp">
+      <forward name="success" path="/admin/admin-course-media.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+    
+    <action path="/admin/courseWindow" 
+      type="com.badiyan.uk.online.struts.CourseWindowAction" 
+      unknown="true"
+      name="courseWindowForm"
+      scope="request"
+      input="/admin/admin-course-window.jsp">
+      <forward name="success" path="/admin/admin-course-window.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+    
+    <action path="/admin/coursePeople" 
+      type="com.badiyan.uk.online.struts.CoursePeopleAction" 
+      unknown="true"
+      name="coursePeopleForm"
+      scope="request"
+      input="/admin/admin-course-owner.jsp">
+      <forward name="success" path="/admin/admin-course-owner.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+    
+    <action path="/admin/certificationPeople" 
+      type="com.badiyan.uk.online.struts.CertificationPeopleAction" 
+      unknown="true"
+      name="certificationPeopleForm"
+      scope="request"
+      input="/admin/admin-certification-owner.jsp">
+      <forward name="success" path="/admin/admin-certification-owner.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+
+    <action path="/admin/userRollAssign" 
+      type="com.badiyan.uk.online.struts.UserRollAssignAction" 
+      unknown="true"
+      name="userRollAssignForm"
+      scope="request"
+      input="/admin/admin-user-roles.jsp">
+      <forward name="success" path="/admin/admin-user-roles.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+
+    <action path="/admin/allowedAppointmentTypes" 
+      type="com.badiyan.uk.online.struts.AllowedAppointmentTypesAction" 
+      unknown="true"
+      name="allowedAppointmentTypesForm"
+      scope="request"
+      input="/admin/admin-appointment-types-allowed-appointments.jsp">
+      <forward name="success" path="/admin/admin-appointment-types-allowed-appointments.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+    
+    <action path="/admin/userCertificationAssign" 
+      type="com.badiyan.uk.online.struts.UserCertificationAssignAction" 
+      unknown="true"
+      name="userCertificationAssignForm"
+      scope="request"
+      input="/admin/admin-user-certifications.jsp">
+      <forward name="success" path="/admin/admin-user-certifications.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+    
+    <action path="/admin/extCourseEnroll" 
+      type="com.badiyan.uk.online.struts.ExtCourseEnrollAction" 
+      unknown="true"
+      name="extCourseEnrollForm"
+      scope="request"
+      input="/admin/admin-user-profile.jsp">
+      <forward name="success" path="/admin/admin-user-profile.jsp"/>
+      <forward name="detail" path="/admin/admin-course.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+    
+    <action path="/admin/extCertificationEnroll" 
+      type="com.badiyan.uk.online.struts.ExtCertificationEnrollAction" 
+      unknown="true"
+      name="extCertificationEnrollForm"
+      scope="request"
+      input="/admin/admin-user-profile.jsp">
+      <forward name="success" path="/admin/admin-user-profile.jsp"/>
+      <forward name="detail" path="/admin/admin-certification.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+    
+    <action path="/admin/intCourseEnroll" 
+      type="com.badiyan.uk.online.struts.IntCourseEnrollAction" 
+      unknown="true"
+      name="intCourseEnrollForm"
+      scope="request"
+      input="/admin/admin-user-profile.jsp">
+      <forward name="success" path="/admin/admin-user-profile.jsp"/>
+      <forward name="detail" path="/admin/admin-course.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+    
+    <action path="/admin/intCertificationEnroll" 
+      type="com.badiyan.uk.online.struts.IntCertificationEnrollAction" 
+      unknown="true"
+      name="intCertificationEnrollForm"
+      scope="request"
+      input="/admin/admin-user-profile.jsp">
+      <forward name="success" path="/admin/admin-user-profile.jsp"/>
+      <forward name="detail" path="/admin/admin-certification.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+    
+    <action path="/admin/myCourses" 
+      type="com.badiyan.uk.online.struts.MyCoursesAction" 
+      unknown="true"
+      name="myCoursesForm"
+      scope="request"
+      input="/admin/admin-user-activities.jsp">
+      <forward name="success" path="/admin/admin-user-activities.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+    
+    <action path="/courseCatalog" 
+      type="com.badiyan.uk.online.struts.CourseCatalogAction" 
+      unknown="true"
+      name="courseCatalogForm"
+      scope="request"
+      input="/course-catalog.jsp">
+      <forward name="success" path="/course-catalog-search.jsp"/>
+      <forward name="session_expired" path="/login.jsp"/>
+    </action>
+    
+    <action path="/courseCatalogSearch" 
+      type="com.badiyan.uk.online.struts.CourseCatalogSearchAction" 
+      unknown="true"
+      name="courseCatalogSearchForm"
+      scope="request"
+      input="/course-catalog-search.jsp">
+      <forward name="success" path="/course-catalog-search.jsp"/>
+      <forward name="session_expired" path="/login.jsp"/>
+    </action>
+    
+    <action path="/userGroupSearch" 
+      type="com.badiyan.uk.online.struts.UserGroupSearchAction" 
+      unknown="true"
+      name="userGroupForm"
+      scope="request"
+      input="/corporate-home.jsp">
+      <forward name="success" path="/corporate-home.jsp"/>
+      <forward name="session_expired" path="/login.jsp"/>
+    </action>
+    
+    <action path="/library" 
+      type="com.badiyan.uk.online.struts.LibrarySearchAction" 
+      unknown="true"
+      name="libraryForm"
+      scope="request"
+      input="/library.jsp">
+      <forward name="success" path="/library.jsp"/>
+      <forward name="session_expired" path="/login.jsp"/>
+    </action>
+    
+    <action path="/faq" 
+      type="com.badiyan.uk.online.struts.FAQAction" 
+      unknown="true"
+      name="faqForm"
+      scope="request"
+      input="/faq.jsp">
+      <forward name="success" path="/faq.jsp"/>
+      <forward name="session_expired" path="/login.jsp"/>
+    </action>
+    
+    <action path="/courseDetail" 
+      type="com.badiyan.uk.online.struts.CourseDetailAction" 
+      unknown="true"
+      name="courseDetailForm"
+      scope="request"
+      input="/course-detail.jsp">
+      <forward name="success" path="/index.jsp"/>
+      <forward name="requires_enroll_approval" path="/course-enroll-request.jsp"/>
+      <forward name="login" path="/index.jsp"/>
+      <forward name="session_expired" path="/login.jsp"/>
+    </action>
+    
+    <action path="/courseSectionDetail" 
+      type="com.badiyan.uk.online.struts.CourseDetailAction" 
+      unknown="true"
+      name="courseSectionDetailForm"
+      scope="request"
+      input="/course-section-detail.jsp">
+      <forward name="success" path="/index.jsp"/>
+      <forward name="login" path="/index.jsp"/>
+      <forward name="session_expired" path="/login.jsp"/>
+    </action>
+    
+    <action path="/courseEnrollRequest" 
+      type="com.badiyan.uk.online.struts.CourseEnrollRequestAction" 
+      unknown="true"
+      name="courseEnrollRequestForm"
+      scope="request"
+      input="/course-enroll-request.jsp">
+      <forward name="success" path="/index.jsp"/>
+      <forward name="session_expired" path="/login.jsp"/>
+    </action>
+    
+    <action path="/courseDropRequest" 
+      type="com.badiyan.uk.online.struts.CourseDropRequestAction" 
+      unknown="true"
+      name="courseDropRequestForm"
+      scope="request"
+      input="/course-drop-request.jsp">
+      <forward name="success" path="/index.jsp"/>
+      <forward name="session_expired" path="/login.jsp"/>
+    </action>
+    
+    <action path="/courseEnrollRequestResponse" 
+      type="com.badiyan.uk.online.struts.CourseEnrollRequestResponseAction" 
+      unknown="true"
+      name="courseEnrollRequestResponseForm"
+      scope="request"
+      input="/course-enroll-request-response.jsp">
+      <forward name="success" path="/index.jsp"/>
+      <forward name="session_expired" path="/login.jsp"/>
+    </action>
+    
+    <action path="/courseDropRequestResponse" 
+      type="com.badiyan.uk.online.struts.CourseDropRequestResponseAction" 
+      unknown="true"
+      name="courseDropRequestResponseForm"
+      scope="request"
+      input="/course-drop-request-response.jsp">
+      <forward name="success" path="/index.jsp"/>
+      <forward name="session_expired" path="/login.jsp"/>
+    </action>
+    
+    <action path="/certificationDetail" 
+      type="com.badiyan.uk.online.struts.CertificationDetailAction" 
+      unknown="true"
+      name="certificationDetailForm"
+      scope="request"
+      input="/certification-detail.jsp">
+      <forward name="success" path="/index.jsp"/>
+      <forward name="login" path="/index.jsp"/>
+      <forward name="session_expired" path="/login.jsp"/>
+    </action>
+    
+    <action path="/advancedSearch" 
+      type="com.badiyan.uk.online.struts.AdvancedSearchAction2" 
+      unknown="true"
+      name="advancedSearchForm"
+      scope="request"
+      input="/advanced-search.jsp">
+      <forward name="success" path="/advanced-search.jsp"/>
+      <forward name="session_expired" path="/login.jsp"/>
+    </action>
+    
+    <action path="/markComplete" 
+      type="com.badiyan.uk.online.struts.MarkCompleteAction" 
+      unknown="true"
+      name="markCompleteForm"
+      scope="request"
+      input="/mark-complete.jsp">
+      <forward name="success" path="/course-detail.jsp"/>
+      <forward name="session_expired" path="/login.jsp"/>
+    </action>
+    
+    <action path="/indexSearch" 
+      type="com.badiyan.uk.online.struts.IndexSearchAction" 
+      unknown="true"
+      name="indexSearchForm"
+      scope="request"
+      input="/index.jsp">
+      <forward name="success" path="/advanced-search.jsp"/>
+      <forward name="session_expired" path="/login.jsp"/>
+    </action>
+    
+    <action path="/activityCatalogSearch" 
+      type="com.badiyan.uk.online.struts.IndexActivitySearchAction" 
+      unknown="true"
+      name="indexSearchForm"
+      scope="request"
+      input="/activity-catalog.jsp">
+      <forward name="success" path="/advanced-search.jsp"/>
+      <forward name="session_expired" path="/login.jsp"/>
+    </action>
+    
+    <action path="/indexResourceSearch" 
+      type="com.badiyan.uk.online.struts.IndexResourceSearchAction" 
+      unknown="true"
+      name="indexResourceSearchForm"
+      scope="request"
+      input="/resources.jsp">
+      <forward name="success" path="/advanced-search.jsp"/>
+      <forward name="session_expired" path="/login.jsp"/>
+    </action>
+    
+    <action path="/admin/courseSearch" 
+      type="com.badiyan.uk.online.struts.CourseSearchAction" 
+      unknown="true"
+      name="advancedSearchForm"
+      scope="request"
+      input="/admin/admin-courses.jsp">
+      <forward name="success" path="/admin/admin-courses.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+    
+    <action path="/admin/userActivitySearch" 
+      type="com.badiyan.uk.online.struts.CourseSearchAction" 
+      unknown="true"
+      name="advancedSearchForm"
+      scope="request"
+      input="/admin/admin-user-activities.jsp">
+      <forward name="success" path="/admin/admin-user-activities.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+    
+    <action path="/enroll" 
+      type="com.badiyan.uk.online.struts.EnrollAction" 
+      unknown="true"
+      name="enrollForm"
+      scope="request"
+      input="/course-detail.jsp">
+      <forward name="success" path="/course-detail.jsp"/>
+      <forward name="session_expired" path="/login.jsp"/>
+    </action>
+    
+    <action path="/approvalQueue" 
+      type="com.badiyan.uk.online.struts.ApprovalQueueAction" 
+      unknown="true"
+      name="approvalQueueForm"
+      scope="request"
+      input="/index.jsp">
+      <forward name="enroll" path="/course-enroll-request-response.jsp"/>
+      <forward name="drop" path="/course-drop-request-response.jsp"/>
+      <forward name="session_expired" path="/login.jsp"/>
+    </action>
+    
+    <action path="/assessmentDetail" 
+      type="com.badiyan.uk.online.struts.AssessmentDetailAction" 
+      unknown="true"
+      name="assessmentDetailForm"
+      scope="request"
+      input="/assessment-detail.jsp">
+      <forward name="success" path="/assessment-detail.jsp"/>
+      <forward name="assessmentComplete" path="/assessment.jsp"/>
+      <forward name="session_expired" path="/login.jsp"/>
+    </action>
+
+	<action path="/client/intake"
+	  type="com.badiyan.uk.online.struts.IntakeAction"
+	  unknown="true"
+	  name="evaluationFormUser"
+	  scope="request"
+	  input="/client/intake.jsp">
+	  <forward name="success" path="/client/intake.jsp"/>
+	  <forward name="finished" path="/client/index.jsp"/>
+	  <forward name="session_expired" path="/login.jsp"/>
+	</action>
+
+	<action path="/client/wellnessSurvey"
+	  type="com.badiyan.uk.online.struts.WellnessSurveyAction"
+	  unknown="true"
+	  name="evaluationFormUser"
+	  scope="request"
+	  input="/client/wellness-survey.jsp">
+	  <forward name="success" path="/client/wellness-survey.jsp"/>
+	  <forward name="finished" path="/client/wellness-survey-result.jsp"/>
+	  <forward name="session_expired" path="/login.jsp"/>
+	</action>
+     
+    <action path="/corporateHomeSearch" 
+      type="com.badiyan.uk.online.struts.IndexSearchAction" 
+      unknown="true"
+      name="corporateHomeSearchForm"
+      scope="request"
+      input="/corporate-home.jsp">
+      <forward name="success" path="/advanced-search.jsp"/>
+      <forward name="session_expired" path="/login.jsp"/>
+    </action>
+    
+    <action path="/admin/usergroupBasic" 
+      type="com.badiyan.uk.online.struts.UserGroupAction" 
+      unknown="true"
+      name="usergroupBasicForm"
+      scope="request"
+      input="/admin/admin-usergroups-main.jsp">
+      <forward name="success" path="/admin/admin-usergroups.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+
+    <action path="/admin/valeoContent"
+      type="com.badiyan.uk.online.struts.ValeoContentAction"
+      unknown="true"
+      name="valeoContentForm"
+      scope="request"
+      input="/admin/valeo-content-manager.jsp">
+      <forward name="success" path="/admin/valeo-content-manager.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+
+    <action path="/admin/tenderDetail"
+      type="com.badiyan.uk.online.struts.TenderDetailAction"
+      unknown="true"
+      name="tenderDetailForm"
+      scope="request"
+      input="/admin/tender-detail.jsp">
+      <forward name="success" path="/admin/tender-detail-confirm.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+
+    <action path="/emailDoc"
+      type="com.badiyan.uk.online.struts.EmailDocAction"
+      unknown="true"
+      name="emailDocForm"
+      scope="request"
+      input="/stop-smoking.jsp">
+      <forward name="success" path="/stop-smoking-email-confirm.jsp"/>
+      <forward name="session_expired" path="/admin/login.jsp"/>
+    </action>
+
+    <action path="/suggestion"
+      type="com.badiyan.uk.online.struts.SuggestionAction"
+      unknown="true"
+      name="suggestionForm"
+      scope="request"
+      input="/suggestion.jsp">
+      <forward name="success" path="/suggestion-confirm.jsp"/>
+      <forward name="session_expired" path="/index.jsp"/>
+    </action>
+    
+    <!-- SCORM start -->
+    
+    <!-- Handle launch request -->
+    <action path="/scorm/launch"
+        type="com.badiyan.uk.conformance.scorm.rte.server.struts.LaunchAction"
+        scope="request"
+        name="scormLaunchForm"
+        input="/scorm/launch.x">
+        <forward name="success" path="/scorm_launch.jsp"/>
+    </action>
+    
+    <!-- Handle commit request -->
+    <action path="/scorm/commit"
+        type="com.badiyan.uk.conformance.scorm.rte.server.struts.CommitAction"
+        scope="request"
+        name="scormCommitForm">
+    </action>
+    
+    <!-- Handle initialize -->
+    <action path="/scorm/initialize"
+        type="com.badiyan.uk.conformance.scorm.rte.server.struts.InitializeAction"
+        scope="request"
+        name="scormInitializeForm">
+    </action>
+
+    <!-- SCORM end -->
+    
+  </action-mappings>
+  
+  <controller maxFileSize="50M" nocache="true" />
+  
+  <!-- message resources -->
+  
+  <message-resources parameter="ApplicationResources" null="false">
+  </message-resources>
+  
+  <plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+    <set-property property="pathnames"
+
+                     value="/WEB-INF/validator-rules.xml,
+                            /WEB-INF/validation.xml"/>
+  </plug-in>
+
+
+  <!-- ========== Plug Ins Configuration ================================== -->
+  
+</struts-config>

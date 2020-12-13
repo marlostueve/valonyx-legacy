@@ -1,0 +1,3224 @@
+
+
+<!-- Note: this file is intended to be appended to the end of the uk-common cu-schema.xml file -->
+<!-- For that reason, it contains add-on table declarations and the close database and app-data tags -->
+
+        <!-- Begin valeo specific tables -->
+        
+        <!--
+        <table name="SCHOOL_DISTRICT" idMethod="native">
+            <column name="SCHOOL_DISTRICT_ID" primaryKey="true" required="true" type="INTEGER" autoIncrement="true"/>
+            <column name="COMPANY_ID" required="true" type="INTEGER"/>
+            <column name="NUMBER_OF_CLASSROOMS_FOR_PASSWORD" required="true" type="INTEGER" default="0" />
+            <column name="MAXIMUM_NUMBER_OF_TEACHERS" required="true" type="INTEGER" default="0" />
+            <column name="MAXIMUM_NUMBER_OF_STUDENTS" required="true" type="INTEGER" default="0" />
+            <column name="STATE" size="50" type="VARCHAR"/>
+            <column name="TIME_ZONE" size="50" type="VARCHAR"/>
+            <column name="PURCHASED_ADMIN_REPORTS" required="true" type="SMALLINT" default="0"/>
+            
+            <foreign-key foreignTable="COMPANY">
+                <reference local="COMPANY_ID" foreign="COMPANYID"/>
+            </foreign-key>
+            <foreign-key foreignTable="STATE">
+                <reference local="STATE" foreign="STATE"/>
+            </foreign-key>
+			<foreign-key foreignTable="PERSON">
+				<reference local="PRACTITIONER_ID" foreign="PERSONID"/>
+			</foreign-key>
+        </table>
+        -->
+        
+        
+
+<table name="EVALUATION_PROGRESS_DB" idMethod="native">
+    <column name="EVALUATION_PROGRESS_DB_ID" primaryKey="true" required="true" type="INTEGER" autoIncrement="true"/>
+
+    <column name="CLIENT_ID" required="true" type="INTEGER"/>
+    <column name="COMPANY_ID" required="true" type="INTEGER"/>
+    <column name="ASSESSMENT_ID" required="true" type="INTEGER"/>
+            
+	<column name="IS_COMPLETED" required="true" type="SMALLINT" />
+	<column name="SESSION" required="true" size="50" type="VARCHAR"/>
+	<column name="PROGRESS_DATE" required="true" type="DATE"/>
+
+	<column name="DUMMY" required="false" type="SMALLINT" default="1"/>
+
+	<foreign-key foreignTable="PERSON">
+		<reference local="CLIENT_ID" foreign="PERSONID"/>
+	</foreign-key>
+    <foreign-key foreignTable="COMPANY">
+		<reference local="COMPANY_ID" foreign="COMPANYID"/>
+    </foreign-key>
+    <foreign-key foreignTable="ASSESSMENT">
+		<reference local="ASSESSMENT_ID" foreign="ASSESSMENTID"/>
+    </foreign-key>
+</table>
+
+<table name="EVALUATION_INTERACTION_DB">
+	<column name="EVALUATION_PROGRESS_DB_ID" required="true" primaryKey="true" type="INTEGER"/>
+	<column name="STEM_ID" required="true" primaryKey="true" type="INTEGER"/>
+	<column name="SELECTED_DISTRACTOR" required="false" type="INTEGER"/>
+
+	<column name="FILL_IN_THE_BLANK_RESPONSE" type="LONGVARCHAR"/>
+	
+	<column name="DUMMY" required="false" type="SMALLINT" default="1"/>
+
+    <foreign-key foreignTable="EVALUATION_PROGRESS_DB">
+		<reference local="EVALUATION_PROGRESS_DB_ID" foreign="EVALUATION_PROGRESS_DB_ID"/>
+    </foreign-key>
+	<foreign-key foreignTable="STEM">
+		<reference local="STEM_ID" foreign="STEMID"/>
+	</foreign-key>
+	<foreign-key foreignTable="DISTRACTOR">
+		<reference local="SELECTED_DISTRACTOR" foreign="DISTRACTORID"/>
+	</foreign-key>
+</table>
+
+<table name="HERB_DOSAGE_DB" idMethod="native">
+    <column name="HERB_DOSAGE_DB_ID" primaryKey="true" required="true" type="INTEGER" autoIncrement="true"/>
+    
+	<column name="MIXTURE_DESCRIPTION" required="true" type="VARCHAR" size="100"/>
+	<column name="NOTES" type="LONGVARCHAR"/>
+
+    <column name="MIX_DATE" required="true" type="DATE"/>
+	
+    <column name="IS_ACTIVE" type="SMALLINT" default="1"/>
+    <column name="EXPIRATION_EMAIL_SENT" type="SMALLINT" default="0"/>
+	
+    <column name="CLIENT_ID" required="true" type="INTEGER"/>
+	<column name="MIXER_ID" required="true" type="INTEGER"/>
+	
+    <column name="COMPANY_ID" required="true" type="INTEGER"/>
+
+	<foreign-key foreignTable="PERSON">
+		<reference local="CLIENT_ID" foreign="PERSONID"/>
+	</foreign-key>
+	<foreign-key foreignTable="PERSON">
+		<reference local="MIXER_ID" foreign="PERSONID"/>
+	</foreign-key>
+    <foreign-key foreignTable="COMPANY">
+		<reference local="COMPANY_ID" foreign="COMPANYID"/>
+    </foreign-key>
+
+</table>
+
+<table name="HERB_DOSAGE_USE_DIRECTIONS_DB">
+    <column name="HERB_DOSAGE_USE_DIRECTIONS_DB_ID" primaryKey="true" required="true" type="INTEGER" autoIncrement="true"/>
+    <column name="HERB_DOSAGE_DB_ID" required="true" type="INTEGER"/>
+	
+	<column name="START_DAY" type="SMALLINT"/>
+	<column name="END_DAY" type="SMALLINT"/>
+	<column name="ML" type="SMALLINT"/>
+	<column name="MIX_IN" type="VARCHAR" size="30"/>
+	<column name="TIMES" type="SMALLINT"/>
+	<column name="PERIOD" type="VARCHAR" size="20"/>
+	<column name="AT" type="VARCHAR" size="20"/>
+	<column name="MEASURE" type="VARCHAR" size="10"/>
+
+    <foreign-key foreignTable="HERB_DOSAGE_DB">
+		<reference local="HERB_DOSAGE_DB_ID" foreign="HERB_DOSAGE_DB_ID"/>
+    </foreign-key>
+</table>
+
+<table name="HERB_DOSAGE_DB_ITEM_MAPPING">
+    <column name="HERB_DOSAGE_DB_ID" primaryKey="true" required="true" type="INTEGER"/>
+    <column name="CHECKOUT_CODE_ID" primaryKey="true" required="true" type="INTEGER"/>
+	
+	<column name="ML" required="true" type="SMALLINT"/>
+
+    <foreign-key foreignTable="HERB_DOSAGE_DB">
+		<reference local="HERB_DOSAGE_DB_ID" foreign="HERB_DOSAGE_DB_ID"/>
+    </foreign-key>
+    <foreign-key foreignTable="CHECKOUT_CODE">
+		<reference local="CHECKOUT_CODE_ID" foreign="CHECKOUT_CODE_ID"/>
+    </foreign-key>
+</table>
+
+<table name="UNIT_OF_MEASURE_DB" idMethod="native">
+    <column name="UNIT_OF_MEASURE_DB_ID" primaryKey="true" required="true" type="INTEGER" autoIncrement="true"/>
+    <column name="DESCRIPTION" required="true" type="VARCHAR" size="50"/>
+	
+    <column name="IS_ACTIVE" type="SMALLINT" default="1"/>
+    <column name="COMPANY_ID" required="true" type="INTEGER"/>
+
+    <foreign-key foreignTable="COMPANY">
+		<reference local="COMPANY_ID" foreign="COMPANYID"/>
+    </foreign-key>
+
+</table>
+
+<table name="UNIT_OF_MEASURE_DB_ITEM_MAPPING">
+    <column name="UNIT_OF_MEASURE_DB_ID" primaryKey="true" required="true" type="INTEGER"/>
+    <column name="CHECKOUT_CODE_ID" primaryKey="true" required="true" type="INTEGER"/>
+	
+	<column name="AMOUNT" required="true" scale="2" size="7" type="DECIMAL"/>
+    <column name="VERSION" required="true" type="VARCHAR" size="50"/>
+
+    <foreign-key foreignTable="UNIT_OF_MEASURE_DB">
+		<reference local="UNIT_OF_MEASURE_DB_ID" foreign="UNIT_OF_MEASURE_DB_ID"/>
+    </foreign-key>
+    <foreign-key foreignTable="CHECKOUT_CODE">
+		<reference local="CHECKOUT_CODE_ID" foreign="CHECKOUT_CODE_ID"/>
+    </foreign-key>
+</table>
+
+<table name="DIAGNOSIS_CODE_VERSION_DB" idMethod="native">
+    <column name="DIAGNOSIS_CODE_VERSION_DB_ID" primaryKey="true" required="true" type="INTEGER" autoIncrement="true"/>
+	<column name="VERSION" required="true" type="VARCHAR" size="50"/>
+	
+    <column name="IS_ACTIVE" type="SMALLINT" default="1"/>
+
+</table>
+
+<table name="DIAGNOSIS_CODE_MASTER_DB" idMethod="native">
+    <column name="DIAGNOSIS_CODE_MASTER_DB_ID" primaryKey="true" required="true" type="INTEGER" autoIncrement="true"/>
+    <column name="DESCRIPTION" required="true" type="VARCHAR" size="250"/>
+	
+    <column name="IS_ACTIVE" type="SMALLINT" default="1"/>
+
+</table>
+
+<table name="DIAGNOSIS_CODE_DB" idMethod="native">
+    <column name="DIAGNOSIS_CODE_DB_ID" primaryKey="true" required="true" type="INTEGER" autoIncrement="true"/>
+    <column name="DESCRIPTION" required="true" type="VARCHAR" size="250"/>
+	<column name="DIAGNOSIS_CODE_VERSION_DB_ID" required="true" type="INTEGER"/>
+	
+    <column name="IS_ACTIVE" type="SMALLINT" default="1"/>
+
+    <foreign-key foreignTable="DIAGNOSIS_CODE_VERSION_DB">
+		<reference local="DIAGNOSIS_CODE_VERSION_DB_ID" foreign="DIAGNOSIS_CODE_VERSION_DB_ID"/>
+    </foreign-key>
+
+</table>
+
+<table name="DIAGNOSIS_CODE_MAPPING">
+	<column name="DIAGNOSIS_CODE_MASTER_DB_ID" primaryKey="true" required="true" type="INTEGER"/>
+    <column name="DIAGNOSIS_CODE_DB_ID" primaryKey="true" required="true" type="INTEGER"/>
+
+    <foreign-key foreignTable="DIAGNOSIS_CODE_MASTER_DB">
+		<reference local="DIAGNOSIS_CODE_MASTER_DB_ID" foreign="DIAGNOSIS_CODE_MASTER_DB_ID"/>
+    </foreign-key>
+
+    <foreign-key foreignTable="DIAGNOSIS_CODE_DB">
+		<reference local="DIAGNOSIS_CODE_DB_ID" foreign="DIAGNOSIS_CODE_DB_ID"/>
+    </foreign-key>
+</table>
+
+<table name="DIAGNOSIS_CODE_CONVERSION">
+	<column name="DIAGNOSIS_CODE_DB_FROM_ID" primaryKey="true" required="true" type="INTEGER"/>
+    <column name="DIAGNOSIS_CODE_DB_TO_ID" primaryKey="true" required="true" type="INTEGER"/>
+    <column name="CONVERSION" type="SMALLINT" />
+
+    <foreign-key foreignTable="DIAGNOSIS_CODE_DB">
+		<reference local="DIAGNOSIS_CODE_DB_FROM_ID" foreign="DIAGNOSIS_CODE_DB_ID"/>
+    </foreign-key>
+
+    <foreign-key foreignTable="DIAGNOSIS_CODE_DB">
+		<reference local="DIAGNOSIS_CODE_DB_TO_ID" foreign="DIAGNOSIS_CODE_DB_ID"/>
+    </foreign-key>
+</table>
+
+<table name="DIAGNOSIS_CODE_DEFINITION_DB" idMethod="native">
+    <column name="DIAGNOSIS_CODE_DEFINITION_DB_ID" primaryKey="true" required="true" type="INTEGER" autoIncrement="true"/>
+	<column name="DEFINITION" type="LONGVARCHAR"/>
+</table>
+
+<table name="DIAGNOSIS_CODE_APPLICATION_DB" idMethod="native">
+    <column name="DIAGNOSIS_CODE_APPLICATION_DB_ID" primaryKey="true" required="true" type="INTEGER" autoIncrement="true"/>
+	<column name="APPLICATION" type="LONGVARCHAR"/>
+</table>
+
+<table name="DIAGNOSIS_CODE_EXCLUSION_DB" idMethod="native">
+    <column name="DIAGNOSIS_CODE_EXCLUSION_DB_ID" primaryKey="true" required="true" type="INTEGER" autoIncrement="true"/>
+    <column name="DIAGNOSIS_CODE_DB_ID" required="true" type="INTEGER"/>
+
+    <foreign-key foreignTable="DIAGNOSIS_CODE_DB">
+		<reference local="DIAGNOSIS_CODE_DB_ID" foreign="DIAGNOSIS_CODE_DB_ID"/>
+    </foreign-key>
+	
+</table>
+
+<table name="DIAGNOSIS_CODE_INDEX_DB" idMethod="native">
+    <column name="DIAGNOSIS_CODE_INDEX_DB_ID" primaryKey="true" required="true" type="INTEGER" autoIncrement="true"/>
+    <column name="DESCRIPTION" required="true" type="VARCHAR" size="250"/>
+    <column name="PARENT" required="false" type="INTEGER"/>
+    <column name="DIAGNOSIS_CODE_DB_ID" required="false" type="INTEGER"/>
+	<column name="IS_ACTIVE" type="SMALLINT" default="1"/>
+	
+	<column name="DIAGNOSIS_CODE_VERSION_DB_ID" required="true" type="INTEGER"/>
+
+    <foreign-key foreignTable="DIAGNOSIS_CODE_INDEX_DB">
+		<reference local="PARENT" foreign="DIAGNOSIS_CODE_INDEX_DB_ID"/>
+    </foreign-key>
+
+    <foreign-key foreignTable="DIAGNOSIS_CODE_DB">
+		<reference local="DIAGNOSIS_CODE_DB_ID" foreign="DIAGNOSIS_CODE_DB_ID"/>
+    </foreign-key>
+
+    <foreign-key foreignTable="DIAGNOSIS_CODE_VERSION_DB">
+		<reference local="DIAGNOSIS_CODE_VERSION_DB_ID" foreign="DIAGNOSIS_CODE_VERSION_DB_ID"/>
+    </foreign-key>
+	
+</table>
+
+
+
+
+
+<table name="CLIENT_MAP_DB" idMethod="native">
+    <column name="CLIENT_MAP_DB_ID" primaryKey="true" required="true" type="INTEGER" autoIncrement="true"/>
+	<column name="CLIENT_ID" required="true" type="INTEGER"/>
+	<column name="PRACTITIONER_ID" required="true" type="INTEGER"/>
+	
+    <column name="DESCRIPTION" required="true" type="VARCHAR" size="250"/>
+	<column name="DIAGNOSIS_CODE_VERSION_DB_ID" required="true" type="INTEGER"/>
+	
+    <column name="IS_ACTIVE" type="SMALLINT" default="1"/>
+	
+    <column name="CREATION_DATE" required="true" type="DATE"/>
+    <column name="MODIFICATION_DATE" required="false" type="DATE"/>
+    <column name="CREATE_PERSON_ID" required="false" type="INTEGER"/>
+    <column name="MODIFY_PERSON_ID" required="false" type="INTEGER"/>
+    
+    <foreign-key foreignTable="PERSON">
+		<reference local="CLIENT_ID" foreign="PERSONID"/>
+    </foreign-key>
+    <foreign-key foreignTable="PERSON">
+		<reference local="PRACTITIONER_ID" foreign="PERSONID"/>
+    </foreign-key>
+    <foreign-key foreignTable="PERSON">
+		<reference local="CREATE_PERSON_ID" foreign="PERSONID"/>
+    </foreign-key>
+    <foreign-key foreignTable="PERSON">
+		<reference local="MODIFY_PERSON_ID" foreign="PERSONID"/>
+    </foreign-key>
+
+</table>
+
+<table name="CLIENT_MAP_DATA_SMALLINT">
+	<column name="CLIENT_MAP_DB_ID" primaryKey="true" required="true" type="INTEGER"/>
+    <column name="DATA_KEY" primaryKey="true" required="true" type="VARCHAR" size="50"/>
+    <column name="DATA_VALUE" primaryKey="true" type="SMALLINT" />
+
+    <foreign-key foreignTable="CLIENT_MAP_DB">
+		<reference local="CLIENT_MAP_DB_ID" foreign="CLIENT_MAP_DB_ID"/>
+    </foreign-key>
+</table>
+
+<table name="CLIENT_MAP_DATA_STRING">
+	<column name="CLIENT_MAP_DB_ID" primaryKey="true" required="true" type="INTEGER"/>
+    <column name="DATA_KEY" primaryKey="true" required="true" type="VARCHAR" size="50"/>
+    <column name="DATA_VALUE" required="true" type="VARCHAR" size="250"/>
+
+    <foreign-key foreignTable="CLIENT_MAP_DB">
+		<reference local="CLIENT_MAP_DB_ID" foreign="CLIENT_MAP_DB_ID"/>
+    </foreign-key>
+</table>
+
+<table name="CLIENT_MAP_DATA_TEXT">
+	<column name="CLIENT_MAP_DB_ID" primaryKey="true" required="true" type="INTEGER"/>
+    <column name="DATA_KEY" primaryKey="true" required="true" type="VARCHAR" size="50"/>
+    <column name="DATA_VALUE" required="true" type="LONGVARCHAR"/>
+
+    <foreign-key foreignTable="CLIENT_MAP_DB">
+		<reference local="CLIENT_MAP_DB_ID" foreign="CLIENT_MAP_DB_ID"/>
+    </foreign-key>
+</table>
+
+
+
+
+
+
+<table name="EMAIL_LIST_DB" idMethod="native">
+    <column name="EMAIL_LIST_DB_ID" primaryKey="true" required="true" type="INTEGER" autoIncrement="true"/>
+    <column name="NAME" required="true" type="VARCHAR" size="100"/>
+    <column name="COMPANY_ID" required="true" type="INTEGER"/>
+	
+    <column name="INCLUDES_EVERYONE" type="SMALLINT" default="0"/>
+    <column name="IS_ACTIVE" type="SMALLINT" default="1"/>
+
+    <column name="CREATION_DATE" required="true" type="DATE"/>
+    <column name="MODIFICATION_DATE" required="false" type="DATE"/>
+
+    <foreign-key foreignTable="COMPANY">
+		<reference local="COMPANY_ID" foreign="COMPANYID"/>
+    </foreign-key>
+</table>
+
+<table name="EMAIL_LIST_MEMBER_DB">
+	<column name="EMAIL_LIST_DB_ID" primaryKey="true" required="true" type="INTEGER"/>
+    <column name="MEMBER_ID" primaryKey="true" required="true" type="INTEGER"/>
+
+    <foreign-key foreignTable="EMAIL_LIST_DB">
+		<reference local="EMAIL_LIST_DB_ID" foreign="EMAIL_LIST_DB_ID"/>
+    </foreign-key>
+	<foreign-key foreignTable="PERSON">
+		<reference local="MEMBER_ID" foreign="PERSONID"/>
+	</foreign-key>
+</table>
+
+<table name="EMAIL_LIST_MARKETING_PLAN_MAPPING">
+	<column name="MARKETING_PLAN_DB_ID" primaryKey="true" required="true" type="INTEGER"/>
+    <column name="EMAIL_LIST_DB_ID" primaryKey="true" required="true" type="INTEGER"/>
+
+    <foreign-key foreignTable="MARKETING_PLAN_DB">
+		<reference local="MARKETING_PLAN_DB_ID" foreign="MARKETING_PLAN_DB_ID"/>
+    </foreign-key>
+	<foreign-key foreignTable="EMAIL_LIST_DB">
+		<reference local="EMAIL_LIST_DB_ID" foreign="EMAIL_LIST_DB_ID"/>
+	</foreign-key>
+</table>
+
+<table name="SUBSCRIPTION_INFO_DB" idMethod="native">
+    <column name="SUBSCRIPTION_INFO_DB_ID" primaryKey="true" required="true" type="INTEGER" autoIncrement="true"/>
+    <column name="COMPANY_ID" required="true" type="INTEGER"/>
+	
+    <column name="IS_ACTIVE" type="SMALLINT" default="1"/>
+
+    <column name="SUBSCRIPTION_START_DATE" required="true" type="DATE"/>
+    <column name="SUBSCRIBER_ID" required="false" type="INTEGER"/>
+
+    <foreign-key foreignTable="COMPANY">
+		<reference local="COMPANY_ID" foreign="COMPANYID"/>
+    </foreign-key>
+</table>
+
+<table name="SUBSCRIPTION_INFO_DB_ORDER_MAPPING">
+	<column name="SUBSCRIPTION_INFO_DB_ID" primaryKey="true" required="true" type="INTEGER"/>
+    <column name="ORDER_ID" primaryKey="true" required="true" type="INTEGER"/>
+
+    <foreign-key foreignTable="SUBSCRIPTION_INFO_DB">
+		<reference local="SUBSCRIPTION_INFO_DB_ID" foreign="SUBSCRIPTION_INFO_DB_ID"/>
+    </foreign-key>
+    <foreign-key foreignTable="PERSONORDER">
+		<reference local="ORDER_ID" foreign="ORDERID"/>
+    </foreign-key>
+</table>
+
+<table name="QB_REQUEST_DB" idMethod="native">
+    <column name="QB_REQUEST_DB_ID" primaryKey="true" required="true" type="INTEGER" autoIncrement="true"/>
+    <column name="COMPANY_ID" required="true" type="INTEGER"/>
+	
+	<column name="REQUEST_ID" required="true" type="VARCHAR" size="50"/>
+	<column name="REQUEST_TYPE" required="true" type="VARCHAR" size="30"/>
+	
+	<column name="REQUEST_XML" type="LONGVARCHAR"/>
+	
+	<column name="RESPONSE_STATUS_CODE"  required="false" type="INTEGER"/>
+	<column name="RESPONSE_STATUS_SEVERITY" required="false" type="VARCHAR" size="10"/>
+	<column name="RESPONSE_STATUS_MESSAGE" required="false" type="VARCHAR" size="250"/>
+
+    <column name="CREATION_DATE" required="true" type="DATE"/>
+    <column name="MODIFICATION_DATE" required="false" type="DATE"/>
+
+    <foreign-key foreignTable="COMPANY">
+		<reference local="COMPANY_ID" foreign="COMPANYID"/>
+    </foreign-key>
+</table>
+
+<table name="GIFT_CARD_DB" idMethod="native">
+    <column name="GIFT_CARD_DB_ID" primaryKey="true" required="true" type="INTEGER" autoIncrement="true"/>
+    <column name="COMPANY_ID" required="true" type="INTEGER"/>
+    <column name="ORDER_ID" required="true" type="INTEGER"/>
+
+	<column name="CARD_NUMBER" required="true" type="VARCHAR" size="100"/>
+    <column name="IS_ACTIVE" type="SMALLINT" default="1"/>
+    <column name="TYPE" type="SMALLINT"/>
+    <column name="ORIGINAL_AMOUNT" required="true" scale="2" size="7" type="DECIMAL"/>
+    <column name="BALANCE" required="true" scale="2" size="7" type="DECIMAL"/>
+
+    <column name="CREATION_DATE" required="true" type="DATE"/>
+    <column name="MODIFICATION_DATE" required="false" type="DATE"/>
+    <column name="CREATE_PERSON_ID" required="false" type="INTEGER"/>
+    <column name="MODIFY_PERSON_ID" required="false" type="INTEGER"/>
+
+    <foreign-key foreignTable="COMPANY">
+		<reference local="COMPANY_ID" foreign="COMPANYID"/>
+    </foreign-key>
+    <foreign-key foreignTable="PERSONORDER">
+		<reference local="ORDER_ID" foreign="ORDERID"/>
+    </foreign-key>
+</table>
+
+<table name="INVENTORY_DEPARTMENT_DB" idMethod="native">
+    <column name="INVENTORY_DEPARTMENT_DB_ID" primaryKey="true" required="true" type="INTEGER" autoIncrement="true"/>
+    <column name="COMPANY_ID" required="true" type="INTEGER"/>
+	<column name="DEPARTMENT" required="true" type="VARCHAR" size="30"/>
+	<column name="IS_COMMISSIONABLE" required="false" type="SMALLINT"/>
+
+    <foreign-key foreignTable="COMPANY">
+		<reference local="COMPANY_ID" foreign="COMPANYID"/>
+    </foreign-key>
+</table>
+
+<table name="PRACTITIONER_INVENTORY_DEPARTMENT_COMMISSION_SETTINGS_DB">
+    <column name="INVENTORY_DEPARTMENT_DB_ID" primaryKey="true" required="true" type="INTEGER"/>
+    <column name="PRACTITIONER_ID" primaryKey="true" required="true" type="INTEGER"/>
+    <column name="COMMISSION" required="true" scale="2" size="7" type="DECIMAL"/>
+
+    <foreign-key foreignTable="INVENTORY_DEPARTMENT_DB">
+		<reference local="INVENTORY_DEPARTMENT_DB_ID" foreign="INVENTORY_DEPARTMENT_DB_ID"/>
+    </foreign-key>
+    <foreign-key foreignTable="PERSON">
+		<reference local="PRACTITIONER_ID" foreign="PERSONID"/>
+    </foreign-key>
+</table>
+
+<table name="INVENTORY_COUNT_DB" idMethod="native">
+    <column name="INVENTORY_COUNT_DB_ID" primaryKey="true" required="true" type="INTEGER" autoIncrement="true"/>
+    <column name="COMPANY_ID" required="true" type="INTEGER"/>
+    <column name="IS_COMPLETE" type="SMALLINT" default="0"/>
+
+    <column name="CREATION_DATE" required="true" type="DATE"/>
+    <column name="MODIFICATION_DATE" required="false" type="DATE"/>
+    <column name="CREATE_PERSON_ID" required="false" type="INTEGER"/>
+    <column name="MODIFY_PERSON_ID" required="false" type="INTEGER"/>
+
+    <foreign-key foreignTable="COMPANY">
+		<reference local="COMPANY_ID" foreign="COMPANYID"/>
+    </foreign-key>
+</table>
+
+<table name="INVENTORY_COUNT_ITEM_MAPPING">
+    <column name="INVENTORY_COUNT_ITEM_MAPPING_ID" primaryKey="true" required="true" type="INTEGER" autoIncrement="true"/>
+    <column name="INVENTORY_COUNT_DB_ID" required="true" type="INTEGER"/>
+    <column name="CHECKOUT_CODE_ID" required="true" type="INTEGER"/>
+    <column name="COUNT" required="true" scale="2" size="7" type="DECIMAL"/>
+
+    <foreign-key foreignTable="INVENTORY_COUNT_DB">
+		<reference local="INVENTORY_COUNT_DB_ID" foreign="INVENTORY_COUNT_DB_ID"/>
+    </foreign-key>
+    <foreign-key foreignTable="CHECKOUT_CODE">
+		<reference local="CHECKOUT_CODE_ID" foreign="CHECKOUT_CODE_ID"/>
+    </foreign-key>
+</table>
+
+<table name="PURCHASE_ORDER_DB" idMethod="native">
+    <column name="PURCHASE_ORDER_DB_ID" primaryKey="true" required="true" type="INTEGER" autoIncrement="true"/>
+    <column name="COMPANY_ID" required="true" type="INTEGER"/>
+    <column name="VENDOR_RET_DB_ID" required="true" type="INTEGER"/>
+    <column name="PURCHASE_ORDER_NUMBER" required="true" type="INTEGER"/>
+    <column name="PURCHASE_ORDER_DATE" required="true" type="DATE"/>
+    <column name="IS_COMPLETE" type="SMALLINT" default="0"/>
+
+    <column name="TAX" required="true" scale="2" size="7" type="DECIMAL"/>
+    <column name="SHIPPING" required="true" scale="2" size="7" type="DECIMAL"/>
+    <column name="DISCOUNT" required="true" scale="2" size="7" type="DECIMAL"/>
+    <column name="TOTAL" required="true" scale="2" size="7" type="DECIMAL"/>
+
+    <column name="NOTE" required="false" type="VARCHAR" size="250"/>
+
+    <column name="CREATION_DATE" required="true" type="DATE"/>
+    <column name="MODIFICATION_DATE" required="false" type="DATE"/>
+    <column name="CREATE_PERSON_ID" required="false" type="INTEGER"/>
+    <column name="MODIFY_PERSON_ID" required="false" type="INTEGER"/>
+	
+	<column name="TXN_I_D" required="false" type="VARCHAR" size="20"/>
+
+    <foreign-key foreignTable="COMPANY">
+		<reference local="COMPANY_ID" foreign="COMPANYID"/>
+    </foreign-key>
+    <foreign-key foreignTable="VENDOR_RET_DB">
+		<reference local="VENDOR_RET_DB_ID" foreign="VENDOR_RET_DB_ID"/>
+    </foreign-key>
+    <foreign-key foreignTable="PERSON">
+		<reference local="CREATE_PERSON_ID" foreign="PERSONID"/>
+    </foreign-key>
+    <foreign-key foreignTable="PERSON">
+		<reference local="MODIFY_PERSON_ID" foreign="PERSONID"/>
+    </foreign-key>
+</table>
+
+<table name="PURCHASE_ORDER_ITEM_MAPPING">
+    <column name="PURCHASE_ORDER_ITEM_MAPPING_ID" primaryKey="true" required="true" type="INTEGER" autoIncrement="true"/>
+    <column name="PURCHASE_ORDER_DB_ID" required="true" type="INTEGER"/>
+    <column name="CHECKOUT_CODE_ID" required="true" type="INTEGER"/>
+    <column name="PRODUCT_WAIT_LIST_DB_ID" required="false" type="INTEGER"/>
+    <column name="QUANTITY" required="true" scale="2" size="7" type="DECIMAL"/>
+    <column name="RATE" required="true" scale="2" size="7" type="DECIMAL"/>
+    <column name="AMOUNT" required="true" scale="2" size="7" type="DECIMAL"/>
+    <column name="QUANTITY_RECEIVED" required="true" scale="2" size="7" type="DECIMAL"/>
+    <column name="ROW_UPDATED" required="true" type="DATE"/>
+
+    <foreign-key foreignTable="PURCHASE_ORDER_DB">
+		<reference local="PURCHASE_ORDER_DB_ID" foreign="PURCHASE_ORDER_DB_ID"/>
+    </foreign-key>
+    <foreign-key foreignTable="CHECKOUT_CODE">
+		<reference local="CHECKOUT_CODE_ID" foreign="CHECKOUT_CODE_ID"/>
+    </foreign-key>
+    <foreign-key foreignTable="PRODUCT_WAIT_LIST_DB">
+		<reference local="PRODUCT_WAIT_LIST_DB_ID" foreign="PRODUCT_WAIT_LIST_DB_ID"/>
+    </foreign-key>
+</table>
+
+<table name="ITEM_ON_HAND_HISTORY_REPORT_DB">
+    <column name="ITEM_ON_HAND_HISTORY_REPORT_DB_ID" primaryKey="true" required="true" type="INTEGER" autoIncrement="true"/>
+    <column name="CHECKOUT_CODE_ID" required="true" type="INTEGER"/>
+    <column name="ON_HAND_QUANTITY_DELTA" required="true" scale="2" size="7" type="DECIMAL"/>
+    <column name="ON_HAND_QUANTITY_UPDATED" required="true" scale="2" size="7" type="DECIMAL"/>
+	<column name="CHANGE_TYPE" required="true" type="VARCHAR" size="30"/>
+    <column name="CHANGE_DATE" required="true" type="DATE"/>
+	
+    <column name="ROW_UPDATED" required="true" type="DATE"/>
+	<column name="COMPANY_ID" required="true" type="INTEGER"/>
+
+    <foreign-key foreignTable="CHECKOUT_CODE">
+		<reference local="CHECKOUT_CODE_ID" foreign="CHECKOUT_CODE_ID"/>
+    </foreign-key>
+</table>
+
+<table name="CASH_OUT_DB" idMethod="native">
+    <column name="CASH_OUT_DB_ID" primaryKey="true" required="true" type="INTEGER" autoIncrement="true"/>
+    <column name="COMPANY_ID" required="true" type="INTEGER"/>
+
+    <column name="START_DATE" required="true" type="DATE"/>
+    <column name="END_DATE" required="true" type="DATE"/>
+    <column name="IS_COMPLETE" type="SMALLINT" default="0"/>
+
+    <column name="CREATION_DATE" required="true" type="DATE"/>
+    <column name="MODIFICATION_DATE" required="false" type="DATE"/>
+    <column name="CREATE_PERSON_ID" required="false" type="INTEGER"/>
+    <column name="MODIFY_PERSON_ID" required="false" type="INTEGER"/>
+
+    <foreign-key foreignTable="COMPANY">
+		<reference local="COMPANY_ID" foreign="COMPANYID"/>
+    </foreign-key>
+    <foreign-key foreignTable="PERSON">
+		<reference local="CREATE_PERSON_ID" foreign="PERSONID"/>
+    </foreign-key>
+    <foreign-key foreignTable="PERSON">
+		<reference local="MODIFY_PERSON_ID" foreign="PERSONID"/>
+    </foreign-key>
+</table>
+
+<table name="CASH_OUT_DB_ORDER_MAPPING">
+    <column name="CASH_OUT_DB_ID" primaryKey="true" required="true" type="INTEGER"/>
+    <column name="ORDER_ID" primaryKey="true" required="true" type="INTEGER"/>
+
+    <foreign-key foreignTable="CASH_OUT_DB">
+		<reference local="CASH_OUT_DB_ID" foreign="CASH_OUT_DB_ID"/>
+    </foreign-key>
+    <foreign-key foreignTable="PERSONORDER">
+		<reference local="ORDER_ID" foreign="ORDERID"/>
+    </foreign-key>
+</table>
+
+<table name="CASH_OUT_DRAWER_COUNT_DB" idMethod="native">
+    <column name="CASH_OUT_DRAWER_COUNT_DB_ID" primaryKey="true" required="true" type="INTEGER" autoIncrement="true"/>
+    <column name="CASH_OUT_DB_ID" required="true" type="INTEGER"/>
+	
+    <column name="WORKSTATION_NAME" required="true" type="VARCHAR" size="100"/>
+    <column name="IS_PRIMARY" type="SMALLINT" default="0"/>
+
+    <column name="BEGIN_AMOUNT" required="true" scale="2" size="7" type="DECIMAL"/>
+    <column name="PAID_OUT_AMOUNT" required="true" scale="2" size="7" type="DECIMAL"/>
+    <column name="COUNT_AMOUNT" required="true" scale="2" size="7" type="DECIMAL"/>
+    <column name="LEAVE_AMOUNT" required="true" scale="2" size="7" type="DECIMAL"/>
+    <column name="DEPOSIT_AMOUNT" required="true" scale="2" size="7" type="DECIMAL"/>
+
+    <column name="COUNT_HUNDREDS" type="SMALLINT" default="0"/>
+    <column name="COUNT_FIFTIES" type="SMALLINT" default="0"/>
+    <column name="COUNT_TWENTIES" type="SMALLINT" default="0"/>
+    <column name="COUNT_TENS" type="SMALLINT" default="0"/>
+    <column name="COUNT_FIVES" type="SMALLINT" default="0"/>
+    <column name="COUNT_ONES" type="SMALLINT" default="0"/>
+    <column name="COUNT_HALF_DOLLARS" type="SMALLINT" default="0"/>
+    <column name="COUNT_QUARTERS" type="SMALLINT" default="0"/>
+    <column name="COUNT_DIMES" type="SMALLINT" default="0"/>
+    <column name="COUNT_NICKELS" type="SMALLINT" default="0"/>
+    <column name="COUNT_PENNIES" type="SMALLINT" default="0"/>
+
+    <column name="CREATION_DATE" required="true" type="DATE"/>
+    <column name="MODIFICATION_DATE" required="false" type="DATE"/>
+    <column name="CREATE_PERSON_ID" required="false" type="INTEGER"/>
+    <column name="MODIFY_PERSON_ID" required="false" type="INTEGER"/>
+
+    <foreign-key foreignTable="CASH_OUT_DB">
+		<reference local="CASH_OUT_DB_ID" foreign="CASH_OUT_DB_ID"/>
+    </foreign-key>
+    <foreign-key foreignTable="PERSON">
+		<reference local="CREATE_PERSON_ID" foreign="PERSONID"/>
+    </foreign-key>
+    <foreign-key foreignTable="PERSON">
+		<reference local="MODIFY_PERSON_ID" foreign="PERSONID"/>
+    </foreign-key>
+</table>
+
+<table name="PRACTITIONER_SETTINGS_DB">
+    <column name="PRACTITIONER_ID" primaryKey="true" required="true" type="INTEGER"/>
+    <column name="ALLOW_CLIENT_SCHEDULING" type="SMALLINT" default="0"/>
+
+    <foreign-key foreignTable="PERSON">
+		<reference local="PRACTITIONER_ID" foreign="PERSONID"/>
+    </foreign-key>
+</table>
+
+<table name="PRACTITIONER_COMMISSION_SETTINGS_DB">
+    <column name="PRACTITIONER_ID" primaryKey="true" required="true" type="INTEGER"/>
+    <column name="PRODUCT_COMMISSION" required="true" scale="2" size="7" type="DECIMAL"/>
+    <column name="SERVICE_COMMISSION" required="true" scale="2" size="7" type="DECIMAL"/>
+
+    <foreign-key foreignTable="PERSON">
+		<reference local="PRACTITIONER_ID" foreign="PERSONID"/>
+    </foreign-key>
+</table>
+
+<table name="PRACTITIONER_INVENTORY_COMMISSION_SETTINGS_DB">
+    <column name="CHECKOUT_CODE_ID" primaryKey="true" required="true" type="INTEGER"/>
+    <column name="PRACTITIONER_ID" primaryKey="true" required="true" type="INTEGER"/>
+    <column name="COMMISSION" required="true" scale="2" size="7" type="DECIMAL"/>
+
+    <foreign-key foreignTable="CHECKOUT_CODE">
+		<reference local="CHECKOUT_CODE_ID" foreign="CHECKOUT_CODE_ID"/>
+    </foreign-key>
+    <foreign-key foreignTable="PERSON">
+		<reference local="PRACTITIONER_ID" foreign="PERSONID"/>
+    </foreign-key>
+</table>
+
+<table name="QUICKBOOKS_SETTINGS_DB" idMethod="native">
+    <column name="QUICKBOOKS_SETTINGS_DB_ID" primaryKey="true" required="true" type="INTEGER" autoIncrement="true"/>
+    <column name="IS_QBFS_ENABLED" type="SMALLINT" default="0"/>
+    <column name="IS_QBFS_LOG_IN_ATTEMPTED" type="SMALLINT" default="0"/>
+    <column name="IS_QBFS_TALKING" type="SMALLINT" default="0"/>
+    <column name="SYNC_ACCOUNTS" type="SMALLINT" default="0"/>
+    <column name="SYNC_VENDORS" type="SMALLINT" default="0"/>
+    <column name="SYNC_CLIENTS" type="SMALLINT" default="0"/>
+    <column name="SYNC_INVENTORY" type="SMALLINT" default="0"/>
+    <column name="IS_POS_ENABLED" type="SMALLINT" default="0"/>
+    <column name="USER_NAME" required="false" type="VARCHAR" size="30"/>
+    <column name="PASSWORD" required="false" type="VARCHAR" size="20"/>
+    <column name="COMPANY_KEY" required="false" type="VARCHAR" size="200"/>
+    <column name="OWNER_I_D" required="false" type="VARCHAR" size="50"/>
+    <column name="FILE_I_D" required="false" type="VARCHAR" size="50"/>
+    <column name="COMPANY_ID" required="true" type="INTEGER"/>
+	
+    <column name="LAST_INVENTORY_UPDATE_DATE" required="false" type="DATE"/>
+    <column name="LAST_CLIENT_UPDATE_DATE" required="false" type="DATE"/>
+	
+    <column name="X_LOGIN" required="false" type="VARCHAR" size="12"/>
+    <column name="X_TRAN_KEY" required="false" type="VARCHAR" size="20"/>
+
+    <column name="SHOW_CLIENT_INTAKE_FORM" type="SMALLINT" default="1"/>
+    <column name="SHOW_CLIENT_WELLNESS_SURVEY" type="SMALLINT" default="1"/>
+
+    <foreign-key foreignTable="COMPANY">
+	<reference local="COMPANY_ID" foreign="COMPANYID"/>
+    </foreign-key>
+</table>
+
+<table name="CLIENT_REVIEW_REASON_DB" idMethod="native">
+    <column name="CLIENT_REVIEW_REASON_DB_ID" primaryKey="true" required="true" type="INTEGER" autoIncrement="true"/>
+    <column name="PERSON_ID" required="true" type="INTEGER"/>
+    <column name="REVIEW_REASON_DB_ID" required="true" type="INTEGER"/>
+    <column name="PRACTITIONER_ID" required="false" type="INTEGER"/>
+    <column name="IS_REVIEWED" required="true" type="SMALLINT"/>
+    <column name="REVIEW_DATE" required="true" type="DATE"/>
+    <column name="NOTE" required="false" type="VARCHAR" size="250"/>
+	
+    <column name="EMAIL_CLIENT" required="true" type="SMALLINT" default="1"/>
+	
+    <column name="CREATION_DATE" required="true" type="DATE"/>
+    <column name="MODIFICATION_DATE" required="false" type="DATE"/>
+    <column name="CREATE_PERSON_ID" required="false" type="INTEGER"/>
+    <column name="MODIFY_PERSON_ID" required="false" type="INTEGER"/>
+
+    <foreign-key foreignTable="PERSON">
+		<reference local="PERSON_ID" foreign="PERSONID"/>
+    </foreign-key>
+    <foreign-key foreignTable="REVIEW_REASON_DB">
+		<reference local="REVIEW_REASON_DB_ID" foreign="REVIEW_REASON_DB_ID"/>
+    </foreign-key>
+    <foreign-key foreignTable="PERSON">
+		<reference local="PRACTITIONER_ID" foreign="PERSONID"/>
+    </foreign-key>
+	
+    <foreign-key foreignTable="PERSON">
+		<reference local="CREATE_PERSON_ID" foreign="PERSONID"/>
+    </foreign-key>
+    <foreign-key foreignTable="PERSON">
+		<reference local="MODIFY_PERSON_ID" foreign="PERSONID"/>
+    </foreign-key>
+	
+</table>
+
+<table name="REVIEW_REASON_DB" idMethod="native">
+    <column name="REVIEW_REASON_DB_ID" primaryKey="true" required="true" type="INTEGER" autoIncrement="true"/>
+    <column name="NAME" required="true" type="VARCHAR" size="100"/>
+	<column name="TYPE" required="true" type="SMALLINT" default="1"/>
+    <column name="COMPANY_ID" required="true" type="INTEGER"/>
+
+    <foreign-key foreignTable="COMPANY">
+	<reference local="COMPANY_ID" foreign="COMPANYID"/>
+    </foreign-key>
+</table>
+
+<table name="CLIENT_REVIEW_PRACTITIONER_MAPPING">
+	<column name="CLIENT_REVIEW_REASON_DB_ID" primaryKey="true" required="true" type="INTEGER"/>
+    <column name="PRACTITIONER_ID" primaryKey="true" required="true" type="INTEGER"/>
+
+    <foreign-key foreignTable="CLIENT_REVIEW_REASON_DB">
+		<reference local="CLIENT_REVIEW_REASON_DB_ID" foreign="CLIENT_REVIEW_REASON_DB_ID"/>
+    </foreign-key>
+	<foreign-key foreignTable="PERSON">
+		<reference local="PRACTITIONER_ID" foreign="PERSONID"/>
+	</foreign-key>
+</table>
+
+<table name="PERSON_NOTE_DB" idMethod="native">
+    <column name="PERSON_NOTE_DB_ID" primaryKey="true" required="true" type="INTEGER" autoIncrement="true"/>
+    <column name="PERSON_ID" required="true" type="INTEGER"/>
+    <column name="NOTE_SUBJECT" required="true" type="VARCHAR" size="100"/>
+    <column name="NOTE" type="LONGVARCHAR"/>
+    <column name="ISALERT" required="true" type="SMALLINT"/>
+    <column name="NOTE_DATE" required="true" type="DATE"/>
+    <column name="EMAIL_DATE" required="false" type="DATE"/>
+
+    <foreign-key foreignTable="PERSON">
+	<reference local="PERSON_ID" foreign="PERSONID"/>
+    </foreign-key>
+</table>
+
+<table name="REFERRAL_SOURCE_DB" idMethod="native">
+    <column name="REFERRAL_SOURCE_DB_ID" primaryKey="true" required="true" type="INTEGER" autoIncrement="true"/>
+    <column name="PERSON_ID" required="true" type="INTEGER"/>
+    <column name="REFERRED_BY_ID" required="false" type="INTEGER"/>
+    <column name="MARKETING_PLAN_DB_ID" required="false" type="INTEGER"/>
+    <column name="REFERRAL_DATE" required="true" type="DATE"/>
+
+    <foreign-key foreignTable="PERSON">
+	<reference local="PERSON_ID" foreign="PERSONID"/>
+    </foreign-key>
+    <foreign-key foreignTable="PERSON">
+	<reference local="REFERRED_BY_ID" foreign="PERSONID"/>
+    </foreign-key>
+    <foreign-key foreignTable="MARKETING_PLAN_DB">
+	<reference local="MARKETING_PLAN_DB_ID" foreign="MARKETING_PLAN_DB_ID"/>
+    </foreign-key>
+</table>
+
+<table name="MARKETING_PLAN_DB" idMethod="native">
+    <column name="MARKETING_PLAN_DB_ID" primaryKey="true" required="true" type="INTEGER" autoIncrement="true"/>
+    <column name="NAME" required="true" type="VARCHAR" size="100"/>
+    <column name="COMPANY_ID" required="true" type="INTEGER"/>
+    <column name="START_DATE" required="false" type="DATE"/>
+    <column name="END_DATE" required="false" type="DATE"/>
+    <column name="ISACTIVE" required="true" type="SMALLINT"/>
+    <column name="IS_BULK_EMAIL" required="true" type="SMALLINT"/>
+
+    <foreign-key foreignTable="COMPANY">
+	<reference local="COMPANY_ID" foreign="COMPANYID"/>
+    </foreign-key>
+</table>
+
+<table name="RECEIVE_PAYMENT_RET_DB" idMethod="native">
+    <column name="RECEIVE_PAYMENT_RET_DB_ID" primaryKey="true" required="true" type="INTEGER" autoIncrement="true"/>
+    <column name="TXN_I_D" required="true" type="VARCHAR" size="20"/>
+    <column name="COMPANY_ID" required="true" type="INTEGER"/>
+    <column name="REQUEST_I_D" required="true" type="VARCHAR" size="40"/>
+
+    <column name="TIME_CREATED" required="true" type="DATE"/>
+    <column name="TIME_MODIFIED" required="true" type="DATE"/>
+    <column name="TXN_NUMBER" required="false" type="INTEGER"/>
+    <column name="CUSTOMER_LIST_I_D" required="true" type="VARCHAR" size="50"/>
+    <column name="PAYMENT_METHOD_LIST_I_D" required="true" type="VARCHAR" size="50"/>
+    <column name="TXN_DATE" required="true" type="DATE"/>
+    <column name="TOTAL_AMOUNT" required="true" scale="2" size="7" type="DECIMAL"/>
+    <column name="MEMO" type="VARCHAR" size="250"/>
+
+    <foreign-key foreignTable="COMPANY">
+	<reference local="COMPANY_ID" foreign="COMPANYID"/>
+    </foreign-key>
+    <foreign-key foreignTable="PERSON">
+	<reference local="CUSTOMER_LIST_I_D" foreign="EMAIL2"/>
+    </foreign-key>
+</table>
+		
+<table name="CUSTOMER_RET_DB" idMethod="native">
+    <column name="CUSTOMER_RET_DB_ID" primaryKey="true" required="true" type="INTEGER" autoIncrement="true"/>
+    <column name="COMPANY_ID" required="true" type="INTEGER"/>
+    <column name="REQUEST_I_D" required="true" type="VARCHAR" size="40"/>
+
+    <column name="LIST_I_D" required="false" type="VARCHAR" size="25"/>
+    <column name="QB_LIST_I_D" required="false" type="VARCHAR" size="25"/>
+    <column name="EDIT_SEQUENCE" required="false" type="VARCHAR" size="15"/>
+    <column name="TIME_MODIFIED" required="true" type="DATE"/>
+	
+    <column name="ACCOUNT_BALANCE" required="true" scale="2" size="7" type="DECIMAL"/>
+	
+    <column name="FIRST_NAME" required="false" type="VARCHAR" size="30"/>
+    <column name="FULL_NAME" required="true" type="VARCHAR" size="60"/>
+    <column name="LAST_NAME" required="true" type="VARCHAR" size="40"/>
+	
+    <column name="LAST_SALE" required="false" type="DATE"/>
+    <column name="PHONE" required="false" type="VARCHAR" size="21"/>
+    <column name="PHONE2" required="false" type="VARCHAR" size="21"/>
+    <column name="E_MAIL" required="false" type="VARCHAR" size="99"/>
+    <column name="IS_ACTIVE" required="false" type="VARCHAR" size="5"/>
+
+    <column name="PRICE_LEVEL_NUMBER" required="false" type="SMALLINT" />
+    
+    <foreign-key foreignTable="COMPANY">
+		<reference local="COMPANY_ID" foreign="COMPANYID"/>
+    </foreign-key>
+</table>
+
+<table name="INVOICE_RET_DB" idMethod="native">
+    <column name="INVOICE_RET_DB_ID" primaryKey="true" required="true" type="INTEGER" autoIncrement="true"/>
+    <column name="TXN_I_D" required="true" type="VARCHAR" size="20"/>
+    <column name="COMPANY_ID" required="true" type="INTEGER"/>
+    <column name="CASHIER_ID" required="true" type="INTEGER"/>
+    <column name="PRACTITIONER_ID" required="false" type="INTEGER"/>
+    <column name="REQUEST_I_D" required="true" type="VARCHAR" size="40"/>
+
+    <column name="INVOICE_NUMBER" required="false" type="INTEGER"/>
+
+    <column name="TIME_MODIFIED" required="true" type="DATE"/>
+    <column name="CUSTOMER_LIST_I_D" required="true" type="VARCHAR" size="50"/>
+    <column name="SUBTOTAL" required="true" scale="2" size="7" type="DECIMAL"/>
+    <column name="SALES_TAX_TOTAL" required="true" scale="2" size="7" type="DECIMAL"/>
+	<column name="BALANCE_REMAINING" required="true" scale="2" size="7" type="DECIMAL"/>
+    <column name="TXN_DATE" required="true" type="DATE"/>
+
+    <column name="TIME_CREATED" required="false" type="DATE"/>
+	<column name="EDIT_SEQUENCE" required="false" type="VARCHAR" size="15"/>
+    <column name="TXN_NUMBER" required="false" type="INTEGER"/>
+    <column name="REF_NUMBER" required="false" type="VARCHAR"  size="20"/>
+    <column name="IS_PENDING" required="false" type="VARCHAR" size="10"/>
+    <column name="IS_FINANCE_CHARGE" required="false" type="VARCHAR" size="10"/>
+    <column name="IS_PAID" required="false" type="VARCHAR" size="10"/>
+    <column name="CHECK_NUMBER" required="false" type="INTEGER"/>
+
+	<column name="DUE_DATE" required="false" type="DATE"/>
+	<column name="P_O_NUMBER" required="false" type="VARCHAR" size="20"/>
+	<column name="MEMO" required="false" type="VARCHAR" size="200"/>
+
+    <foreign-key foreignTable="COMPANY">
+		<reference local="COMPANY_ID" foreign="COMPANYID"/>
+    </foreign-key>
+    <foreign-key foreignTable="PERSON">
+		<reference local="CASHIER_ID" foreign="PERSONID"/>
+    </foreign-key>
+    <foreign-key foreignTable="PERSON">
+		<reference local="PRACTITIONER_ID" foreign="PERSONID"/>
+    </foreign-key>
+    <foreign-key foreignTable="PERSON">
+		<reference local="CUSTOMER_LIST_I_D" foreign="EMAIL2"/>
+    </foreign-key>
+</table>
+
+<table name="INVOICE_ITEM_RET_DB" idMethod="native">
+    <column name="INVOICE_ITEM_RET_DB_ID" primaryKey="true" required="true" type="INTEGER" autoIncrement="true"/>
+    <column name="INVOICE_RET_DB_ID" required="true" type="INTEGER"/>
+    <column name="SALES_TAX_CODE_RET_DB_ID" required="true" type="INTEGER"/>
+
+	<column name="TXN_LINE_I_D" required="true" type="VARCHAR" size="20"/>
+    <column name="ITEM_LIST_I_D" required="true" type="VARCHAR" size="20"/>
+    <column name="DESC1" required="false" type="VARCHAR" size="200"/>
+    <column name="QUANTITY" required="false" scale="2" size="7" type="DECIMAL"/>
+    <column name="RATE" required="false" scale="2" size="7" type="DECIMAL"/>
+    <column name="AMOUNT" required="true" scale="2" size="7" type="DECIMAL"/>
+    <column name="TAX_AMOUNT" required="false" scale="2" size="7" type="DECIMAL"/>
+
+    <foreign-key foreignTable="INVOICE_RET_DB">
+		<reference local="INVOICE_RET_DB_ID" foreign="INVOICE_RET_DB_ID"/>
+    </foreign-key>
+    <foreign-key foreignTable="SALES_TAX_CODE_RET_DB">
+		<reference local="SALES_TAX_CODE_RET_DB_ID" foreign="SALES_TAX_CODE_RET_DB_ID"/>
+    </foreign-key>
+</table>
+		
+<table name="SALES_RECEIPT_RET_DB" idMethod="native">
+    <column name="SALES_RECEIPT_RET_DB_ID" primaryKey="true" required="true" type="INTEGER" autoIncrement="true"/>
+    <column name="TXN_I_D" required="true" type="VARCHAR" size="20"/>
+    <column name="COMPANY_ID" required="true" type="INTEGER"/>
+    <column name="CASHIER_ID" required="true" type="INTEGER"/>
+    <column name="PRACTITIONER_ID" required="false" type="INTEGER"/>
+    <column name="REQUEST_I_D" required="true" type="VARCHAR" size="40"/>
+	
+    <column name="TIME_MODIFIED" required="true" type="DATE"/>
+    <column name="CUSTOMER_LIST_I_D" required="true" type="VARCHAR" size="50"/>
+    <column name="SUBTOTAL" required="true" scale="2" size="7" type="DECIMAL"/>
+    <column name="TAX_AMOUNT" required="true" scale="2" size="7" type="DECIMAL"/>
+    <column name="TOTAL" required="true" scale="2" size="7" type="DECIMAL"/>
+    <column name="TXN_DATE" required="true" type="DATE"/>
+
+    <column name="TENDER_TYPE" size="30" type="VARCHAR"/>
+
+    <column name="SALES_RECEIPT_NUMBER" required="false" type="INTEGER"/>
+    <column name="SALES_RECEIPT_TYPE" required="false" type="VARCHAR" size="10"/>
+    <column name="HISTORY_DOC_STATUS" required="false" type="VARCHAR" size="10"/>
+
+
+	<!-- the following are specific to QBFS -->
+
+    <column name="TIME_CREATED" required="false" type="DATE"/>
+	<column name="EDIT_SEQUENCE" required="false" type="VARCHAR" size="15"/>
+    <column name="TXN_NUMBER" required="false" type="INTEGER"/>
+    <column name="REF_NUMBER" required="false" type="INTEGER"/>
+    <column name="IS_PENDING" required="false" type="VARCHAR" size="10"/>
+    <column name="CHECK_NUMBER" required="false" type="INTEGER"/>
+
+    
+    <foreign-key foreignTable="COMPANY">
+		<reference local="COMPANY_ID" foreign="COMPANYID"/>
+    </foreign-key>
+    <foreign-key foreignTable="PERSON">
+		<reference local="CASHIER_ID" foreign="PERSONID"/>
+    </foreign-key>
+    <foreign-key foreignTable="PERSON">
+		<reference local="PRACTITIONER_ID" foreign="PERSONID"/>
+    </foreign-key>
+    <foreign-key foreignTable="PERSON">
+		<reference local="CUSTOMER_LIST_I_D" foreign="EMPLOYEEID"/>
+    </foreign-key>
+</table>
+
+<table name="SALES_RECEIPT_ITEM_RET_DB" idMethod="native">
+    <column name="SALES_RECEIPT_ITEM_RET_DB_ID" primaryKey="true" required="true" type="INTEGER" autoIncrement="true"/>
+    <column name="SALES_RECEIPT_RET_DB_ID" required="true" type="INTEGER"/>
+    <column name="PRACTITIONER_ID" required="false" type="INTEGER"/>
+
+    <column name="LIST_I_D" required="true" type="VARCHAR" size="20"/>
+    <column name="ITEM_NUMBER" required="true" type="INTEGER"/>
+    <column name="PRICE" required="true" scale="2" size="7" type="DECIMAL"/>
+    <column name="QTY" required="true" scale="2" size="7" type="DECIMAL"/>
+    <column name="TAX_AMOUNT" required="true" scale="2" size="7" type="DECIMAL"/>
+    <column name="COMMISSION" required="false" scale="2" size="7" type="DECIMAL"/>
+    <column name="DESC1" required="true" type="VARCHAR" size="200"/>
+
+    <foreign-key foreignTable="SALES_RECEIPT_RET_DB">
+		<reference local="SALES_RECEIPT_RET_DB_ID" foreign="SALES_RECEIPT_RET_DB_ID"/>
+    </foreign-key>
+    <foreign-key foreignTable="PERSON">
+		<reference local="PRACTITIONER_ID" foreign="PERSONID"/>
+    </foreign-key>
+</table>
+
+<table name="SALES_RECEIPT_LINE_RET_DB" idMethod="native">
+    <column name="SALES_RECEIPT_LINE_RET_DB_ID" primaryKey="true" required="true" type="INTEGER" autoIncrement="true"/>
+    <column name="SALES_RECEIPT_RET_DB_ID" required="true" type="INTEGER"/>
+    <column name="SALES_TAX_CODE_RET_DB_ID" required="true" type="INTEGER"/>
+
+    <column name="TXN_LINE_I_D" required="true" type="VARCHAR" size="20"/>
+    <column name="ITEM_LIST_I_D" required="true" type="VARCHAR" size="20"/>
+    <column name="DESC1" required="false" type="VARCHAR" size="200"/>
+    <column name="QUANTITY" required="false" scale="2" size="7" type="DECIMAL"/>
+    <column name="RATE" required="false" scale="2" size="7" type="DECIMAL"/>
+    <column name="AMOUNT" required="false" scale="2" size="7" type="DECIMAL"/>
+
+    <foreign-key foreignTable="SALES_RECEIPT_RET_DB">
+		<reference local="SALES_RECEIPT_RET_DB_ID" foreign="SALES_RECEIPT_RET_DB_ID"/>
+    </foreign-key>
+    <foreign-key foreignTable="SALES_TAX_CODE_RET_DB">
+		<reference local="SALES_TAX_CODE_RET_DB_ID" foreign="SALES_TAX_CODE_RET_DB_ID"/>
+    </foreign-key>
+</table>
+
+<table name="ITEM_SALES_TAX_GROUP_RET_DB" idMethod="native">
+    <column name="ITEM_SALES_TAX_GROUP_RET_DB_ID" primaryKey="true" required="true" type="INTEGER" autoIncrement="true"/>
+    <column name="COMPANY_ID" required="true" type="INTEGER"/>
+
+    <column name="LIST_I_D" required="true" type="VARCHAR" size="25"/>
+	<column name="TIME_CREATED" required="true" type="DATE"/>
+    <column name="TIME_MODIFIED" required="true" type="DATE"/>
+	<column name="EDIT_SEQUENCE" required="false" type="VARCHAR" size="15"/>
+
+    <column name="NAME" required="true" type="VARCHAR" size="200"/>
+    <column name="IS_ACTIVE" required="true" type="VARCHAR" size="5"/>
+    <column name="ITEM_DESC" required="true" type="VARCHAR" size="200"/>
+
+    <foreign-key foreignTable="COMPANY">
+		<reference local="COMPANY_ID" foreign="COMPANYID"/>
+    </foreign-key>
+</table>
+
+<table name="ITEM_SALES_TAX_GROUP_MAPPING">
+    <column name="ITEM_SALES_TAX_GROUP_RET_DB_ID" primaryKey="true" required="true" type="INTEGER"/>
+    <column name="ITEM_SALES_TAX_RET_DB_ID" primaryKey="true" required="true" type="INTEGER"/>
+
+    <foreign-key foreignTable="ITEM_SALES_TAX_GROUP_RET_DB">
+		<reference local="ITEM_SALES_TAX_GROUP_RET_DB_ID" foreign="ITEM_SALES_TAX_GROUP_RET_DB_ID"/>
+    </foreign-key>
+    <foreign-key foreignTable="ITEM_SALES_TAX_RET_DB">
+		<reference local="ITEM_SALES_TAX_RET_DB_ID" foreign="ITEM_SALES_TAX_RET_DB_ID"/>
+    </foreign-key>
+</table>
+
+<table name="ITEM_SALES_TAX_RET_DB" idMethod="native">
+    <column name="ITEM_SALES_TAX_RET_DB_ID" primaryKey="true" required="true" type="INTEGER" autoIncrement="true"/>
+    <column name="TAX_VENDOR_REF_DB_ID" required="true" type="INTEGER"/>
+    <column name="COMPANY_ID" required="true" type="INTEGER"/>
+
+    <column name="LIST_I_D" required="false" type="VARCHAR" size="25"/>
+	<column name="TIME_CREATED" required="true" type="DATE"/>
+    <column name="TIME_MODIFIED" required="true" type="DATE"/>
+	<column name="EDIT_SEQUENCE" required="false" type="VARCHAR" size="15"/>
+
+    <column name="NAME" required="true" type="VARCHAR" size="200"/>
+    <column name="IS_ACTIVE" required="true" type="VARCHAR" size="5"/>
+    <column name="ITEM_DESC" required="false" type="VARCHAR" size="200"/>
+    <column name="TAX_RATE" required="true" scale="3" size="7" type="DECIMAL"/>
+	
+    <column name="REQUEST_I_D" required="false" type="VARCHAR" size="40"/>
+	<column name="TAX_CODE_ID" required="false" type="INTEGER"/>
+
+	<foreign-key foreignTable="TAX_VENDOR_REF_DB">
+		<reference local="TAX_VENDOR_REF_DB_ID" foreign="TAX_VENDOR_REF_DB_ID"/>
+    </foreign-key>
+    <foreign-key foreignTable="COMPANY">
+		<reference local="COMPANY_ID" foreign="COMPANYID"/>
+    </foreign-key>
+    <foreign-key foreignTable="TAX_CODE">
+		<reference local="TAX_CODE_ID" foreign="TAX_CODE_ID"/>
+    </foreign-key>
+</table>
+
+<table name="TAX_VENDOR_REF_DB" idMethod="native">
+    <column name="TAX_VENDOR_REF_DB_ID" primaryKey="true" required="true" type="INTEGER" autoIncrement="true"/>
+    <column name="COMPANY_ID" required="true" type="INTEGER"/>
+    <column name="LIST_I_D" required="true" type="VARCHAR" size="25"/>
+    <column name="FULL_NAME" required="true" type="VARCHAR" size="50"/>
+
+    <foreign-key foreignTable="COMPANY">
+	<reference local="COMPANY_ID" foreign="COMPANYID"/>
+    </foreign-key>
+</table>
+
+<table name="SALES_TAX_CODE_RET_DB" idMethod="native">
+    <column name="SALES_TAX_CODE_RET_DB_ID" primaryKey="true" required="true" type="INTEGER" autoIncrement="true"/>
+    <column name="COMPANY_ID" required="true" type="INTEGER"/>
+
+    <column name="LIST_I_D" required="true" type="VARCHAR" size="25"/>
+	<column name="TIME_CREATED" required="true" type="DATE"/>
+    <column name="TIME_MODIFIED" required="true" type="DATE"/>
+	<column name="EDIT_SEQUENCE" required="false" type="VARCHAR" size="15"/>
+
+    <column name="NAME" required="true" type="VARCHAR" size="200"/>
+    <column name="IS_ACTIVE" required="true" type="VARCHAR" size="5"/>
+    <column name="IS_TAXABLE" required="true" type="VARCHAR" size="5"/>
+    <column name="SALES_TAX_CODE_DESC" required="false" type="VARCHAR" size="200"/>
+	
+	<column name="TAX_CODE_ID" required="false" type="INTEGER"/>
+
+    <foreign-key foreignTable="COMPANY">
+		<reference local="COMPANY_ID" foreign="COMPANYID"/>
+    </foreign-key>
+    <foreign-key foreignTable="TAX_CODE">
+		<reference local="TAX_CODE_ID" foreign="TAX_CODE_ID"/>
+    </foreign-key>
+</table>
+
+<table name="ITEM_PAYMENT_RET_DB" idMethod="native">
+    <column name="ITEM_PAYMENT_RET_DB_ID" primaryKey="true" required="true" type="INTEGER" autoIncrement="true"/>
+    <column name="PAYMENT_METHOD_REF_DB_ID" required="true" type="INTEGER"/>
+    <column name="COMPANY_ID" required="true" type="INTEGER"/>
+
+    <column name="LIST_I_D" required="true" type="VARCHAR" size="25"/>
+	<column name="TIME_CREATED" required="true" type="DATE"/>
+    <column name="TIME_MODIFIED" required="true" type="DATE"/>
+	<column name="EDIT_SEQUENCE" required="false" type="VARCHAR" size="15"/>
+
+    <column name="NAME" required="true" type="VARCHAR" size="200"/>
+    <column name="IS_ACTIVE" required="true" type="VARCHAR" size="5"/>
+    <column name="CC_TYPE" type="SMALLINT"/>
+	
+	<column name="DEPOSIT_TO_ACCOUNT_ID" required="false" type="INTEGER"/>
+    <column name="REQUEST_I_D" required="false" type="VARCHAR" size="40"/>
+
+	<foreign-key foreignTable="PAYMENT_METHOD_REF_DB">
+		<reference local="PAYMENT_METHOD_REF_DB_ID" foreign="PAYMENT_METHOD_REF_DB_ID"/>
+    </foreign-key>
+    <foreign-key foreignTable="COMPANY">
+		<reference local="COMPANY_ID" foreign="COMPANYID"/>
+    </foreign-key>
+    <foreign-key foreignTable="ACCOUNT_RET_DB">
+		<reference local="DEPOSIT_TO_ACCOUNT_ID" foreign="ACCOUNT_RET_DB_ID"/>
+    </foreign-key>
+</table>
+
+<table name="PAYMENT_METHOD_REF_DB" idMethod="native">
+    <column name="PAYMENT_METHOD_REF_DB_ID" primaryKey="true" required="true" type="INTEGER" autoIncrement="true"/>
+    <column name="COMPANY_ID" required="true" type="INTEGER"/>
+    <column name="LIST_I_D" required="true" type="VARCHAR" size="25"/>
+    <column name="FULL_NAME" required="true" type="VARCHAR" size="50"/>
+
+    <foreign-key foreignTable="COMPANY">
+		<reference local="COMPANY_ID" foreign="COMPANYID"/>
+    </foreign-key>
+</table>
+
+<table name="CHARGE_RESPONSE_DB" idMethod="native">
+    <column name="CHARGE_RESPONSE_DB_ID" primaryKey="true" required="true" type="INTEGER" autoIncrement="true"/>
+    <column name="COMPANY_ID" required="true" type="INTEGER"/>
+    <column name="CLIENT_ID" required="true" type="INTEGER"/>
+    <column name="TENDER_RET_DB_ID" required="true" type="INTEGER"/>
+
+    <column name="CHARGE_AMOUNT" required="true" scale="2" size="7" type="DECIMAL"/>
+	<column name="CARD_TYPE" required="true" size="20" type="VARCHAR"/>
+	<column name="EXP_M_M" required="false" size="2" type="VARCHAR"/>
+	<column name="EXP_Y_Y" required="false" size="2" type="VARCHAR"/>
+	<column name="ZIP_CODE" required="false" size="20" type="VARCHAR"/>
+	<column name="STREET_ADDRESS" required="false" size="200" type="VARCHAR"/>
+	<column name="CVC_CODE" required="false" size="10" type="VARCHAR"/>
+
+    <column name="RESPONSE_TYPE" required="true" type="SMALLINT"/>
+    <column name="AUTHORIZATION_CODE" required="true" size="15" type="VARCHAR"/>
+    <column name="CLIENT_TRANS_ID" required="false" size="15" type="VARCHAR"/>
+    <column name="CREDIT_CARD_TRANS_ID" required="false" size="30" type="VARCHAR"/>
+    <column name="CREDIT_CARD_REF_TRANS_ID" required="false" size="30" type="VARCHAR"/>
+    <column name="MERCHANT_ACCOUNT_NUMBER" required="false" size="30" type="VARCHAR"/>
+    <column name="PAYMENT_GROUPING_CODE" required="false" size="5" type="VARCHAR"/>
+    <column name="PAYMENT_STATUS" required="false" size="15" type="VARCHAR"/>
+    <column name="TXN_AUTHORIZATION_TIME" required="false" type="DATE"/>
+    <column name="TXN_AUTHORIZATION_STAMP" required="false" size="15" type="VARCHAR"/>
+    <column name="CARD_SECURITY_CODE_MATCH" required="false" size="15" type="VARCHAR"/>
+    <column name="AVS_STREET" required="false" size="15" type="VARCHAR"/>
+    <column name="AVS_ZIP" required="false" size="15" type="VARCHAR"/>
+    <column name="RECON_BATCH_ID" required="false" size="50" type="VARCHAR"/>
+
+	<column name="RESPONSE_CODE" required="true" type="SMALLINT"/>
+	<column name="ERROR_CODE" required="true" type="SMALLINT"/>
+
+    <column name="RESPONSE_DATE" required="true" type="DATE"/>
+
+    <foreign-key foreignTable="COMPANY">
+		<reference local="COMPANY_ID" foreign="COMPANYID"/>
+    </foreign-key>
+    <foreign-key foreignTable="PERSON">
+		<reference local="CLIENT_ID" foreign="PERSONID"/>
+    </foreign-key>
+    <foreign-key foreignTable="TENDER_RET_DB">
+		<reference local="TENDER_RET_DB_ID" foreign="TENDER_RET_DB_ID"/>
+    </foreign-key>
+</table>
+
+<table name="TENDER_RET_DB" idMethod="native">
+    <column name="TENDER_RET_DB_ID" primaryKey="true" required="true" type="INTEGER" autoIncrement="true"/>
+    <column name="COMPANY_ID" required="true" type="INTEGER"/>
+    <column name="CLIENT_ID" required="true" type="INTEGER"/>
+    <column name="SALES_RECEIPT_RET_DB_ID" required="true" type="INTEGER"/>
+    <column name="INVOICE_RET_DB_ID" required="true" type="INTEGER"/>
+    <column name="ORDER_ID" required="true" type="INTEGER"/>
+
+    <column name="TENDER_TYPE" required="true" size="30" type="VARCHAR"/>
+    <column name="CREDIT_CARD_TYPE" required="true" size="20" type="VARCHAR"/>
+    <column name="TENDER_AMOUNT" required="true" scale="2" size="7" type="DECIMAL"/>
+    <column name="TENDER_CHANGE" required="true" scale="2" size="7" type="DECIMAL"/>
+    <column name="CHECK_NUMBER" required="false" type="INTEGER"/>
+
+	<column name="GIFT_CERT_CARD_NUMBER" required="false" size="30" type="VARCHAR"/>
+
+    <column name="TENDER_DATE" required="false" type="DATE"/>
+
+    <column name="WORKSTATION_NAME" required="false" size="100" type="VARCHAR"/>
+    <column name="IS_PAYMENT_ON_ACCOUNT" type="SMALLINT" default="0"/>
+	
+	<column name="REQUEST_I_D" required="false" size="50" type="VARCHAR"/>
+	<column name="TXN_I_D" required="true" type="VARCHAR" size="20"/>
+	
+    <column name="IS_VOIDED_OR_REFUNDED" type="SMALLINT" default="0"/>
+
+    <foreign-key foreignTable="COMPANY">
+		<reference local="COMPANY_ID" foreign="COMPANYID"/>
+    </foreign-key>
+    <foreign-key foreignTable="SALES_RECEIPT_RET_DB">
+		<reference local="SALES_RECEIPT_RET_DB_ID" foreign="SALES_RECEIPT_RET_DB_ID"/>
+    </foreign-key>
+    <foreign-key foreignTable="INVOICE_RET_DB">
+		<reference local="INVOICE_RET_DB_ID" foreign="INVOICE_RET_DB_ID"/>
+    </foreign-key>
+    <foreign-key foreignTable="PERSONORDER">
+		<reference local="ORDER_ID" foreign="ORDERID"/>
+    </foreign-key>
+    <foreign-key foreignTable="PERSON">
+		<reference local="CLIENT_ID" foreign="PERSONID"/>
+    </foreign-key>
+</table>
+
+<table name="TENDER_RET_DB_ORDER_MAPPING">
+    <column name="TENDER_RET_DB_ORDER_MAPPING_ID" required="true" primaryKey="true" type="INTEGER"/>
+    <column name="TENDER_RET_DB_ID" required="true" type="INTEGER"/>
+    <column name="ORDER_ID" required="true" type="INTEGER"/>
+	<column name="TENDER_AMOUNT_APPLIED" required="false" scale="2" size="7" type="DECIMAL"/>
+	
+	<column name="REQUEST_I_D" required="false" size="50" type="VARCHAR"/>
+	<column name="TXN_I_D" required="true" type="VARCHAR" size="20"/>
+
+    <foreign-key foreignTable="TENDER_RET_DB">
+		<reference local="TENDER_RET_DB_ID" foreign="TENDER_RET_DB_ID"/>
+    </foreign-key>
+    <foreign-key foreignTable="PERSONORDER">
+		<reference local="ORDER_ID" foreign="ORDERID"/>
+    </foreign-key>
+</table>
+
+
+
+<table name="PRINTED_RECEIPT_DB" idMethod="native">
+    <column name="PRINTED_RECEIPT_DB_ID" primaryKey="true" required="true" type="INTEGER" autoIncrement="true"/>
+    <column name="PERSON_ID" required="true" type="INTEGER"/>
+    <column name="CASHIER_ID" required="true" type="INTEGER"/>
+    <column name="PRIMARY_ORDER_ID" required="true" type="INTEGER"/>
+
+    <column name="SUBTOTAL" required="true" scale="2" size="7" type="DECIMAL"/>
+    <column name="TAX" required="true" scale="2" size="7" type="DECIMAL"/>
+    <column name="TOTAL" required="true" scale="2" size="7" type="DECIMAL"/>
+    <column name="DISCOUNT" required="true" scale="2" size="7" type="DECIMAL"/>
+    <column name="DISCOUNT_PERCENTAGE" required="true" scale="2" size="7" type="DECIMAL"/>
+    <column name="DISCOUNT_PRODUCT" required="true" scale="2" size="7" type="DECIMAL"/>
+    <column name="DISCOUNT_PERCENTAGE_PRODUCT" required="true" scale="2" size="7" type="DECIMAL"/>
+    <column name="DISCOUNT_SERVICES" required="true" scale="2" size="7" type="DECIMAL"/>
+    <column name="DISCOUNT_PERCENTAGE_SERVICES" required="true" scale="2" size="7" type="DECIMAL"/>
+    <column name="SHIPPING" required="true" scale="2" size="7" type="DECIMAL"/>
+	
+	<column name="RECEIPT_DATE" required="false" type="DATE"/>
+
+    <foreign-key foreignTable="PERSON">
+		<reference local="PERSON_ID" foreign="PERSONID"/>
+    </foreign-key>
+    <foreign-key foreignTable="PERSON">
+		<reference local="CASHIER_ID" foreign="PERSONID"/>
+    </foreign-key>
+    <foreign-key foreignTable="PERSONORDER">
+		<reference local="PRIMARY_ORDER_ID" foreign="ORDERID"/>
+    </foreign-key>
+</table>
+
+<table name="PRINTED_RECEIPT_DB_ORDER_MAPPING">
+    <column name="PRINTED_RECEIPT_DB_ID" primaryKey="true" required="true" type="INTEGER"/>
+    <column name="PREVIOUS_ORDER_ID" primaryKey="true" required="true" type="INTEGER"/>
+
+    <foreign-key foreignTable="PRINTED_RECEIPT_DB">
+		<reference local="PRINTED_RECEIPT_DB_ID" foreign="PRINTED_RECEIPT_DB_ID"/>
+    </foreign-key>
+    <foreign-key foreignTable="PERSONORDER">
+		<reference local="PREVIOUS_ORDER_ID" foreign="ORDERID"/>
+    </foreign-key>
+</table>
+
+<table name="PRINTED_RECEIPT_DB_TENDER_MAPPING">
+    <column name="PRINTED_RECEIPT_DB_ID" primaryKey="true" required="true" type="INTEGER"/>
+    <column name="TENDER_RET_DB_ID" primaryKey="true" required="true" type="INTEGER"/>
+
+    <foreign-key foreignTable="PRINTED_RECEIPT_DB">
+		<reference local="PRINTED_RECEIPT_DB_ID" foreign="PRINTED_RECEIPT_DB_ID"/>
+    </foreign-key>
+    <foreign-key foreignTable="TENDER_RET_DB">
+		<reference local="TENDER_RET_DB_ID" foreign="TENDER_RET_DB_ID"/>
+    </foreign-key>
+</table>
+
+
+<!--
+<AccountRet>
+	<ListID>80000034-1227017115</ListID>
+	<TimeCreated>2008-11-18T08:05:15-06:00</TimeCreated>
+	<TimeModified>2008-11-18T09:25:29-06:00</TimeModified>
+	<EditSequence>1227021929</EditSequence>
+	<Name>Inventory</Name>
+	<FullName>Inventory</FullName>
+	<IsActive>true</IsActive>
+	<Sublevel>0</Sublevel>
+	<AccountType>OtherCurrentAsset</AccountType>
+	<AccountNumber>13000</AccountNumber>
+	<Desc>Inventory</Desc>
+	<Balance>0.00</Balance>
+	<TotalBalance>0.00</TotalBalance>
+	<TaxLineInfoRet>
+		<TaxLineID>1870</TaxLineID>
+		<TaxLineName>B/S-Assets: Other current assets</TaxLineName>
+	</TaxLineInfoRet>
+	<CashFlowClassification>Operating</CashFlowClassification>
+</AccountRet>
+-->
+
+<table name="CREDIT_MEMO_RET_DB" idMethod="native">
+    <column name="CREDIT_MEMO_RET_DB_ID" primaryKey="true" required="true" type="INTEGER" autoIncrement="true"/>
+    <column name="COMPANY_ID" required="true" type="INTEGER"/>
+    <column name="TXN_I_D" required="true" type="VARCHAR" size="20"/>
+    <column name="TIME_CREATED" required="true" type="DATE"/>
+    <column name="TIME_MODIFIED" required="true" type="DATE"/>
+    <column name="EDIT_SEQUENCE" required="true" type="VARCHAR" size="15"/>
+    <column name="TXN_NUMBER" required="false" type="INTEGER"/>
+    <column name="CUSTOMER_LIST_I_D" required="true" type="VARCHAR" size="50"/>
+    <column name="TXN_DATE" required="false" type="DATE"/>
+    <column name="REF_NUMBER" required="false" type="VARCHAR" size="15"/>
+    <column name="IS_PENDING" required="false" type="VARCHAR" size="10"/>
+    <column name="DUE_DATE" required="false" type="DATE"/>
+    <column name="SALES_REP_LIST_I_D" required="true" type="VARCHAR" size="50"/>
+    <column name="SUBTOTAL" required="true" scale="2" size="7" type="DECIMAL"/>
+    <column name="SALES_TAX_TOTAL" required="true" scale="2" size="7" type="DECIMAL"/>
+    <column name="TOTAL_AMOUNT" required="true" scale="2" size="7" type="DECIMAL"/>
+    <column name="CREDIT_REMAINING" required="true" scale="2" size="7" type="DECIMAL"/>
+    <column name="MEMO" type="LONGVARCHAR"/>
+
+    <foreign-key foreignTable="COMPANY">
+	<reference local="COMPANY_ID" foreign="COMPANYID"/>
+    </foreign-key>
+    <foreign-key foreignTable="PERSON">
+	<reference local="CUSTOMER_LIST_I_D" foreign="EMAIL2"/>
+    </foreign-key>
+    <foreign-key foreignTable="PERSON">
+	<reference local="SALES_REP_LIST_I_D" foreign="EMAIL2"/>
+    </foreign-key>
+</table>
+
+<!--
+<AccountRet>
+	<ListID>80000034-1227017115</ListID>
+	<TimeCreated>2008-11-18T08:05:15-06:00</TimeCreated>
+	<TimeModified>2008-11-18T09:25:29-06:00</TimeModified>
+	<EditSequence>1227021929</EditSequence>
+	<Name>Inventory</Name>
+	<FullName>Inventory</FullName>
+	<IsActive>true</IsActive>
+	<Sublevel>0</Sublevel>
+	<AccountType>OtherCurrentAsset</AccountType>
+	<AccountNumber>13000</AccountNumber>
+	<Desc>Inventory</Desc>
+	<Balance>0.00</Balance>
+	<TotalBalance>0.00</TotalBalance>
+	<TaxLineInfoRet>
+		<TaxLineID>1870</TaxLineID>
+		<TaxLineName>B/S-Assets: Other current assets</TaxLineName>
+	</TaxLineInfoRet>
+	<CashFlowClassification>Operating</CashFlowClassification>
+</AccountRet>
+-->
+
+<table name="ACCOUNT_RET_DB" idMethod="native">
+    <column name="ACCOUNT_RET_DB_ID" primaryKey="true" required="true" type="INTEGER" autoIncrement="true"/>
+    <column name="COMPANY_ID" required="true" type="INTEGER"/>
+    <column name="LIST_I_D" required="true" type="VARCHAR" size="25"/>
+    <column name="TIME_CREATED" required="true" type="DATE"/>
+    <column name="TIME_MODIFIED" required="true" type="DATE"/>
+    <column name="EDIT_SEQUENCE" required="true" type="VARCHAR" size="15"/>
+    <column name="NAME" required="true" type="VARCHAR" size="50"/>
+    <column name="FULL_NAME" required="true" type="VARCHAR" size="100"/>
+    <column name="IS_ACTIVE" required="true" type="SMALLINT"/>
+    <column name="PARENT_ID" required="true" type="INTEGER"/>
+    <column name="SUBLEVEL" required="true" type="SMALLINT"/>
+    <column name="ACCOUNT_TYPE" required="true" type="VARCHAR" size="50"/>
+    <column name="ACCOUNT_NUMBER" required="true" type="VARCHAR" size="10"/>
+    <column name="DESCRIPTION" required="false" type="VARCHAR" size="200"/>
+    <column name="BALANCE" required="true" scale="2" size="7" type="DECIMAL"/>
+    <column name="TOTAL_BALANCE" required="true" scale="2" size="7" type="DECIMAL"/>
+    <column name="TAX_LINE_INFO_RET_DB_ID" required="false" type="INTEGER"/>
+    <column name="CASH_FLOW_CLASSIFICATION" required="true" type="VARCHAR" size="25"/>
+
+    <foreign-key foreignTable="COMPANY">
+	<reference local="COMPANY_ID" foreign="COMPANYID"/>
+    </foreign-key>
+    <foreign-key foreignTable="ACCOUNT_RET_DB">
+	<reference local="PARENT_ID" foreign="ACCOUNT_RET_DB_ID"/>
+    </foreign-key>
+    <foreign-key foreignTable="TAX_LINE_INFO_RET_DB">
+	<reference local="TAX_LINE_INFO_RET_DB_ID" foreign="TAX_LINE_INFO_RET_DB_ID"/>
+    </foreign-key>
+</table>
+
+<table name="TAX_LINE_INFO_RET_DB" idMethod="native">
+    <column name="TAX_LINE_INFO_RET_DB_ID" primaryKey="true" required="true" type="INTEGER" autoIncrement="true"/>
+    <column name="COMPANY_ID" required="true" type="INTEGER"/>
+    <column name="TAX_LINE_ID" required="true" type="INTEGER"/>
+    <column name="TAX_LINE_NAME" required="true" type="VARCHAR" size="100"/>
+
+    <foreign-key foreignTable="COMPANY">
+	<reference local="COMPANY_ID" foreign="COMPANYID"/>
+    </foreign-key>
+</table>
+
+<!--
+<VendorRet>
+	<ListID>80000142-1230646437</ListID>
+	<TimeCreated>2008-12-30T08:13:57-06:00</TimeCreated>
+	<TimeModified>2008-12-30T08:13:57-06:00</TimeModified>
+	<EditSequence>1230646437</EditSequence>
+	<Name>Acme General Contracting &amp; Glass Service</Name>
+	<IsActive>true</IsActive>
+	<VendorAddress>
+		<Addr1>Acme General Contracting &amp; Glass Service</Addr1>
+		<Addr2>10921 Excelsior Blvd. Ste 113</Addr2>
+		<City>Hopkins</City>
+		<State>MN</State>
+		<PostalCode>55343</PostalCode>
+	</VendorAddress>
+	<VendorAddressBlock>
+		<Addr1>Acme General Contracting &amp; Glass Service</Addr1>
+		<Addr2>10921 Excelsior Blvd. Ste 113</Addr2>
+		<Addr3>Hopkins, MN  55343</Addr3>
+	</VendorAddressBlock>
+	<Phone>952-938-2041</Phone>
+	<TermsRef>
+		<ListID>80000004-1227016707</ListID>
+		<FullName>Due on receipt</FullName>
+	</TermsRef>
+	<IsVendorEligibleFor1099>false</IsVendorEligibleFor1099>
+	<Balance>0.00</Balance>
+</VendorRet>
+-->
+
+<table name="VENDOR_RET_DB" idMethod="native">
+    <column name="VENDOR_RET_DB_ID" primaryKey="true" required="true" type="INTEGER" autoIncrement="true"/>
+    <column name="COMPANY_ID" required="true" type="INTEGER"/>
+    <column name="LIST_I_D" required="false" type="VARCHAR" size="25"/>
+    <column name="TIME_CREATED" required="true" type="DATE"/>
+    <column name="TIME_MODIFIED" required="false" type="DATE"/>
+    <column name="EDIT_SEQUENCE" required="false" type="VARCHAR" size="15"/>
+    <column name="NAME" required="true" type="VARCHAR" size="100"/>
+    <column name="ACCOUNT_NUMBER" required="false" type="VARCHAR" size="50"/>
+    <column name="IS_ACTIVE" required="true" type="SMALLINT"/>
+    <column name="VENDOR_ADDRESS" required="true" type="INTEGER"/>
+    <column name="PHONE" required="false" type="VARCHAR" size="25"/>
+    <column name="FAX" required="false" type="VARCHAR" size="25"/>
+    <column name="TERMS_REF_DB_ID" required="false" type="INTEGER"/>
+    <column name="IS_VENDOR_ELIGIBLE_FOR_1099" required="false" type="SMALLINT"/>
+    <column name="BALANCE" required="false" scale="2" size="7" type="DECIMAL"/>
+
+    <foreign-key foreignTable="COMPANY">
+	<reference local="COMPANY_ID" foreign="COMPANYID"/>
+    </foreign-key>
+    <foreign-key foreignTable="ADDRESS">
+	<reference local="VENDOR_ADDRESS" foreign="ADDRESSID"/>
+    </foreign-key>
+    <foreign-key foreignTable="TERMS_REF_DB">
+	<reference local="TERMS_REF_DB_ID" foreign="TERMS_REF_DB_ID"/>
+    </foreign-key>
+</table>
+
+<table name="TERMS_REF_DB" idMethod="native">
+    <column name="TERMS_REF_DB_ID" primaryKey="true" required="true" type="INTEGER" autoIncrement="true"/>
+    <column name="COMPANY_ID" required="true" type="INTEGER"/>
+    <column name="LIST_I_D" required="true" type="VARCHAR" size="25"/>
+    <column name="FULL_NAME" required="true" type="VARCHAR" size="50"/>
+
+    <foreign-key foreignTable="COMPANY">
+	<reference local="COMPANY_ID" foreign="COMPANYID"/>
+    </foreign-key>
+</table>
+
+<table name="BILL_RET_DB" idMethod="native">
+    <column name="BILL_RET_DB_ID" primaryKey="true" required="true" type="INTEGER" autoIncrement="true"/>
+    <column name="PURCHASE_ORDER_DB_ID" required="true" type="INTEGER"/>
+	<column name="TXN_I_D" required="false" type="VARCHAR" size="20"/>
+    <column name="TIME_CREATED" required="true" type="DATE"/>
+    <column name="TIME_MODIFIED" required="false" type="DATE"/>
+    <column name="EDIT_SEQUENCE" required="false" type="VARCHAR" size="15"/>
+    <column name="TXN_NUMBER" required="false" type="INTEGER"/>
+    <column name="VENDOR_ID" required="false" type="INTEGER"/>
+	<column name="A_P_ACCOUNT_ID" required="false" type="INTEGER"/>
+    <column name="TXN_DATE" required="false" type="DATE"/>
+    <column name="DUE_DATE" required="false" type="DATE"/>
+    <column name="AMOUNT_DUE" required="false" scale="2" size="7" type="DECIMAL"/>
+    <column name="OPEN_AMOUNT" required="false" scale="2" size="7" type="DECIMAL"/>
+	<column name="REF_NUMBER" required="false" type="VARCHAR" size="15"/>
+    <column name="IS_PAID" required="false" type="VARCHAR" size="10"/>
+
+    <foreign-key foreignTable="PURCHASE_ORDER_DB">
+		<reference local="PURCHASE_ORDER_DB_ID" foreign="PURCHASE_ORDER_DB_ID"/>
+    </foreign-key>
+    <foreign-key foreignTable="VENDOR_RET_DB">
+		<reference local="VENDOR_ID" foreign="VENDOR_RET_DB_ID"/>
+    </foreign-key>
+    <foreign-key foreignTable="ACCOUNT_RET_DB">
+		<reference local="A_P_ACCOUNT_ID" foreign="ACCOUNT_RET_DB_ID"/>
+    </foreign-key>
+</table>
+
+<table name="ITEM_RECEIPT_RET_DB" idMethod="native">
+    <column name="ITEM_RECEIPT_RET_DB_ID" primaryKey="true" required="true" type="INTEGER" autoIncrement="true"/>
+    <column name="PURCHASE_ORDER_DB_ID" required="true" type="INTEGER"/>
+	<column name="TXN_I_D" required="false" type="VARCHAR" size="20"/>
+    <column name="TIME_CREATED" required="true" type="DATE"/>
+    <column name="TIME_MODIFIED" required="false" type="DATE"/>
+    <column name="EDIT_SEQUENCE" required="false" type="VARCHAR" size="15"/>
+    <column name="TXN_NUMBER" required="false" type="INTEGER"/>
+    <column name="VENDOR_ID" required="false" type="INTEGER"/>
+    <column name="TXN_DATE" required="false" type="DATE"/>
+    <column name="TAX" required="false" scale="2" size="7" type="DECIMAL"/>
+    <column name="SHIPPING" required="false" scale="2" size="7" type="DECIMAL"/>
+    <column name="DISCOUNT" required="false" scale="2" size="7" type="DECIMAL"/>
+    <column name="TOTAL_AMOUNT" required="true" scale="2" size="7" type="DECIMAL"/>
+    <column name="REF_NUMBER" required="false" type="VARCHAR" size="15"/>
+    <column name="MEMO" type="LONGVARCHAR"/>
+
+    <foreign-key foreignTable="PURCHASE_ORDER_DB">
+		<reference local="PURCHASE_ORDER_DB_ID" foreign="PURCHASE_ORDER_DB_ID"/>
+    </foreign-key>
+    <foreign-key foreignTable="VENDOR_RET_DB">
+		<reference local="VENDOR_ID" foreign="VENDOR_RET_DB_ID"/>
+    </foreign-key>
+</table>
+
+<table name="ITEM_LINE_RET_DB" idMethod="native">
+    <column name="ITEM_LINE_RET_DB_ID" primaryKey="true" required="true" type="INTEGER" autoIncrement="true"/>
+    <column name="BILL_RET_DB_ID" required="false" type="INTEGER"/>
+	<column name="ITEM_RECEIPT_RET_DB_ID" required="false" type="INTEGER"/>
+    <column name="CHECKOUT_CODE_ID" required="true" type="INTEGER"/>
+    <column name="PURCHASE_ORDER_ITEM_MAPPING_ID" required="true" type="INTEGER"/>
+	<column name="TXN_LINE_I_D" required="false" type="VARCHAR" size="20"/>
+    <column name="DESCRIPTION" required="false" type="VARCHAR" size="255"/>
+    <column name="QUANTITY" required="true" scale="2" size="7" type="DECIMAL"/>
+    <column name="COST" required="true" scale="2" size="7" type="DECIMAL"/>
+    <column name="AMOUNT" required="true" scale="2" size="7" type="DECIMAL"/>
+
+    <foreign-key foreignTable="BILL_RET_DB">
+		<reference local="BILL_RET_DB_ID" foreign="BILL_RET_DB_ID"/>
+    </foreign-key>
+    <foreign-key foreignTable="ITEM_RECEIPT_RET_DB">
+		<reference local="ITEM_RECEIPT_RET_DB_ID" foreign="ITEM_RECEIPT_RET_DB_ID"/>
+    </foreign-key>
+    <foreign-key foreignTable="CHECKOUT_CODE">
+		<reference local="CHECKOUT_CODE_ID" foreign="CHECKOUT_CODE_ID"/>
+    </foreign-key>
+    <foreign-key foreignTable="PURCHASE_ORDER_ITEM_MAPPING">
+		<reference local="PURCHASE_ORDER_ITEM_MAPPING_ID" foreign="PURCHASE_ORDER_ITEM_MAPPING_ID"/>
+    </foreign-key>
+</table>
+
+<table name="PRACTITIONER_SCHEDULE" idMethod="native">
+    <column name="PRACTITIONER_SCHEDULE_ID" primaryKey="true" required="true" type="INTEGER" autoIncrement="true"/>
+    <column name="PRACTITIONER_ID" required="true" type="INTEGER"/>
+    <column name="COMPANY_ID" required="true" type="INTEGER"/>
+	
+    <column name="NAME" required="true" type="VARCHAR" size="50"/>
+    <column name="IS_BASE_SCHEDULE" required="true" type="SMALLINT" />
+    <column name="START_DATE" required="false" type="DATE"/>
+    <column name="END_DATE" required="false" type="DATE"/>
+    
+    <column name="CREATION_DATE" required="true" type="DATE"/>
+    <column name="MODIFICATION_DATE" required="false" type="DATE"/>
+    <column name="CREATE_PERSON_ID" required="false" type="INTEGER"/>
+    <column name="MODIFY_PERSON_ID" required="false" type="INTEGER"/>
+    
+    <foreign-key foreignTable="PERSON">
+	<reference local="PRACTITIONER_ID" foreign="PERSONID"/>
+    </foreign-key>
+    <foreign-key foreignTable="COMPANY">
+	<reference local="COMPANY_ID" foreign="COMPANYID"/>
+    </foreign-key>
+    <foreign-key foreignTable="PERSON">
+	<reference local="CREATE_PERSON_ID" foreign="PERSONID"/>
+    </foreign-key>
+    <foreign-key foreignTable="PERSON">
+	<reference local="MODIFY_PERSON_ID" foreign="PERSONID"/>
+    </foreign-key>
+</table>
+
+<table name="PRACTITIONER_SCHEDULE_ITEM" idMethod="native">
+    <column name="PRACTITIONER_SCHEDULE_ITEM_ID" primaryKey="true" required="true" type="INTEGER" autoIncrement="true"/>
+    <column name="PRACTITIONER_SCHEDULE_ID" required="true" type="INTEGER"/>
+	
+    <column name="DAY_OF_WEEK" required="true" type="INTEGER" />
+	<column name="START_HOUR_OF_DAY" required="true" type="INTEGER" />
+	<column name="START_MINUTE" required="true" type="INTEGER" />
+	<column name="END_HOUR_OF_DAY" required="true" type="INTEGER" />
+	<column name="END_MINUTE" required="true" type="INTEGER" />
+	
+	<column name="TEMPLATED_APPOINTMENT_TYPE_ID" required="false" type="INTEGER"/>
+    
+    <foreign-key foreignTable="PRACTITIONER_SCHEDULE">
+		<reference local="PRACTITIONER_SCHEDULE_ID" foreign="PRACTITIONER_SCHEDULE_ID"/>
+    </foreign-key>
+    <foreign-key foreignTable="APPOINTMENT_TYPE">
+		<reference local="TEMPLATED_APPOINTMENT_TYPE_ID" foreign="APPOINTMENT_TYPE_ID"/>
+    </foreign-key>
+</table>
+
+
+
+<table name="CONTACT_STATUS" idMethod="native">
+    <column name="CONTACT_STATUS_ID" primaryKey="true" required="true" type="INTEGER" autoIncrement="true"/>
+    <column name="COMPANY_ID" required="true" type="INTEGER"/>
+	
+    <column name="PERSON_ID" required="true" type="INTEGER"/>
+    <column name="ADMIN_PERSON_ID" required="false" type="INTEGER" />
+	
+    <column name="STATUS" required="true" type="VARCHAR" size="200"/>
+    <column name="CONTACT_DATE" required="true" type="DATE"/>
+    <column name="TO_DO_DATE" required="false" type="DATE"/>
+
+    <column name="PRACTICE_AREA_ID" required="false" type="INTEGER" />
+    <column name="CONTACT_ATTEMPT" required="false" type="INTEGER" />
+    
+    <foreign-key foreignTable="COMPANY">
+	<reference local="COMPANY_ID" foreign="COMPANYID"/>
+    </foreign-key>
+    <foreign-key foreignTable="PERSON">
+	<reference local="PERSON_ID" foreign="PERSONID"/>
+    </foreign-key>
+    <foreign-key foreignTable="PERSON">
+	<reference local="ADMIN_PERSON_ID" foreign="PERSONID"/>
+    </foreign-key>
+    <foreign-key foreignTable="PRACTICE_AREA">
+	<reference local="PRACTICE_AREA_ID" foreign="PRACTICE_AREA_ID"/>
+    </foreign-key>
+</table>
+
+<table name="TO_DO_ITEM" idMethod="native">
+    <column name="TO_DO_ITEM_ID" primaryKey="true" required="true" type="INTEGER" autoIncrement="true"/>
+    <column name="COMPANY_ID" required="true" type="INTEGER"/>
+	
+    <column name="PERSON_ID" required="false" type="INTEGER"/>
+    <column name="ASSIGN_PERSON_ID" required="false" type="INTEGER" />
+    <column name="COMPLETE_PERSON_ID" required="false" type="INTEGER" />
+	
+    <column name="TO_DO_TEXT" required="true" type="VARCHAR" size="50"/>
+    <column name="TO_DO_DATE" required="true" type="DATE"/>
+    <column name="COMPLETION_DATE" required="false" type="DATE"/>
+    
+    <foreign-key foreignTable="COMPANY">
+	<reference local="COMPANY_ID" foreign="COMPANYID"/>
+    </foreign-key>
+    <foreign-key foreignTable="PERSON">
+	<reference local="PERSON_ID" foreign="PERSONID"/>
+    </foreign-key>
+    <foreign-key foreignTable="PERSON">
+	<reference local="ASSIGN_PERSON_ID" foreign="PERSONID"/>
+    </foreign-key>
+    <foreign-key foreignTable="PERSON">
+	<reference local="COMPLETE_PERSON_ID" foreign="PERSONID"/>
+    </foreign-key>
+</table>
+
+<table name="CARE_DETAILS" idMethod="native">
+    <column name="CARE_DETAILS_ID" primaryKey="true" required="true" type="INTEGER" autoIncrement="true"/>
+    <column name="COMPANY_ID" required="true" type="INTEGER"/>
+	
+    <column name="PERSON_ID" required="true" type="INTEGER"/>
+    <column name="PREFERRED_PRACTITIONER_ID" required="false" type="INTEGER" />
+    <column name="PRACTICE_AREA_ID" required="false" type="INTEGER" />
+	
+    <column name="FREQUENCY_OF_CARE_VALUE" required="false" type="INTEGER" />
+    <column name="FREQUENCY_OF_CARE_PERIOD" required="false" type="INTEGER" />
+    <column name="FREQUENCY_OF_CARE_PERIOD_RECURRENCE" required="false" type="INTEGER" />
+    <column name="FREQUENCY_OF_CARE_DAYS" required="false" type="INTEGER" />
+
+    <column name="IS_PRN" required="true" type="SMALLINT" />
+    
+    <column name="CREATION_DATE" required="true" type="DATE"/>
+    <column name="MODIFICATION_DATE" required="false" type="DATE"/>
+    <column name="CREATE_PERSON_ID" required="false" type="INTEGER"/>
+    <column name="MODIFY_PERSON_ID" required="false" type="INTEGER"/>
+    
+    <foreign-key foreignTable="COMPANY">
+	<reference local="COMPANY_ID" foreign="COMPANYID"/>
+    </foreign-key>
+    <foreign-key foreignTable="PERSON">
+	<reference local="PERSON_ID" foreign="PERSONID"/>
+    </foreign-key>
+    <foreign-key foreignTable="PERSON">
+	<reference local="PREFERRED_PRACTITIONER_ID" foreign="PERSONID"/>
+    </foreign-key>
+    <foreign-key foreignTable="PRACTICE_AREA">
+	<reference local="PRACTICE_AREA_ID" foreign="PRACTICE_AREA_ID"/>
+    </foreign-key>
+    <foreign-key foreignTable="PERSON">
+	<reference local="CREATE_PERSON_ID" foreign="PERSONID"/>
+    </foreign-key>
+    <foreign-key foreignTable="PERSON">
+	<reference local="MODIFY_PERSON_ID" foreign="PERSONID"/>
+    </foreign-key>
+</table>
+
+<table name="BLACK_HOLE" idMethod="native">
+    <column name="BLACK_HOLE_ID" primaryKey="true" required="true" type="INTEGER" autoIncrement="true"/>
+    <column name="COMPANY_ID" required="true" type="INTEGER"/>
+    
+    <column name="CREATION_DATE" required="true" type="DATE"/>
+    <column name="MODIFICATION_DATE" required="false" type="DATE"/>
+    <column name="CREATE_PERSON_ID" required="false" type="INTEGER"/>
+    <column name="MODIFY_PERSON_ID" required="false" type="INTEGER"/>
+    
+    <foreign-key foreignTable="COMPANY">
+		<reference local="COMPANY_ID" foreign="COMPANYID"/>
+    </foreign-key>
+    <foreign-key foreignTable="PERSON">
+		<reference local="CREATE_PERSON_ID" foreign="PERSONID"/>
+    </foreign-key>
+    <foreign-key foreignTable="PERSON">
+		<reference local="MODIFY_PERSON_ID" foreign="PERSONID"/>
+    </foreign-key>
+</table>
+
+<table name="BLACK_HOLE_MEMBER" idMethod="native">
+    <column name="BLACK_HOLE_MEMBER_ID" primaryKey="true" required="true" type="INTEGER" autoIncrement="true"/>
+	
+    <column name="BLACK_HOLE_ID" required="true" type="INTEGER"/>
+    <column name="PERSON_ID" required="true" type="INTEGER"/>
+    <column name="PRACTICE_AREA_ID" required="false" type="INTEGER" />
+	
+    <column name="IS_CURRENT_MEMBER" required="true" type="SMALLINT"/>
+    <column name="BLACK_HOLE_ADD_DATE" required="true" type="DATE"/>
+    <column name="BLACK_HOLE_REMOVE_DATE" required="false" type="DATE"/>
+    
+    <foreign-key foreignTable="BLACK_HOLE">
+		<reference local="BLACK_HOLE_ID" foreign="BLACK_HOLE_ID"/>
+    </foreign-key>
+    <foreign-key foreignTable="PERSON">
+		<reference local="PERSON_ID" foreign="PERSONID"/>
+    </foreign-key>
+    <foreign-key foreignTable="PRACTICE_AREA">
+		<reference local="PRACTICE_AREA_ID" foreign="PRACTICE_AREA_ID"/>
+    </foreign-key>
+</table>
+	
+<table name="CHECKOUT_CODE" idMethod="native">
+    <column name="CHECKOUT_CODE_ID" primaryKey="true" required="true" type="INTEGER" autoIncrement="true"/>
+    <column name="COMPANY_ID" required="true" type="INTEGER"/>
+    <column name="CODE" required="true" type="VARCHAR" size="50"/>
+    <column name="DESCRIPTION" required="true" type="VARCHAR" size="255"/>
+    <column name="AMOUNT" required="true" scale="2" size="7" type="DECIMAL"/>
+    <column name="TYPE" required="true" type="SMALLINT"/>
+    <column name="PRACTICE_AREA_ID" required="false" type="INTEGER" />
+	<column name="EDIT_SEQUENCE" required="false" type="VARCHAR" size="15"/>
+    <column name="LIST_I_D" required="false" type="VARCHAR" size="25"/>
+    <column name="QB_LIST_I_D" required="false" type="VARCHAR" size="25"/>
+    <column name="REQUEST_I_D" required="false" type="VARCHAR" size="40"/>
+    <column name="ITEM_NUMBER" required="true" type="INTEGER"/>
+    <column name="IS_PLAN_USE" required="false" type="SMALLINT"/>
+    <column name="IS_COMMISSIONABLE" required="false" type="SMALLINT"/>
+    <column name="IS_TIPPABLE" required="false" type="SMALLINT"/>
+    <column name="VENDOR_ID" required="false" type="INTEGER"/>
+    <column name="INVENTORY_DEPARTMENT_DB_ID" required="false" type="INTEGER"/>
+	
+    <column name="VENDOR_PRODUCT_NUMBER" required="false" type="VARCHAR" size="10"/>
+	
+    <column name="TAX_CODE_ID" required="false" type="INTEGER"/><!-- this is a remnant from QBPoS, I'm thinking -->
+    <column name="ITEM_SALES_TAX_RET_DB_ID" required="false" type="INTEGER"/><!-- this is the QB Sales Tax Item that contains the actual tax % -->
+    <column name="SALES_TAX_CODE_RET_DB_ID" required="true" type="INTEGER"/><!-- this is the QB Sales Tax Code that does not contains a sales tax %, but is all I get mapped to individual inventory items from QB -->
+
+    <column name="UPC" required="false" type="VARCHAR" size="50"/>
+
+    <column name="AVAILABLE_QUANTITY" required="false" type="SMALLINT"/>
+    <column name="ON_HAND_QUANTITY" required="false" type="SMALLINT"/>
+    <column name="REORDER_POINT" required="false" type="SMALLINT"/>
+
+    <column name="ORDER_COST" required="true" scale="2" size="7" type="DECIMAL"/>
+    <column name="AVERAGE_UNIT_COST" required="true" scale="2" size="7" type="DECIMAL"/>
+
+    <column name="C_O_G_S_ACCOUNT_ID" required="false" type="INTEGER"/>
+    <column name="INCOME_ACCOUNT_ID" required="false" type="INTEGER"/>
+    <column name="ASSET_ACCOUNT_ID" required="false" type="INTEGER"/>
+    <column name="EXPENSE_ACCOUNT_ID" required="false" type="INTEGER"/>
+	
+    <column name="CREATION_DATE" required="true" type="DATE"/>
+    <column name="MODIFICATION_DATE" required="false" type="DATE"/>
+    <column name="CREATE_PERSON_ID" required="false" type="INTEGER"/>
+    <column name="MODIFY_PERSON_ID" required="false" type="INTEGER"/>
+	
+    <column name="IS_ACTIVE" required="true" type="SMALLINT" default="1"/>
+	
+    <column name="QB_ITEM_TYPE" required="false" type="SMALLINT"/>
+    <column name="IS_REIMBURSABLE" required="false" type="SMALLINT" default="1"/>
+	<column name="SALES_DESC" type="LONGVARCHAR"/>
+	
+    <foreign-key foreignTable="COMPANY">
+		<reference local="COMPANY_ID" foreign="COMPANYID"/>
+    </foreign-key>
+    <foreign-key foreignTable="PRACTICE_AREA">
+		<reference local="PRACTICE_AREA_ID" foreign="PRACTICE_AREA_ID"/>
+    </foreign-key>
+    <foreign-key foreignTable="SALES_RECEIPT_ITEM_RET_DB">
+		<reference local="LIST_I_D" foreign="LIST_I_D"/>
+    </foreign-key>
+    <foreign-key foreignTable="SALES_RECEIPT_ITEM_RET_DB">
+		<reference local="ITEM_NUMBER" foreign="ITEM_NUMBER"/>
+    </foreign-key>
+    <foreign-key foreignTable="PERSON">
+		<reference local="CREATE_PERSON_ID" foreign="PERSONID"/>
+    </foreign-key>
+    <foreign-key foreignTable="PERSON">
+		<reference local="MODIFY_PERSON_ID" foreign="PERSONID"/>
+    </foreign-key>
+    <foreign-key foreignTable="TAX_CODE">
+		<reference local="TAX_CODE_ID" foreign="TAX_CODE_ID"/>
+    </foreign-key>
+    <foreign-key foreignTable="ITEM_SALES_TAX_RET_DB">
+		<reference local="ITEM_SALES_TAX_RET_DB_ID" foreign="ITEM_SALES_TAX_RET_DB_ID"/>
+    </foreign-key>
+    <foreign-key foreignTable="SALES_TAX_CODE_RET_DB">
+		<reference local="SALES_TAX_CODE_RET_DB_ID" foreign="SALES_TAX_CODE_RET_DB_ID"/>
+    </foreign-key>
+    <foreign-key foreignTable="ACCOUNT_RET_DB">
+		<reference local="C_O_G_S_ACCOUNT_ID" foreign="ACCOUNT_RET_DB_ID"/>
+    </foreign-key>
+    <foreign-key foreignTable="ACCOUNT_RET_DB">
+		<reference local="INCOME_ACCOUNT_ID" foreign="ACCOUNT_RET_DB_ID"/>
+    </foreign-key>
+    <foreign-key foreignTable="ACCOUNT_RET_DB">
+		<reference local="ASSET_ACCOUNT_ID" foreign="ACCOUNT_RET_DB_ID"/>
+    </foreign-key>
+    <foreign-key foreignTable="ACCOUNT_RET_DB">
+		<reference local="EXPENSE_ACCOUNT_ID" foreign="ACCOUNT_RET_DB_ID"/>
+    </foreign-key>
+    <foreign-key foreignTable="VENDOR_RET_DB">
+		<reference local="VENDOR_ID" foreign="VENDOR_RET_DB_ID"/>
+    </foreign-key>
+    <foreign-key foreignTable="INVENTORY_DEPARTMENT_DB">
+		<reference local="INVENTORY_DEPARTMENT_DB_ID" foreign="INVENTORY_DEPARTMENT_DB_ID"/>
+    </foreign-key>
+</table>
+
+<table name="CHECKOUT_ORDERLINE" idMethod="native">
+    <column name="CHECKOUT_ORDERLINE_ID" primaryKey="true" required="true" type="INTEGER" autoIncrement="true"/>
+    <column name="QUANTITY" required="true" scale="2" size="7" type="DECIMAL"/>
+    <column name="ORDERID" required="true" type="INTEGER"/>
+    <column name="CHECKOUT_CODE_ID" required="true" type="INTEGER"/>
+    <column name="PRICE" required="true" scale="2" size="7" type="DECIMAL"/>
+    <column name="TAX" required="false" scale="2" size="7" type="DECIMAL"/>
+    <column name="ACTUAL_AMOUNT" scale="2" size="7" type="DECIMAL"/>
+    <column name="DISCOUNTCODE" size="50" type="VARCHAR"/>
+    <column name="ORDERSTATUS" size="20" type="VARCHAR"/>
+    <column name="PAYMENT_PLAN_INSTANCE_ID" required="false" type="INTEGER"/>
+    <column name="APPOINTMENT_ID" required="false" type="INTEGER"/>
+    <column name="PRACTITIONER_ID" required="false" type="INTEGER"/>
+    <column name="COMMISSION" required="false" scale="2" size="7" type="DECIMAL"/>
+    <column name="COST" required="false" scale="2" size="7" type="DECIMAL"/>
+    <column name="PRICE_PRECISE" required="false" scale="4" size="9" type="DECIMAL"/>
+	
+    <foreign-key foreignTable="PERSONORDER">
+	<reference local="ORDERID" foreign="ORDERID"/>
+    </foreign-key>
+    <foreign-key foreignTable="CHECKOUT_CODE">
+	<reference local="CHECKOUT_CODE_ID" foreign="CHECKOUT_CODE_ID"/>
+    </foreign-key>
+    <foreign-key foreignTable="ORDERSTATUS">
+	<reference local="ORDERSTATUS" foreign="ORDERSTATUS"/>
+    </foreign-key>
+    <foreign-key foreignTable="PAYMENT_PLAN_INSTANCE">
+	<reference local="PAYMENT_PLAN_INSTANCE_ID" foreign="PAYMENT_PLAN_INSTANCE_ID"/>
+    </foreign-key>
+    <foreign-key foreignTable="APPOINTMENT">
+	<reference local="APPOINTMENT_ID" foreign="APPOINTMENT_ID"/>
+    </foreign-key>
+    <foreign-key foreignTable="PERSON">
+	<reference local="PRACTITIONER_ID" foreign="PERSONID"/>
+    </foreign-key>
+</table>
+
+<table name="CHECKOUT_CODE_CHILD_MAPPING">
+    <column name="PARENT_ID" primaryKey="true" required="true" type="INTEGER"/>
+    <column name="CHILD_ID" primaryKey="true" required="true" type="INTEGER"/>
+    <column name="QTY_IN_PARENT" required="true" type="SMALLINT"/>
+
+    <foreign-key foreignTable="CHECKOUT_CODE">
+		<reference local="PARENT_ID" foreign="CHECKOUT_CODE_ID"/>
+    </foreign-key>
+    <foreign-key foreignTable="CHECKOUT_CODE">
+		<reference local="CHILD_ID" foreign="CHECKOUT_CODE_ID"/>
+    </foreign-key>
+</table>
+
+<table name="APPOINTMENT_WAIT_LIST_DB" idMethod="native">
+    <column name="APPOINTMENT_WAIT_LIST_DB_ID" primaryKey="true" required="true" type="INTEGER" autoIncrement="true"/>
+    <column name="WAITING_PERSON_ID" required="true" type="INTEGER"/>
+    <column name="APPOINTMENT_TYPE_ID" required="true" type="INTEGER"/>
+    <column name="DURATION_MINUTES" required="true" type="SMALLINT" />
+    <column name="IS_ACTIVE" required="true" type="SMALLINT" default="1" />
+	
+    <column name="CREATION_DATE" required="true" type="DATE"/>
+    <column name="MODIFICATION_DATE" required="false" type="DATE"/>
+    <column name="CREATE_PERSON_ID" required="true" type="INTEGER"/>
+    <column name="MODIFY_PERSON_ID" required="false" type="INTEGER"/>
+
+    <foreign-key foreignTable="PERSON">
+		<reference local="WAITING_PERSON_ID" foreign="PERSONID"/>
+    </foreign-key>
+    <foreign-key foreignTable="APPOINTMENT_TYPE">
+		<reference local="APPOINTMENT_TYPE_ID" foreign="APPOINTMENT_TYPE_ID"/>
+    </foreign-key>
+    <foreign-key foreignTable="PERSON">
+		<reference local="CREATE_PERSON_ID" foreign="PERSONID"/>
+    </foreign-key>
+    <foreign-key foreignTable="PERSON">
+		<reference local="MODIFY_PERSON_ID" foreign="PERSONID"/>
+    </foreign-key>
+</table>
+
+<table name="PRODUCT_WAIT_LIST_DB" idMethod="native">
+    <column name="PRODUCT_WAIT_LIST_DB_ID" primaryKey="true" required="true" type="INTEGER" autoIncrement="true"/>
+    <column name="WAITING_PERSON_ID" required="true" type="INTEGER"/>
+    <column name="CHECKOUT_CODE_ID" required="true" type="INTEGER"/>
+	<!--
+	<column name="PURCHASE_ORDER_ITEM_MAPPING_ID" required="false" type="INTEGER"/>
+	-->
+    <column name="QUANTITY" required="true" scale="2" size="7" type="DECIMAL"/>
+    <column name="IS_ACTIVE" required="true" type="SMALLINT" default="1" />
+	
+    <column name="CREATION_DATE" required="true" type="DATE"/>
+    <column name="MODIFICATION_DATE" required="false" type="DATE"/>
+    <column name="CREATE_PERSON_ID" required="true" type="INTEGER"/>
+    <column name="MODIFY_PERSON_ID" required="false" type="INTEGER"/>
+
+    <foreign-key foreignTable="PERSON">
+		<reference local="WAITING_PERSON_ID" foreign="PERSONID"/>
+    </foreign-key>
+    <foreign-key foreignTable="CHECKOUT_CODE">
+		<reference local="CHECKOUT_CODE_ID" foreign="CHECKOUT_CODE_ID"/>
+    </foreign-key>
+    <foreign-key foreignTable="PERSON">
+		<reference local="CREATE_PERSON_ID" foreign="PERSONID"/>
+    </foreign-key>
+    <foreign-key foreignTable="PERSON">
+		<reference local="MODIFY_PERSON_ID" foreign="PERSONID"/>
+    </foreign-key>
+	<!--
+    <foreign-key foreignTable="PURCHASE_ORDER_ITEM_MAPPING">
+		<reference local="PURCHASE_ORDER_ITEM_MAPPING_ID" foreign="PURCHASE_ORDER_ITEM_MAPPING_ID"/>
+    </foreign-key>
+	-->
+</table>
+
+<table name="PAYMENT_PLAN" idMethod="native">
+    <column name="PAYMENT_PLAN_ID" primaryKey="true" required="true" type="INTEGER" autoIncrement="true"/>
+    <column name="PLAN_NAME" required="true" type="VARCHAR" size="255"/>
+    <column name="TYPE" required="true" type="SMALLINT"/>
+    <column name="COMPANY_ID" required="true" type="INTEGER"/>
+    <column name="CHECKOUT_CODE_ID" required="true" type="INTEGER"/>
+    <column name="PRACTICE_AREA_ID" required="false" type="INTEGER" />
+		
+    <!-- bill per visit, per day/week/month/year -->
+    <!-- pool visits among group under care members? -->
+    <!-- equal billing per visit?  or discounts for additional group under care members -->
+    <!--  -->
+    <column name="VISITS" required="true" type="INTEGER"/>
+    <column name="PRICE" required="true" scale="2" size="7" type="DECIMAL"/>
+    <column name="MONTHS_TO_PAY" required="true" type="INTEGER"/>
+    <column name="DEFAULT_ALLOW_MONTHLY_PAYMENTS" required="true" type="SMALLINT"/>
+    <column name="DEFAULT_ALLOW_GROUP_POOLING" required="true" type="SMALLINT"/>
+    <column name="NOTE" required="true" type="VARCHAR" size="255"/>
+	
+    <column name="CREATION_DATE" required="true" type="DATE"/>
+    <column name="MODIFICATION_DATE" required="false" type="DATE"/>
+    <column name="CREATE_PERSON_ID" required="false" type="INTEGER"/>
+    <column name="MODIFY_PERSON_ID" required="false" type="INTEGER"/>
+	
+    <foreign-key foreignTable="COMPANY">
+	<reference local="COMPANY_ID" foreign="COMPANYID"/>
+    </foreign-key>
+    <foreign-key foreignTable="CHECKOUT_CODE">
+	<reference local="CHECKOUT_CODE_ID" foreign="CHECKOUT_CODE_ID"/>
+    </foreign-key>
+    <foreign-key foreignTable="PRACTICE_AREA">
+	<reference local="PRACTICE_AREA_ID" foreign="PRACTICE_AREA_ID"/>
+    </foreign-key>
+    <foreign-key foreignTable="PERSON">
+	<reference local="CREATE_PERSON_ID" foreign="PERSONID"/>
+    </foreign-key>
+    <foreign-key foreignTable="PERSON">
+	<reference local="MODIFY_PERSON_ID" foreign="PERSONID"/>
+    </foreign-key>
+</table>
+
+<table name="PAYMENT_PLAN_INSTANCE" idMethod="native">
+    <column name="PAYMENT_PLAN_INSTANCE_ID" primaryKey="true" required="true" type="INTEGER" autoIncrement="true"/>
+    <column name="PAYMENT_PLAN_ID" required="true" type="INTEGER"/>
+    <column name="PERSON_ID" required="true" type="INTEGER"/>
+    <column name="VISITS_USED" required="true" type="INTEGER"/>
+    <column name="VISITS_REMAINING" required="true" type="INTEGER"/>
+    <column name="IS_PAID_FOR" required="true" type="SMALLINT"/>
+    <column name="AMOUNT_CHARGED" required="true" scale="2" size="7" type="DECIMAL"/>
+    <column name="AMOUNT_PAID" required="true" scale="2" size="7" type="DECIMAL"/>
+    <column name="MONTHS_PAID" required="true" type="INTEGER"/>
+    <column name="START_DATE" required="true" type="DATE"/>
+    <column name="END_DATE" required="false" type="DATE"/>
+    <column name="ISACTIVE" required="true" type="SMALLINT"/>
+    <column name="ALLOW_GROUP_POOLING" required="true" type="SMALLINT"/>
+    <column name="NOTE" required="false" type="VARCHAR" size="255"/>
+    <column name="CREATION_DATE" required="true" type="DATE"/>
+    <column name="MODIFICATION_DATE" required="false" type="DATE"/>
+    <column name="CREATE_PERSON_ID" required="false" type="INTEGER"/>
+    <column name="MODIFY_PERSON_ID" required="false" type="INTEGER"/>
+	
+    <foreign-key foreignTable="PAYMENT_PLAN">
+	<reference local="PAYMENT_PLAN_ID" foreign="PAYMENT_PLAN_ID"/>
+    </foreign-key>
+    <foreign-key foreignTable="PERSON">
+	<reference local="PERSON_ID" foreign="PERSONID"/>
+    </foreign-key>
+    <foreign-key foreignTable="PERSON">
+	<reference local="CREATE_PERSON_ID" foreign="PERSONID"/>
+    </foreign-key>
+    <foreign-key foreignTable="PERSON">
+	<reference local="MODIFY_PERSON_ID" foreign="PERSONID"/>
+    </foreign-key>
+</table>
+
+<table name="PAYMENT_PLAN_INSTANCE_PAYMENT">
+    <column name="PAYMENT_PLAN_INSTANCE_ID" required="true" primaryKey="true" type="INTEGER"/>
+    <column name="PAYMENT_ID" required="true" primaryKey="true" type="INTEGER"/>
+    <foreign-key foreignTable="PAYMENT_PLAN_INSTANCE">
+	<reference local="PAYMENT_PLAN_INSTANCE_ID" foreign="PAYMENT_PLAN_INSTANCE_ID"/>
+    </foreign-key>
+    <foreign-key foreignTable="PERSONORDER">
+	<reference local="PAYMENT_ID" foreign="ORDERID"/>
+    </foreign-key>
+</table>
+
+<table name="GROUP_UNDER_CARE" idMethod="native">
+    <column name="GROUP_UNDER_CARE_ID" required="true" primaryKey="true" type="INTEGER" autoIncrement="true"/>
+    <column name="COMPANY_ID" required="true" type="INTEGER"/>
+    <column name="NOTE" required="true" type="VARCHAR" size="255"/>
+    <column name="PRIMARY_CLIENT_ID" required="true" type="INTEGER"/>
+    <column name="FRP_ID" required="true" type="INTEGER"/>
+    <column name="CREATION_DATE" required="true" type="DATE"/>
+    <column name="MODIFICATION_DATE" required="false" type="DATE"/>
+    <column name="CREATE_PERSON_ID" required="false" type="INTEGER"/>
+    <column name="MODIFY_PERSON_ID" required="false" type="INTEGER"/>
+	
+    <foreign-key foreignTable="COMPANY">
+	<reference local="COMPANY_ID" foreign="COMPANYID"/>
+    </foreign-key>
+    <foreign-key foreignTable="PERSON">
+	<reference local="PRIMARY_CLIENT_ID" foreign="PERSONID"/>
+    </foreign-key>
+    <foreign-key foreignTable="PERSON">
+	<reference local="FRP_ID" foreign="PERSONID"/>
+    </foreign-key>
+    <foreign-key foreignTable="PERSON">
+	<reference local="CREATE_PERSON_ID" foreign="PERSONID"/>
+    </foreign-key>
+    <foreign-key foreignTable="PERSON">
+	<reference local="MODIFY_PERSON_ID" foreign="PERSONID"/>
+    </foreign-key>
+</table>
+
+<table name="GROUP_UNDER_CARE_MEMBER">
+    <column name="GROUP_UNDER_CARE_ID" required="true" primaryKey="true" type="INTEGER"/>
+    <column name="PERSON_ID" required="true" primaryKey="true" type="INTEGER"/>
+    <column name="GROUP_UNDER_CARE_MEMBER_TYPE_ID" required="false" type="INTEGER"/>
+    <column name="RELATIONSHIP_TO_PRIMARY_CLIENT" required="false" type="SMALLINT" />
+	
+    <foreign-key foreignTable="GROUP_UNDER_CARE">
+	<reference local="GROUP_UNDER_CARE_ID" foreign="GROUP_UNDER_CARE_ID"/>
+    </foreign-key>
+    <foreign-key foreignTable="PERSON">
+	<reference local="PERSON_ID" foreign="PERSONID"/>
+    </foreign-key>
+    <foreign-key foreignTable="GROUP_UNDER_CARE_MEMBER_TYPE">
+	<reference local="GROUP_UNDER_CARE_MEMBER_TYPE_ID" foreign="GROUP_UNDER_CARE_MEMBER_TYPE_ID"/>
+    </foreign-key>
+</table>
+
+<table name="GROUP_UNDER_CARE_MEMBER_TYPE" idMethod="native">
+    <column name="GROUP_UNDER_CARE_MEMBER_TYPE_ID" required="true" primaryKey="true" type="INTEGER" autoIncrement="true"/>
+    <column name="COMPANY_ID" required="true" type="INTEGER"/>
+    <column name="TYPE_NAME" required="true" type="VARCHAR" size="50"/>
+	
+    <foreign-key foreignTable="COMPANY">
+	<reference local="COMPANY_ID" foreign="COMPANYID"/>
+    </foreign-key>
+</table>
+
+<table name="GROUP_UNDER_CARE_MEMBER_PRACTICE_AREA_VISIT_CHARGE">
+    <column name="GROUP_UNDER_CARE_MEMBER_TYPE_ID" required="true" primaryKey="true" type="INTEGER"/>
+    <column name="PRACTICE_AREA_ID" required="true" primaryKey="true" type="INTEGER"/>
+    <column name="VISIT_CHARGE" required="true" scale="2" size="7" type="DECIMAL"/>
+	
+    <foreign-key foreignTable="GROUP_UNDER_CARE_MEMBER_TYPE">
+	<reference local="GROUP_UNDER_CARE_MEMBER_TYPE_ID" foreign="GROUP_UNDER_CARE_MEMBER_TYPE_ID"/>
+    </foreign-key>
+    <foreign-key foreignTable="PRACTICE_AREA">
+	<reference local="PRACTICE_AREA_ID" foreign="PRACTICE_AREA_ID"/>
+    </foreign-key>
+</table>
+
+<table name="APPOINTMENT" idMethod="native">
+    <column name="APPOINTMENT_ID" primaryKey="true" required="true" type="INTEGER" autoIncrement="true"/>
+    <column name="COMPANY_ID" required="true" type="INTEGER"/>
+    <column name="CLIENT_ID" required="true" type="INTEGER"/>
+    <column name="PRACTITIONER_ID" required="true" type="INTEGER"/>
+    <column name="ROOM_ID" required="false" type="INTEGER"/>
+    <column name="APPOINTMENT_TYPE_ID" required="false" type="INTEGER"/>
+    <column name="PARENT_ID" required="false" type="INTEGER"/>
+    <column name="APPOINTMENT_STATE" type="SMALLINT" default="0"/>
+    <column name="APPOINTMENT_DATE" required="true" type="DATE"/>
+    <column name="APPOINTMENT_END_DATE" required="true" type="DATE"/>
+    <column name="DURATION_MINUTES" required="true" type="SMALLINT" />
+	
+    <column name="COMMENTS" required="false" type="VARCHAR" size="200"/>
+	
+    <column name="RECURRING" required="false" type="SMALLINT" default="0" />
+    <column name="RECUR_VAL" required="false" type="SMALLINT" />
+    <column name="RECUR_PERIOD" required="false" type="SMALLINT" />
+    <column name="RECUR_PW" required="false" type="SMALLINT" />
+    <column name="RECUR_PWS" required="false" type="SMALLINT" />
+    <column name="STOP_AFTER_N" required="false" type="SMALLINT" />
+    <column name="STOP_BY_DATE" required="false" type="DATE"/>
+
+    <column name="FIRST_TIME" required="false" type="SMALLINT" default="0" />
+    
+    <column name="RESCHEDULE_DATE" required="false" type="DATE"/>
+    <column name="LATE_DATE" required="false" type="DATE"/>
+    <column name="CHECKED_IN_DATE" required="false" type="DATE"/>
+    <column name="CHECKED_OUT_DATE" required="false" type="DATE"/>
+    <column name="CANCELLED_DATE" required="false" type="DATE"/>
+    <column name="NO_SHOW_DATE" required="false" type="DATE"/>
+    <column name="CONFIRMED_DATE" required="false" type="DATE"/>
+
+    <column name="PAYMENT_PLAN_INSTANCE_ID" required="false" type="INTEGER"/>
+    
+    <column name="CREATION_DATE" required="true" type="DATE"/>
+    <column name="MODIFICATION_DATE" required="false" type="DATE"/>
+    <column name="CREATE_PERSON_ID" required="false" type="INTEGER"/>
+    <column name="MODIFY_PERSON_ID" required="false" type="INTEGER"/>
+    
+    <foreign-key foreignTable="COMPANY">
+	<reference local="COMPANY_ID" foreign="COMPANYID"/>
+    </foreign-key>
+    <foreign-key foreignTable="PERSON">
+	<reference local="CLIENT_ID" foreign="PERSONID"/>
+    </foreign-key>
+    <foreign-key foreignTable="PERSON">
+	<reference local="PRACTITIONER_ID" foreign="PERSONID"/>
+    </foreign-key>
+    <foreign-key foreignTable="ROOM">
+	<reference local="ROOM_ID" foreign="ROOMID"/>
+    </foreign-key>
+    <foreign-key foreignTable="APPOINTMENT_TYPE">
+	<reference local="APPOINTMENT_TYPE_ID" foreign="APPOINTMENT_TYPE_ID"/>
+    </foreign-key>
+    <foreign-key foreignTable="APPOINTMENT">
+	<reference local="PARENT_ID" foreign="APPOINTMENT_ID"/>
+    </foreign-key>
+    <foreign-key foreignTable="PAYMENT_PLAN_INSTANCE">
+	<reference local="PAYMENT_PLAN_INSTANCE_ID" foreign="PAYMENT_PLAN_INSTANCE_ID"/>
+    </foreign-key>
+    <foreign-key foreignTable="PERSON">
+	<reference local="CREATE_PERSON_ID" foreign="PERSONID"/>
+    </foreign-key>
+    <foreign-key foreignTable="PERSON">
+	<reference local="MODIFY_PERSON_ID" foreign="PERSONID"/>
+    </foreign-key>
+</table>
+
+<table name="APPOINTMENT_TYPE" idMethod="native">
+    <column name="APPOINTMENT_TYPE_ID" primaryKey="true" required="true" type="INTEGER" autoIncrement="true"/>
+    <column name="COMPANY_ID" required="true" type="INTEGER"/>
+    <column name="APPOINTMENT_TYPE_NAME" required="true" size="50" type="VARCHAR" />
+    <column name="DEFAULT_DURATION_MINUTES" required="true" type="SMALLINT" />
+    <column name="BG_COLOR_CODE" required="true" size="6" type="VARCHAR" />
+    <column name="TEXT_COLOR_CODE" required="true" size="6" type="VARCHAR" />
+    <column name="IMAGE_URL" required="false" size="255" type="VARCHAR" />
+    <column name="APPOINTMENT_TYPE_TYPE" required="true" type="SMALLINT" default="0" />
+    <column name="PRACTICE_AREA_ID" required="true" type="INTEGER" />
+    <column name="ALLOW_DOUBLE_BOOKING" required="false" type="SMALLINT" default="0" />
+    <column name="ALLOW_CLIENT_SCHEDULING" required="false" type="SMALLINT" default="1" />
+    <column name="IS_ACTIVE" required="false" type="SMALLINT" default="1" />
+    <column name="CREATION_DATE" required="true" type="DATE"/>
+    <column name="MODIFICATION_DATE" required="false" type="DATE"/>
+    <column name="CREATE_PERSON_ID" required="false" type="INTEGER"/>
+    <column name="MODIFY_PERSON_ID" required="false" type="INTEGER"/>
+	
+    <foreign-key foreignTable="COMPANY">
+	<reference local="COMPANY_ID" foreign="COMPANYID"/>
+    </foreign-key>
+    <foreign-key foreignTable="PRACTICE_AREA">
+	<reference local="PRACTICE_AREA_ID" foreign="PRACTICE_AREA_ID"/>
+    </foreign-key>
+    <foreign-key foreignTable="PERSON">
+	<reference local="CREATE_PERSON_ID" foreign="PERSONID"/>
+    </foreign-key>
+    <foreign-key foreignTable="PERSON">
+	<reference local="MODIFY_PERSON_ID" foreign="PERSONID"/>
+    </foreign-key>
+</table>
+
+<table name="ALLOWED_APPOINTMENTS_OFF_HOURS_TYPE">
+    <column name="APPOINTMENT_TYPE_ID" required="true" primaryKey="true" type="INTEGER"/>
+    <column name="ALLOWED_APPOINTMENT_TYPE_ID" required="true" primaryKey="true" type="INTEGER"/>
+    <foreign-key foreignTable="APPOINTMENT_TYPE">
+	<reference local="APPOINTMENT_TYPE_ID" foreign="APPOINTMENT_TYPE_ID"/>
+    </foreign-key>
+    <foreign-key foreignTable="APPOINTMENT_TYPE">
+	<reference local="ALLOWED_APPOINTMENT_TYPE_ID" foreign="APPOINTMENT_TYPE_ID"/>
+    </foreign-key>
+</table>
+
+<table name="ASSOCIATED_APPOINTMENTS">
+    <column name="APPOINTMENT_ID" required="true" primaryKey="true" type="INTEGER"/>
+    <column name="ASSOCIATED_APPOINTMENT_ID" required="true" primaryKey="true" type="INTEGER"/>
+    <column name="ASSOCIATION_TYPE" required="true" type="SMALLINT" />
+    <foreign-key foreignTable="APPOINTMENT">
+	<reference local="APPOINTMENT_ID" foreign="APPOINTMENT_ID"/>
+    </foreign-key>
+    <foreign-key foreignTable="APPOINTMENT">
+	<reference local="ASSOCIATED_APPOINTMENT_ID" foreign="APPOINTMENT_ID"/>
+    </foreign-key>
+</table>
+
+<table name="PRACTICE_AREA" idMethod="native">
+    <column name="PRACTICE_AREA_ID" primaryKey="true" required="true" type="INTEGER" autoIncrement="true"/>
+    <column name="COMPANY_ID" required="true" type="INTEGER"/>
+    <column name="PRACTICE_AREA_NAME" size="100" type="VARCHAR"/>
+    <column name="PARENT_ID" required="false" type="INTEGER"/>
+	
+    <foreign-key foreignTable="COMPANY">
+	<reference local="COMPANY_ID" foreign="COMPANYID"/>
+    </foreign-key>
+    <foreign-key foreignTable="PRACTICE_AREA">
+	<reference local="PARENT_ID" foreign="PRACTICE_AREA_ID"/>
+    </foreign-key>
+</table>
+
+<table name="PRACTICE_AREA_PRACTITIONER">
+    <column name="PRACTICE_AREA_ID" required="true" primaryKey="true" type="INTEGER"/>
+    <column name="PRACTITIONER_ID" required="true" primaryKey="true" type="INTEGER"/>
+	
+    <foreign-key foreignTable="PRACTICE_AREA">
+	<reference local="PRACTICE_AREA_ID" foreign="PRACTICE_AREA_ID"/>
+    </foreign-key>
+    <foreign-key foreignTable="PERSON">
+	<reference local="PRACTITIONER_ID" foreign="PERSONID"/>
+    </foreign-key>
+</table>
+
+<table name="SOAP_NOTES" idMethod="native">
+    <column name="SOAP_NOTES_ID" primaryKey="true" required="true" type="INTEGER" autoIncrement="true"/>
+    <column name="PRACTICE_AREA_ID" required="true" type="INTEGER"/>
+    <column name="PERSON_ID" required="true" type="INTEGER"/>
+    <column name="S_NOTES" type="LONGVARCHAR"/>
+    <column name="O_NOTES" type="LONGVARCHAR"/>
+    <column name="A_NOTES" type="LONGVARCHAR"/>
+    <column name="P_NOTES" type="LONGVARCHAR"/>
+    <column name="ANALYSIS_DATE" required="true" type="TIMESTAMP"/>
+    <column name="CREATION_DATE" required="true" type="TIMESTAMP"/>
+    <column name="MODIFICATION_DATE" required="false" type="TIMESTAMP"/>
+    <column name="CREATE_PERSON_ID" required="false" type="INTEGER"/>
+    <column name="MODIFY_PERSON_ID" required="false" type="INTEGER"/>
+
+    <foreign-key foreignTable="PRACTICE_AREA">
+	<reference local="PRACTICE_AREA_ID" foreign="PRACTICE_AREA_ID"/>
+    </foreign-key>
+    <foreign-key foreignTable="PERSON">
+	<reference local="PERSON_ID" foreign="PERSONID"/>
+    </foreign-key>
+    <foreign-key foreignTable="PERSON">
+	<reference local="CREATE_PERSON_ID" foreign="PERSONID"/>
+    </foreign-key>
+    <foreign-key foreignTable="PERSON">
+	<reference local="MODIFY_PERSON_ID" foreign="PERSONID"/>
+    </foreign-key>
+</table>
+
+<table name="SOAP_STATEMENT" idMethod="native">
+    <column name="SOAP_STATEMENT_ID" primaryKey="true" required="true" type="INTEGER" autoIncrement="true"/>
+    <column name="TYPE" required="true" size="1" type="VARCHAR" />
+    <column name="STATEMENT" required="true" size="255" type="VARCHAR" />
+    <column name="PARENT_ID" required="false" type="INTEGER"/>
+    <column name="PRACTICE_AREA_ID" required="true" type="INTEGER"/>
+    <column name="COMPANY_ID" required="true" type="INTEGER"/>
+
+    <foreign-key foreignTable="SOAP_STATEMENT">
+	<reference local="PARENT_ID" foreign="SOAP_STATEMENT_ID"/>
+    </foreign-key>
+    <foreign-key foreignTable="PRACTICE_AREA">
+	<reference local="PRACTICE_AREA_ID" foreign="PRACTICE_AREA_ID"/>
+    </foreign-key>
+    <foreign-key foreignTable="COMPANY">
+	<reference local="COMPANY_ID" foreign="COMPANYID"/>
+    </foreign-key>
+</table>
+
+<table name="HEALTH_HISTORY" idMethod="native">
+    <column name="HEALTH_HISTORY_ID" primaryKey="true" required="true" type="INTEGER" autoIncrement="true"/>
+    <column name="PERSON_ID" required="true" type="INTEGER"/>
+    <column name="HISTORY" type="LONGVARCHAR"/>
+    <column name="CREATION_DATE" required="true" type="TIMESTAMP"/>
+    <column name="MODIFICATION_DATE" required="false" type="TIMESTAMP"/>
+    <column name="CREATE_PERSON_ID" required="false" type="INTEGER"/>
+    <column name="MODIFY_PERSON_ID" required="false" type="INTEGER"/>
+
+    <foreign-key foreignTable="PERSON">
+	<reference local="PERSON_ID" foreign="PERSONID"/>
+    </foreign-key>
+    <foreign-key foreignTable="PERSON">
+	<reference local="CREATE_PERSON_ID" foreign="PERSONID"/>
+    </foreign-key>
+    <foreign-key foreignTable="PERSON">
+	<reference local="MODIFY_PERSON_ID" foreign="PERSONID"/>
+    </foreign-key>
+</table>
+
+<table name="MINERAL_RATIO" idMethod="native">
+    <column name="MINERAL_RATIOS_ID" primaryKey="true" required="true" type="INTEGER" autoIncrement="true"/>
+    <column name="PERSON_ID" required="true" type="INTEGER"/>
+    <column name="CA_MG" type="DECIMAL"/>
+    <column name="CA_K" type="DECIMAL"/>
+    <column name="NA_MG" type="DECIMAL"/>
+    <column name="NA_K" type="DECIMAL"/>
+    <column name="ZN_CU" type="DECIMAL"/>
+    <column name="CA_P" type="DECIMAL"/>
+    <column name="CA" type="DECIMAL"/>
+    <column name="K" type="DECIMAL"/>
+    <column name="CU" type="DECIMAL"/>
+    <column name="HG" type="DECIMAL"/>
+    <column name="OXIDATION_TYPE" size="100" type="VARCHAR"/>
+    <column name="NOTES" type="LONGVARCHAR"/>
+    <column name="ANALYSIS_DATE" required="true" type="TIMESTAMP"/>
+    <column name="CREATION_DATE" required="true" type="TIMESTAMP"/>
+    <column name="MODIFICATION_DATE" required="false" type="TIMESTAMP"/>
+    <column name="CREATE_PERSON_ID" required="false" type="INTEGER"/>
+    <column name="MODIFY_PERSON_ID" required="false" type="INTEGER"/>
+
+    <foreign-key foreignTable="PERSON">
+	<reference local="PERSON_ID" foreign="PERSONID"/>
+    </foreign-key>
+    <foreign-key foreignTable="PERSON">
+	<reference local="CREATE_PERSON_ID" foreign="PERSONID"/>
+    </foreign-key>
+    <foreign-key foreignTable="PERSON">
+	<reference local="MODIFY_PERSON_ID" foreign="PERSONID"/>
+    </foreign-key>
+</table>
+
+<table name="MINERAL_RATIOS_CLIENT_DOCUMENT" idMethod="native">
+    <column name="MINERAL_RATIOS_CLIENT_DOCUMENT_ID" primaryKey="true" required="true" type="INTEGER" autoIncrement="true"/>
+    <column name="PERSON_ID" required="true" type="INTEGER"/>
+    <column name="IS_TEMPLATE" type="SMALLINT" default="0"/>
+    <column name="NOTES" type="LONGVARCHAR"/>
+    <column name="REPORT_DATE" required="true" type="TIMESTAMP"/>
+    <column name="INITIAL_RECOMMENDATIONS" type="LONGVARCHAR"/>
+    <column name="SUPPLEMENTS_HERBAL_MIXTURES" type="LONGVARCHAR"/>
+    <column name="DETOX_EXCERCISE_DIET_STRESS_MANAGEMENT" type="LONGVARCHAR"/>
+    <column name="NEXT_APPOINTMENT" type="LONGVARCHAR"/>
+    <column name="PHASE_I_DATE" required="true" type="TIMESTAMP"/>
+    <column name="PHASE_I_I_DATE" required="true" type="TIMESTAMP"/>
+    <column name="PHASE_I_I_I_DATE" required="true" type="TIMESTAMP"/>
+    <column name="PHASE_I_V_DATE" required="true" type="TIMESTAMP"/>
+    <column name="PHASE_V_DATE" required="true" type="TIMESTAMP"/>
+    <column name="CREATION_DATE" required="true" type="TIMESTAMP"/>
+    <column name="MODIFICATION_DATE" required="false" type="TIMESTAMP"/>
+    <column name="CREATE_PERSON_ID" required="false" type="INTEGER"/>
+    <column name="MODIFY_PERSON_ID" required="false" type="INTEGER"/>
+
+    <foreign-key foreignTable="PERSON">
+	<reference local="PERSON_ID" foreign="PERSONID"/>
+    </foreign-key>
+    <foreign-key foreignTable="PERSON">
+	<reference local="CREATE_PERSON_ID" foreign="PERSONID"/>
+    </foreign-key>
+    <foreign-key foreignTable="PERSON">
+	<reference local="MODIFY_PERSON_ID" foreign="PERSONID"/>
+    </foreign-key>
+</table>
+
+<table name="MINERAL_RATIOS_CLIENT_DOCUMENT_MINERAL_RATIO">
+    <column name="MINERAL_RATIOS_CLIENT_DOCUMENT_ID" required="true" primaryKey="true" type="INTEGER"/>
+    <column name="MINERAL_RATIOS_ID" required="true" primaryKey="true" type="INTEGER"/>
+
+    <foreign-key foreignTable="MINERAL_RATIOS_CLIENT_DOCUMENT">
+	<reference local="MINERAL_RATIOS_CLIENT_DOCUMENT_ID" foreign="MINERAL_RATIOS_CLIENT_DOCUMENT_ID"/>
+    </foreign-key>
+    <foreign-key foreignTable="MINERAL_RATIO">
+	<reference local="MINERAL_RATIOS_ID" foreign="MINERAL_RATIOS_ID"/>
+    </foreign-key>
+</table>
+
+<table name="MINERAL_RATIOS_CLIENT_DOCUMENT_DATA" idMethod="native">
+    <column name="MINERAL_RATIOS_CLIENT_DOCUMENT_DATA_ID" primaryKey="true" required="true" type="INTEGER" autoIncrement="true"/>
+    <column name="MINERAL_RATIOS_CLIENT_DOCUMENT_ID" required="true" type="INTEGER"/>
+    <column name="DATA_KEY" size="50" type="VARCHAR"/>
+    <column name="DATA_VALUE" type="LONGVARCHAR"/>
+
+    <foreign-key foreignTable="MINERAL_RATIOS_CLIENT_DOCUMENT">
+	<reference local="MINERAL_RATIOS_CLIENT_DOCUMENT_ID" foreign="MINERAL_RATIOS_CLIENT_DOCUMENT_ID"/>
+    </foreign-key>
+</table>
+
+
+
+<table name="BIOTERRAIN_MARKER_DB" idMethod="native">
+    <column name="BIOTERRAIN_MARKER_DB_ID" primaryKey="true" required="true" type="INTEGER" autoIncrement="true"/>
+    <column name="DATA_KEY" required="true" size="50" type="VARCHAR"/>
+    <column name="DATA_VALUE_STR" required="true" size="20" type="VARCHAR"/>
+	<column name="DATA_VALUE_NUM" required="true" scale="2" size="7" type="DECIMAL"/>
+	<column name="DATA_DATE" required="true" type="DATE"/>
+	
+	<column name="DATA_PERSON_ID" required="false" type="INTEGER"/>
+	
+	<column name="CREATION_DATE" required="true" type="DATE"/>
+	<column name="MODIFICATION_DATE" required="true" type="DATE"/>
+	<column name="CREATE_PERSON_ID" required="true" type="INTEGER"/>
+    <column name="MODIFY_PERSON_ID" required="false" type="INTEGER"/>
+
+    <foreign-key foreignTable="PERSON">
+		<reference local="DATA_PERSON_ID" foreign="PERSONID"/>
+    </foreign-key>
+
+    <foreign-key foreignTable="PERSON">
+		<reference local="CREATE_PERSON_ID" foreign="PERSONID"/>
+    </foreign-key>
+    <foreign-key foreignTable="PERSON">
+		<reference local="MODIFY_PERSON_ID" foreign="PERSONID"/>
+    </foreign-key>
+</table>
+
+
+
+
+
+
+
+
+
+<table name="PRODUCT_DB" idMethod="native">
+	<column name="PRODUCT_DB_ID" required="true" primaryKey="true" type="BIGINT" autoIncrement="true"/>
+	<column name="NAME" size="250" type="VARCHAR"/>
+    <column name="DESCRIPTION" type="LONGVARCHAR"/>
+	<column name="MODEL_NUMBER" size="30" type="VARCHAR"/>
+	<column name="MFG_ID" required="true" type="INTEGER"/>
+	
+	<column name="U_U_I_D" size="20" type="VARCHAR"/>
+	<column name="EAN" size="20" type="VARCHAR"/>
+    
+    <column name="CREATION_DATE" required="true" type="DATE"/>
+    <column name="CREATE_PERSON_ID" required="false" type="INTEGER"/>
+	
+	<column name="IS_ACTIVE" type="SMALLINT" default="1"/>
+
+    <foreign-key foreignTable="COMPANY">
+		<reference local="MFG_ID" foreign="COMPANYID"/>
+    </foreign-key>
+    <foreign-key foreignTable="PERSON">
+		<reference local="CREATE_PERSON_ID" foreign="PERSONID"/>
+    </foreign-key>
+</table>
+
+<table name="PRODUCT_CHANGE_LOG_DB" idMethod="native">
+	<column name="PRODUCT_LOG_DB" required="true" primaryKey="true" type="BIGINT" autoIncrement="true"/>
+	<column name="MODIFICATION_DATE" required="true" type="DATE"/>
+    <column name="MODIFY_PERSON_ID" required="true" type="INTEGER"/>
+
+    <foreign-key foreignTable="PERSON">
+		<reference local="MODIFY_PERSON_ID" foreign="PERSONID"/>
+    </foreign-key>
+</table>
+
+<table name="PRODUCT_IMAGE_MAP">
+	<column name="PRODUCT_DB_ID" required="true" primaryKey="true" type="BIGINT"/>
+	<column name="IMAGE_U_R_L" size="250" type="VARCHAR" primaryKey="true" />
+
+    <foreign-key foreignTable="PRODUCT_DB">
+		<reference local="PRODUCT_DB_ID" foreign="PRODUCT_DB_ID"/>
+    </foreign-key>
+</table>
+
+<table name="PRODUCT_INTERACTION_DB" idMethod="native">
+	<column name="PRODUCT_INTERACTION_DB_ID" required="true" primaryKey="true" type="BIGINT" autoIncrement="true"/>
+	<column name="RETAILER_ID" required="false" type="INTEGER"/>
+	<column name="STORE_ID" required="false" type="INTEGER"/>
+	<column name="INTERACTION_PERSON_ID" required="false" type="INTEGER"/>
+	<column name="PRODUCT_DB_ID" required="true" type="BIGINT"/>
+	
+    <column name="UNIQUE_ID" size="20" type="VARCHAR"/>
+	<!-- Can be MAC Address, Serial Number, or something else agreed upon as long as it's unique for the unit in question -->
+	<!-- must be the same id on sale as on activation -->
+	
+	<column name="INTERACTION_TYPE" type="SMALLINT"/>
+	<!-- 1 = inventory -->
+	<!-- 2 = sale - not activated -->
+	<!-- 3 = sale - activated -->
+	<!-- 4 = return - de-activated -->
+	<!-- 5 = de-activation other -->
+	
+    <column name="INTERACTION_DATE" required="true" type="DATE"/>
+
+    <foreign-key foreignTable="COMPANY">
+		<reference local="RETAILER_ID" foreign="COMPANYID"/>
+    </foreign-key>
+    <foreign-key foreignTable="DEPARTMENT">
+		<reference local="STORE_ID" foreign="DEPARTMENTID"/>
+    </foreign-key>
+    <foreign-key foreignTable="PERSON">
+		<reference local="INTERACTION_PERSON_ID" foreign="PERSONID"/>
+    </foreign-key>
+    <foreign-key foreignTable="PRODUCT_DB">
+		<reference local="PRODUCT_DB_ID" foreign="PRODUCT_DB_ID"/>
+    </foreign-key>
+</table>
+
+<table name="ENDPOINT_DB" idMethod="native">
+	<column name="ENDPOINT_DB_ID" required="true" primaryKey="true" type="BIGINT" autoIncrement="true"/>
+	
+	<column name="UNIQUE_ID" required="false" size="20" type="VARCHAR"/>
+	<!-- serial number bar code typically - same as unique id  -->
+	<column name="PROFILE_ID" required="true" size="30" type="VARCHAR"/>
+	<column name="ENDPOINT_HASH" required="true" size="40" type="VARCHAR"/>
+	
+	<column name="DEVICE_STATE" type="SMALLINT" default="0"/>
+	<column name="APPLICATION_ID" required="true" size="60" type="VARCHAR"/>
+	<column name="SDK_TOKEN" required="true" size="60" type="VARCHAR"/>
+	
+	<column name="ERROR_MESSAGE" required="false" size="30" type="VARCHAR"/>
+	
+	<column name="REGISTRATION_DATE" required="true" type="DATE"/>
+
+</table>
+
+<table name="ADMIN_PRODUCT_PIE_CHART_MAP">
+    <column name="ADMIN_ID" required="true" primaryKey="true" type="INTEGER" />
+    <column name="PRODUCT_DB_ID" required="true" primaryKey="true" type="BIGINT" />
+
+    <foreign-key foreignTable="PERSON">
+		<reference local="ADMIN_ID" foreign="PERSONID"/>
+    </foreign-key>
+    <foreign-key foreignTable="PRODUCT_DB">
+		<reference local="PRODUCT_DB_ID" foreign="PRODUCT_DB_ID"/>
+    </foreign-key>
+</table>
+
+
+
+<table name="REPORT_TEMPLATE_MFG_MAP">
+    <column name="REPORT_TEMPLATE_ID" required="true" primaryKey="true" type="INTEGER"/>
+    <column name="COMPANY_ID" required="true" primaryKey="true" type="INTEGER"/>
+
+    <foreign-key foreignTable="REPORT_TEMPLATE">
+		<reference local="REPORT_TEMPLATE_ID" foreign="REPORT_TEMPLATE_ID"/>
+    </foreign-key>
+    <foreign-key foreignTable="COMPANY">
+		<reference local="COMPANY_ID" foreign="COMPANYID"/>
+    </foreign-key>
+</table>
+
+<table name="REPORT_TEMPLATE_PRODUCT_MAP">
+    <column name="REPORT_TEMPLATE_ID" required="true" primaryKey="true" type="INTEGER"/>
+    <column name="PRODUCT_DB_ID" required="true" primaryKey="true" type="BIGINT" />
+
+    <foreign-key foreignTable="REPORT_TEMPLATE">
+		<reference local="REPORT_TEMPLATE_ID" foreign="REPORT_TEMPLATE_ID"/>
+    </foreign-key>
+    <foreign-key foreignTable="PRODUCT_DB">
+		<reference local="PRODUCT_DB_ID" foreign="PRODUCT_DB_ID"/>
+    </foreign-key>
+</table>
+
+
+
+
+
+
+
+
+
+<table name="MACRO_GOAL_DB" idMethod="native">
+	<column name="MACRO_GOAL_DB_ID" required="true" primaryKey="true" type="INTEGER" autoIncrement="true"/>
+	<column name="PERSON_ID" required="false" type="INTEGER"/>
+    <column name="IS_ACTIVE" type="SMALLINT" default="1"/>
+	
+	<column name="NAME" required="false" size="200" type="VARCHAR"/>
+	
+	<column name="CALORIES" scale="2" size="7" type="DECIMAL"/>
+	<column name="FAT" scale="2" size="7" type="DECIMAL"/>
+	<column name="CARBS" scale="2" size="7" type="DECIMAL"/>
+	<column name="PROTEIN" scale="2" size="7" type="DECIMAL"/>
+	
+	<column name="GOAL_TYPE" type="SMALLINT"/>
+	<!-- 1 = maintain -->
+	<!-- 2 = lean bulk -->
+	<!-- 3 = rapid bulk -->
+	<!-- 4 = fat loss -->
+	<!-- 5 = rapid fat loss -->
+	
+	<column name="FAT_GOAL" type="SMALLINT"/>
+	<!-- 1 = low -->
+	<!-- 2 = recommended -->
+	<!-- 3 = high -->
+	<!-- 4 = keto 1 -->
+	<!-- 5 = keto 2 -->
+	
+	<column name="PROTEIN_GOAL" type="SMALLINT"/>
+	<!-- 1 = low -->
+	<!-- 2 = recommended -->
+	<!-- 3 = high -->
+	<!-- 4 = higher -->
+	
+	<column name="CREATION_DATE" required="true" type="DATE"/>
+	<column name="MODIFICATION_DATE" required="false" type="DATE"/>
+	<column name="CREATE_PERSON_ID" required="true" type="INTEGER"/>
+    <column name="MODIFY_PERSON_ID" required="false" type="INTEGER"/>
+	
+	<column name="IS_AUTO" type="SMALLINT" default="0"/>
+	
+	<column name="IS_HIDDEN" type="SMALLINT" default="0"/>
+
+    <foreign-key foreignTable="PERSON">
+		<reference local="PERSON_ID" foreign="PERSONID"/>
+    </foreign-key>
+
+    <foreign-key foreignTable="PERSON">
+		<reference local="CREATE_PERSON_ID" foreign="PERSONID"/>
+    </foreign-key>
+    <foreign-key foreignTable="PERSON">
+		<reference local="MODIFY_PERSON_ID" foreign="PERSONID"/>
+    </foreign-key>
+</table>
+
+<table name="MACRO_GOAL_DAILY_DB" idMethod="native">
+	<column name="MACRO_GOAL_DAILY_DB_ID" required="true" primaryKey="true" type="BIGINT" autoIncrement="true"/>
+	<column name="MACRO_GOAL_DB_ID" required="true" type="INTEGER"/>
+	
+	<column name="CALORIES" scale="2" size="7" type="DECIMAL"/>
+	<column name="FAT" scale="2" size="7" type="DECIMAL"/>
+	<column name="CARBS" scale="2" size="7" type="DECIMAL"/>
+	<column name="PROTEIN" scale="2" size="7" type="DECIMAL"/>
+	
+	<column name="ENTRY_DATE" required="true" type="DATE"/>
+
+    <foreign-key foreignTable="MACRO_GOAL_DB">
+		<reference local="MACRO_GOAL_DB_ID" foreign="MACRO_GOAL_DB_ID"/>
+    </foreign-key>
+</table>
+
+<table name="MACRO_GOAL_ENTRY_DB" idMethod="native">
+	<column name="MACRO_GOAL_ENTRY_DB_ID" required="true" primaryKey="true" type="BIGINT" autoIncrement="true"/>
+	<column name="MACRO_GOAL_DAILY_DB_ID" required="true" type="BIGINT"/>
+	
+	<column name="NAME" required="true" size="250" type="VARCHAR"/>
+	
+	<column name="CALORIES" scale="2" size="7" type="DECIMAL"/>
+	<column name="FAT" scale="2" size="7" type="DECIMAL"/>
+	<column name="CARBS" scale="2" size="7" type="DECIMAL"/>
+	<column name="PROTEIN" scale="2" size="7" type="DECIMAL"/>
+	
+	<column name="SERVING_SIZE" scale="2" size="7" type="DECIMAL"/>
+	<column name="SERVING_SIZE_TYPE" type="SMALLINT"/>
+	<!-- 1 = grams -->
+	<!-- 2 = ml -->
+	
+	<column name="ENTRY_DATE" required="true" type="DATE"/>
+	<column name="ENTRY_AMOUNT" scale="2" size="7" type="DECIMAL"/>
+	<column name="ENTRY_TYPE" type="SMALLINT"/>
+	<!-- 1 = serving -->
+	<!-- 2 = grams -->
+	<!-- 3 = ml -->
+	<!-- 4 = oz -->
+	
+	<column name="FOOD_DB_ID" required="false" type="BIGINT"/>
+
+    <foreign-key foreignTable="MACRO_GOAL_DAILY_DB">
+		<reference local="MACRO_GOAL_DAILY_DB_ID" foreign="MACRO_GOAL_DAILY_DB_ID"/>
+    </foreign-key>
+    <foreign-key foreignTable="FOOD_DB">
+		<reference local="FOOD_DB_ID" foreign="FOOD_DB_ID"/>
+    </foreign-key>
+</table>
+
+
+<table name="FOOD_DB" idMethod="native">
+	<column name="FOOD_DB_ID" required="true" primaryKey="true" type="BIGINT" autoIncrement="true"/>
+	
+	<column name="NAME" required="true" size="200" type="VARCHAR"/>
+	<column name="DESCRIPTION" type="LONGVARCHAR"/>
+	<column name="CATEGORY" required="false" size="100" type="VARCHAR"/>
+	<column name="MANUFACTURER" required="false" size="100" type="VARCHAR"/>
+	<column name="SCAN_ID" size="20" type="VARCHAR"/>
+	
+	<column name="IS_ACTIVE" type="SMALLINT" default="1"/>
+	<column name="IS_PUBLIC" type="SMALLINT" default="0"/>
+	
+	<column name="CALORIES" scale="2" size="7" type="DECIMAL"/>
+	<column name="FAT" scale="2" size="7" type="DECIMAL"/>
+	<column name="CARBS" scale="2" size="7" type="DECIMAL"/>
+	<column name="PROTEIN" scale="2" size="7" type="DECIMAL"/>
+	
+	<column name="SERVING_SIZE" scale="2" size="7" type="DECIMAL"/>
+	<column name="SERVING_SIZE_TYPE" type="SMALLINT"/>
+	<!-- 1 = grams -->
+	<!-- 2 = ml -->
+	
+	<column name="N_DB_NO" size="15" type="VARCHAR"/>
+	<column name="OFFSET" type="BIGINT"/>
+	
+	<column name="CREATION_DATE" required="true" type="DATE"/>
+	<column name="MODIFICATION_DATE" required="false" type="DATE"/>
+	<column name="CREATE_PERSON_ID" required="true" type="INTEGER"/>
+    <column name="MODIFY_PERSON_ID" required="false" type="INTEGER"/>
+
+    <foreign-key foreignTable="PERSON">
+		<reference local="CREATE_PERSON_ID" foreign="PERSONID"/>
+    </foreign-key>
+    <foreign-key foreignTable="PERSON">
+		<reference local="MODIFY_PERSON_ID" foreign="PERSONID"/>
+    </foreign-key>
+</table>
+
+<table name="FAVORITE_FOOD">
+	<column name="PERSON_ID" required="true" primaryKey="true" type="INTEGER"/>
+	<column name="FOOD_DB_ID" required="true" primaryKey="true" type="BIGINT"/>
+
+	<column name="FAVORITE_DATE" required="true" type="DATE"/>
+
+    <foreign-key foreignTable="PERSON">
+		<reference local="PERSON_ID" foreign="PERSONID"/>
+    </foreign-key>
+    <foreign-key foreignTable="FOOD_DB">
+		<reference local="FOOD_DB_ID" foreign="FOOD_DB_ID"/>
+    </foreign-key>
+</table>
+
+<table name="FOOD_SERVING_DB">
+	<column name="FOOD_DB_ID" required="true" primaryKey="true" type="BIGINT"/>
+	<column name="SERVING_LABEL" required="true" primaryKey="true" size="50" type="VARCHAR"/>
+	
+	<column name="SERVING_SIZE" scale="2" size="7" type="DECIMAL"/>
+	<column name="SERVING_SIZE_TYPE" type="SMALLINT"/>
+
+    <foreign-key foreignTable="FOOD_DB">
+		<reference local="FOOD_DB_ID" foreign="FOOD_DB_ID"/>
+    </foreign-key>
+</table>
+
+<table name="WEIGHT_PREFERENCES_DB" idMethod="native">
+	<column name="WEIGHT_PREFERENCES_DB_ID" required="true" primaryKey="true" type="INTEGER" autoIncrement="true"/>
+	<column name="PERSON_ID" required="false" type="INTEGER"/>
+	<column name="UNIT_TYPE" type="SMALLINT"/>
+	<!-- 1 = pounds -->
+	<!-- 2 = kgs -->
+	<column name="GENDER" type="SMALLINT"/>
+	<!-- 1 = male -->
+	<!-- 2 = female -->
+	<column name="WEIGHT" scale="2" size="5" type="DECIMAL"/>
+	<column name="AGE" type="SMALLINT"/>
+	<column name="HEIGHT_1" type="SMALLINT"/>
+	<column name="HEIGHT_2" type="SMALLINT"/>
+	<column name="ACTIVITY_LEVEL" scale="3" size="5" type="DECIMAL"/>
+	
+	<column name="TIME_ZONE" required="false" size="30" type="VARCHAR"/>
+
+    <foreign-key foreignTable="PERSON">
+		<reference local="PERSON_ID" foreign="PERSONID"/>
+    </foreign-key>
+</table>
+
+<table name="WEIGHT_GOAL_TYPE_DB" idMethod="native">
+	<column name="WEIGHT_GOAL_TYPE_DB_ID" required="true" primaryKey="true" type="INTEGER" autoIncrement="true"/>
+	<column name="GOAL_TYPE" type="SMALLINT"/>
+	<!-- 1 = bulk -->
+	<!-- 2 = cut -->
+	<!-- 3 = maintenance -->
+	<column name="DESCRIPTION" type="LONGVARCHAR"/>
+
+</table>
+
+<table name="WEIGHT_GOAL_DB" idMethod="native">
+	<column name="WEIGHT_GOAL_DB_ID" required="true" primaryKey="true" type="INTEGER" autoIncrement="true"/>
+	<column name="PERSON_ID" required="false" type="INTEGER"/>
+    <column name="IS_ACTIVE" type="SMALLINT" default="1"/>
+	<column name="GOAL_WEIGHT" scale="2" size="7" type="DECIMAL"/>
+	
+	<column name="NAME" required="false" size="200" type="VARCHAR"/>
+	
+    <column name="WEIGHT_GOAL_TYPE_DB_ID" required="false" type="INTEGER"/>
+	
+	<column name="CREATION_DATE" required="true" type="DATE"/>
+	<column name="MODIFICATION_DATE" required="false" type="DATE"/>
+	<column name="CREATE_PERSON_ID" required="true" type="INTEGER"/>
+    <column name="MODIFY_PERSON_ID" required="false" type="INTEGER"/>
+	
+	<column name="IS_HIDDEN" type="SMALLINT" default="0"/>
+	
+    <foreign-key foreignTable="WEIGHT_GOAL_TYPE_DB">
+		<reference local="WEIGHT_GOAL_TYPE_DB_ID" foreign="WEIGHT_GOAL_TYPE_DB_ID"/>
+    </foreign-key>
+
+    <foreign-key foreignTable="PERSON">
+		<reference local="PERSON_ID" foreign="PERSONID"/>
+    </foreign-key>
+    <foreign-key foreignTable="PERSON">
+		<reference local="CREATE_PERSON_ID" foreign="PERSONID"/>
+    </foreign-key>
+    <foreign-key foreignTable="PERSON">
+		<reference local="MODIFY_PERSON_ID" foreign="PERSONID"/>
+    </foreign-key>
+</table>
+
+<table name="WEIGHT_ENTRY_DB" idMethod="native">
+	<column name="WEIGHT_ENTRY_DB_ID" required="true" primaryKey="true" type="BIGINT" autoIncrement="true"/>
+	<column name="WEIGHT_GOAL_DB_ID" required="true" type="INTEGER"/>
+	
+	<column name="ENTRY_AMOUNT" scale="2" size="7" type="DECIMAL"/>
+	<column name="ENTRY_DATE" required="true" type="DATE"/>
+	<column name="UNIT_TYPE" type="SMALLINT"/>
+	<!-- 1 = pounds -->
+	<!-- 2 = kgs -->
+
+    <foreign-key foreignTable="WEIGHT_GOAL_DB">
+		<reference local="WEIGHT_GOAL_DB_ID" foreign="WEIGHT_GOAL_DB_ID"/>
+    </foreign-key>
+</table>
+
+
+
+
+
+<table name="EXCERCISE_DB" idMethod="native">
+	<column name="EXCERCISE_DB_ID" required="true" primaryKey="true" type="INTEGER" autoIncrement="true"/>
+	<column name="TRAINING_PLAN_DB_ID" required="true" type="INTEGER"/>
+	
+	<column name="NAME" required="true" size="100" type="VARCHAR"/>
+	<column name="DESCRIPTION" required="false" type="LONGVARCHAR"/>
+	<column name="IMAGE_URL" required="false" size="255" type="VARCHAR" />
+	<column name="VIDEO_URL" required="false" size="255" type="VARCHAR" />
+	
+	<column name="IS_COMPOUND" required="true" type="SMALLINT" default="0"/>
+	
+	<column name="EXCERCISE_TYPE" type="SMALLINT"/>
+	<!-- 1 = lifting -->
+	<!-- 2 = cardio -->
+	
+	<column name="IS_ACTIVE" type="SMALLINT" default="1"/>
+	<column name="IS_PUBLIC" type="SMALLINT" default="1"/>
+	
+	<column name="CREATION_DATE" required="false" type="DATE"/>
+	<column name="MODIFICATION_DATE" required="false" type="DATE"/>
+	<column name="CREATE_PERSON_ID" required="false" type="INTEGER"/>
+    <column name="MODIFY_PERSON_ID" required="false" type="INTEGER"/>
+
+    <foreign-key foreignTable="PERSON">
+		<reference local="CREATE_PERSON_ID" foreign="PERSONID"/>
+    </foreign-key>
+    <foreign-key foreignTable="PERSON">
+		<reference local="MODIFY_PERSON_ID" foreign="PERSONID"/>
+    </foreign-key>
+	
+</table>
+
+<table name="TRAINING_PLAN_DB" idMethod="native">
+	<column name="TRAINING_PLAN_DB_ID" required="true" primaryKey="true" type="INTEGER" autoIncrement="true"/>
+	<column name="PERSON_ID" required="false" type="INTEGER"/>
+    <column name="IS_ACTIVE" type="SMALLINT" default="0"/>
+	<column name="IS_PUBLIC" type="SMALLINT" default="0"/>
+	
+    <column name="AUTO_REPEAT" type="SMALLINT" default="0"/>
+    <column name="NUM_WEEKS" type="SMALLINT" />
+	
+	<column name="PLAN_TYPE" type="SMALLINT"/>
+	<!-- 1 = heavy?? -->
+	<!-- 2 = hypertrophy?? -->
+	
+	<column name="NAME" required="true" size="100" type="VARCHAR"/>
+	
+	<column name="DESCRIPTION" type="LONGVARCHAR"/>
+	<column name="NOTES" type="LONGVARCHAR"/>
+	
+	<!-- move to person mapping
+	<column name="CURRENT_TRAINING_PLAN_WORKOUT_DB_ID" required="false" type="BIGINT"/>
+	-->
+	
+	<column name="CREATION_DATE" required="true" type="DATE"/>
+	<column name="MODIFICATION_DATE" required="false" type="DATE"/>
+	<column name="CREATE_PERSON_ID" required="true" type="INTEGER"/>
+    <column name="MODIFY_PERSON_ID" required="false" type="INTEGER"/>
+
+    <foreign-key foreignTable="PERSON">
+		<reference local="PERSON_ID" foreign="PERSONID"/>
+    </foreign-key>
+    <foreign-key foreignTable="PERSON">
+		<reference local="CREATE_PERSON_ID" foreign="PERSONID"/>
+    </foreign-key>
+    <foreign-key foreignTable="PERSON">
+		<reference local="MODIFY_PERSON_ID" foreign="PERSONID"/>
+    </foreign-key>
+</table>
+
+<table name="PERSON_TRAINING_PLAN_MAPPING">
+	<column name="TRAINING_PLAN_DB_ID" primaryKey="true" required="true" type="INTEGER"/>
+    <column name="PERSON_ID" primaryKey="true" required="true" type="INTEGER"/>
+    <column name="IS_ACTIVE" type="SMALLINT" default="0"/>
+	
+	<column name="CURRENT_TRAINING_PLAN_WORKOUT_DB_ID" required="false" type="BIGINT"/>
+	
+	<column name="GOOGLE_SHEET_ID" required="false" size="60" type="VARCHAR"/>
+
+	<foreign-key foreignTable="PERSON">
+		<reference local="PERSON_ID" foreign="PERSONID"/>
+	</foreign-key>
+	<foreign-key foreignTable="TRAINING_PLAN_DB">
+		<reference local="TRAINING_PLAN_DB_ID" foreign="TRAINING_PLAN_DB_ID"/>
+    </foreign-key>
+    <foreign-key foreignTable="TRAINING_PLAN_WORKOUT_DB">
+		<reference local="CURRENT_TRAINING_PLAN_WORKOUT_DB_ID" foreign="TRAINING_PLAN_WORKOUT_DB_ID"/>
+    </foreign-key>
+</table>
+
+<table name="UNUSED_GOOGLE_SHEET_DB">
+	<column name="GOOGLE_SHEET_ID" primaryKey="true" required="true" size="60" type="VARCHAR"/>
+</table>
+
+<table name="TRAINING_PLAN_WORKOUT_DB" idMethod="native">
+	<column name="TRAINING_PLAN_WORKOUT_DB_ID" required="true" primaryKey="true" type="BIGINT" autoIncrement="true"/>
+	<column name="TRAINING_PLAN_DB_ID" required="true" type="INTEGER"/>
+	
+	<column name="NAME" required="true" size="100" type="VARCHAR"/>
+	<column name="DESCRIPTION" type="LONGVARCHAR"/>
+	
+	<column name="BLOCK_NUMBER" required="false" type="SMALLINT"/>
+    <column name="WEEK_NUMBER" required="false" type="SMALLINT"/>
+    <column name="WORKOUT_NUMBER" required="false" type="SMALLINT"/>
+	
+	<column name="IS_FULL_BODY" required="true" type="SMALLINT" default="0"/>
+	<column name="IS_UPPER_BODY" required="true" type="SMALLINT" default="0"/>
+	<column name="IS_LEGS" required="true" type="SMALLINT" default="0"/>
+	<column name="IS_ARMS" required="true" type="SMALLINT" default="0"/>
+	<column name="IS_CHEST" required="true" type="SMALLINT" default="0"/>
+	<column name="IS_SHOULDERS" required="true" type="SMALLINT" default="0"/>
+	<column name="IS_BACK" required="true" type="SMALLINT" default="0"/>
+	<column name="IS_BICEP" required="true" type="SMALLINT" default="0"/>
+	<column name="IS_TRICEP" required="true" type="SMALLINT" default="0"/>
+	<column name="IS_ABS" required="true" type="SMALLINT" default="0"/>
+	
+	<column name="IS_PUSH" required="true" type="SMALLINT" default="0"/>
+	<column name="IS_PULL" required="true" type="SMALLINT" default="0"/>
+	
+	<column name="IS_CARDIO" required="true" type="SMALLINT" default="0"/>
+	
+	<column name="IS_AD_HOC" required="true" type="SMALLINT" default="0"/>
+	
+    <foreign-key foreignTable="TRAINING_PLAN_DB">
+		<reference local="TRAINING_PLAN_DB_ID" foreign="TRAINING_PLAN_DB_ID"/>
+    </foreign-key>
+</table>
+
+<table name="TRAINING_PLAN_EXCERCISE_DB" idMethod="native">
+	<column name="TRAINING_PLAN_EXCERCISE_DB_ID" required="true" primaryKey="true" type="BIGINT" autoIncrement="true"/>
+    <column name="TRAINING_PLAN_WORKOUT_DB_ID" required="true" primaryKey="false" type="BIGINT"/>
+    <column name="EXCERCISE_DB_ID" required="true" primaryKey="false" type="INTEGER"/>
+	
+	<column name="EXCERCISE_NUMBER" required="true" type="SMALLINT"/>
+	<column name="IS_SUPER_SET" required="true" type="SMALLINT" default="0"/>
+	<!--
+	<column name="PR_WEIGHT" required="false" scale="2" size="5" type="DECIMAL"/>
+	-->
+	<column name="DESCRIPTION" required="false" type="LONGVARCHAR"/>
+	
+	<column name="IS_ALTERNATE_MOVE" required="true" type="SMALLINT" default="0"/>
+	<column name="ALT_PERSON_ID" required="false" type="INTEGER"/>
+
+    <foreign-key foreignTable="TRAINING_PLAN_WORKOUT_DB">
+		<reference local="TRAINING_PLAN_WORKOUT_DB_ID" foreign="TRAINING_PLAN_WORKOUT_DB_ID"/>
+    </foreign-key>
+    <foreign-key foreignTable="EXCERCISE_DB">
+		<reference local="EXCERCISE_DB_ID" foreign="EXCERCISE_DB_ID"/>
+    </foreign-key>
+	<foreign-key foreignTable="PERSON">
+		<reference local="ALT_PERSON_ID" foreign="PERSONID"/>
+	</foreign-key>
+</table>
+
+<table name="TRAINING_PLAN_SET_DB" idMethod="native">
+	<column name="TRAINING_PLAN_SET_DB_ID" required="true" primaryKey="true" type="BIGINT" autoIncrement="true"/>
+    <column name="TRAINING_PLAN_EXCERCISE_DB_ID" primaryKey="false" required="true" type="BIGINT"/>
+	
+	<column name="SET_NUMBER" required="true" type="SMALLINT"/>
+	<column name="IS_EXT" required="false" type="SMALLINT" default="0"/>
+	<column name="IS_DROP_SET" required="false" type="SMALLINT" default="0"/>
+	<column name="IS_AMRAP" required="false" type="SMALLINT" default="0"/>
+	<column name="IS_AMWAP" required="false" type="SMALLINT" default="0"/>
+	<column name="IS_1RM_PERC" required="false" type="SMALLINT" default="0"/>
+	<column name="ONE_REP_MAX_PERC" required="false" scale="2" size="5" type="DECIMAL"/>
+	
+	<column name="WEEK_NUMBER" required="false" type="SMALLINT"/>
+	
+	<column name="REP_GOAL_MIN" required="false" type="SMALLINT"/>
+	<column name="REP_GOAL_MAX" required="false" type="SMALLINT"/>
+	<column name="WEIGHT_GOAL" required="false" scale="2" size="5" type="DECIMAL"/>
+	<!--
+	<column name="RPE_GOAL" required="false" scale="1" size="2" type="DECIMAL"/>
+	-->
+	<column name="RPE_GOAL" required="false" size="10" type="VARCHAR"/>
+
+    <foreign-key foreignTable="TRAINING_PLAN_EXCERCISE_DB">
+		<reference local="TRAINING_PLAN_EXCERCISE_DB_ID" foreign="TRAINING_PLAN_EXCERCISE_DB_ID"/>
+    </foreign-key>
+</table>
+
+<table name="PERSON_TRAINING_PLAN_SET_MAPPING">
+	<column name="TRAINING_PLAN_SET_DB_ID" primaryKey="true" required="true" type="BIGINT"/>
+    <column name="PERSON_ID" primaryKey="true" required="true" type="INTEGER"/>
+	
+	<column name="REP_GOAL_MIN" required="false" type="SMALLINT"/>
+	<column name="REP_GOAL_MAX" required="false" type="SMALLINT"/>
+	<column name="WEIGHT_GOAL" required="false" scale="2" size="5" type="DECIMAL"/>
+	<!--
+	<column name="RPE_GOAL" required="false" scale="1" size="2" type="DECIMAL"/>
+	<column name="RPE_GOAL" required="false" size="10" type="VARCHAR"/>
+	-->
+
+	<foreign-key foreignTable="TRAINING_PLAN_SET_DB">
+		<reference local="TRAINING_PLAN_SET_DB_ID" foreign="TRAINING_PLAN_SET_DB_ID"/>
+    </foreign-key>
+	<foreign-key foreignTable="PERSON">
+		<reference local="PERSON_ID" foreign="PERSONID"/>
+	</foreign-key>
+</table>
+
+
+<table name="WORKOUT_DB" idMethod="native">
+	<column name="WORKOUT_DB_ID" required="true" primaryKey="true" type="BIGINT" autoIncrement="true"/>
+	<column name="TRAINING_PLAN_WORKOUT_DB_ID" required="true" type="BIGINT"/>
+    <column name="CURRENT_MOVE_ID" required="true" type="BIGINT"/>
+	<column name="PERSON_ID" required="false" type="INTEGER"/>
+	
+	<column name="WORKOUT_START_DATE" required="true" type="DATE"/>
+	<column name="WORKOUT_END_DATE" required="false" type="DATE"/>
+	
+	<column name="LOCATION" required="false" size="200" type="VARCHAR"/>
+	<column name="NOTES" type="LONGVARCHAR"/>
+	
+    <foreign-key foreignTable="TRAINING_PLAN_WORKOUT_DB">
+		<reference local="TRAINING_PLAN_WORKOUT_DB_ID" foreign="TRAINING_PLAN_WORKOUT_DB_ID"/>
+    </foreign-key>
+    <foreign-key foreignTable="TRAINING_PLAN_EXCERCISE_DB">
+		<reference local="CURRENT_MOVE_ID" foreign="TRAINING_PLAN_EXCERCISE_DB_ID"/>
+    </foreign-key>
+    <foreign-key foreignTable="PERSON">
+		<reference local="PERSON_ID" foreign="PERSONID"/>
+    </foreign-key>
+</table>
+
+<!-- an instance of a set attached to both TRAINING_PLAN_SET (which includes goal reps and weights) AND WORKOUT_EXCERCISE which   -->
+<table name="SET_DB" idMethod="native">
+	<column name="SET_DB_ID" required="true" primaryKey="true" type="BIGINT" autoIncrement="true"/>
+    <column name="WORKOUT_DB_ID" primaryKey="false" required="true" type="BIGINT"/>
+    <column name="TRAINING_PLAN_SET_DB_ID" primaryKey="false" required="true" type="BIGINT"/>
+	
+	<column name="ACTUAL_REPS" required="false" type="SMALLINT"/>
+	<column name="ACTUAL_WEIGHT" required="false" scale="2" size="5" type="DECIMAL"/>
+	<column name="ACTUAL_RPE" required="false" scale="1" size="2" type="DECIMAL"/>
+	<column name="SET_DATE" required="false" type="DATE"/>
+	
+	<column name="THUMBNAIL_URL" required="false" size="255" type="VARCHAR" />
+	<column name="VIDEO_URL" required="false" size="255" type="VARCHAR" />
+
+    <foreign-key foreignTable="WORKOUT_DB">
+		<reference local="WORKOUT_DB_ID" foreign="WORKOUT_DB_ID"/>
+    </foreign-key>
+    <foreign-key foreignTable="TRAINING_PLAN_SET_DB">
+		<reference local="TRAINING_PLAN_SET_DB_ID" foreign="TRAINING_PLAN_SET_DB_ID"/>
+    </foreign-key>
+</table>
+
+<table name="EXCERCISE_PERSON_MAPPING">
+	<column name="EXCERCISE_DB_ID" primaryKey="true" required="true" type="INTEGER"/>
+    <column name="PERSON_ID" primaryKey="true" required="true" type="INTEGER"/>
+	
+	<column name="PR_WEIGHT" required="false" scale="2" size="5" type="DECIMAL"/>
+	<column name="PR_REPS" required="false" type="SMALLINT"/>
+	<column name="MOVE_TIMER_SECONDS" required="false" type="INTEGER"/>
+
+    <foreign-key foreignTable="EXCERCISE_DB">
+		<reference local="EXCERCISE_DB_ID" foreign="EXCERCISE_DB_ID"/>
+    </foreign-key>
+	<foreign-key foreignTable="PERSON">
+		<reference local="PERSON_ID" foreign="PERSONID"/>
+	</foreign-key>
+</table>
+
+
+
+
+
+
+<table name="RECIPE_DB" idMethod="native">
+	<column name="RECIPE_DB_ID" required="true" primaryKey="true" type="INTEGER" autoIncrement="true"/>
+	
+	<column name="NAME" required="true" size="200" type="VARCHAR"/>
+	<column name="DESCRIPTION" type="LONGVARCHAR"/>
+	<column name="NOTES" type="LONGVARCHAR"/>
+	
+    <column name="IS_ACTIVE" type="SMALLINT" default="1"/>
+	
+	<column name="CALORIES" scale="2" size="7" type="DECIMAL"/>
+	<column name="FAT" scale="2" size="7" type="DECIMAL"/>
+	<column name="CARBS" scale="2" size="7" type="DECIMAL"/>
+	<column name="PROTEIN" scale="2" size="7" type="DECIMAL"/>
+	
+	<column name="SERVES" scale="2" size="7" type="DECIMAL"/>
+	<column name="SERVING_SIZE" scale="2" size="7" type="DECIMAL"/>
+	<column name="SERVING_SIZE_TYPE" type="SMALLINT"/>
+	
+	<column name="THUMBNAIL_URL" required="false" size="255" type="VARCHAR" />
+	<column name="IMAGE_URL" required="false" size="255" type="VARCHAR" />
+	<column name="VIDEO_URL" required="false" size="255" type="VARCHAR" />
+	
+    <column name="CREATION_DATE" required="true" type="DATE"/>
+    <column name="MODIFICATION_DATE" required="false" type="DATE"/>
+    <column name="CREATE_PERSON_ID" required="false" type="INTEGER"/>
+    <column name="MODIFY_PERSON_ID" required="false" type="INTEGER"/>
+    
+    <foreign-key foreignTable="PERSON">
+		<reference local="CREATE_PERSON_ID" foreign="PERSONID"/>
+    </foreign-key>
+    <foreign-key foreignTable="PERSON">
+		<reference local="MODIFY_PERSON_ID" foreign="PERSONID"/>
+    </foreign-key>
+</table>
+
+<table name="RECIPE_INGREDIENT">
+	<column name="RECIPE_DB_ID" primaryKey="true" required="true" type="INTEGER"/>
+    <column name="STEP" primaryKey="true" type="SMALLINT" required="true"/>
+	
+	<column name="NAME" required="true" size="250" type="VARCHAR"/>
+	
+	<column name="CALORIES" scale="2" size="7" type="DECIMAL"/>
+	<column name="FAT" scale="2" size="7" type="DECIMAL"/>
+	<column name="CARBS" scale="2" size="7" type="DECIMAL"/>
+	<column name="PROTEIN" scale="2" size="7" type="DECIMAL"/>
+	
+	<column name="SERVING_SIZE" scale="2" size="7" type="DECIMAL"/>
+	<column name="SERVING_SIZE_TYPE" type="SMALLINT"/>
+	<!-- 1 = grams -->
+	<!-- 2 = ml -->
+	
+	<column name="ENTRY_AMOUNT" scale="2" size="7" type="DECIMAL"/>
+	<column name="ENTRY_TYPE" type="SMALLINT"/>
+	<!-- 1 = serving -->
+	<!-- 2 = grams -->
+	<!-- 3 = ml -->
+	<!-- 4 = oz -->
+	
+	<column name="FOOD_DB_ID" required="false" type="BIGINT"/>
+
+    <foreign-key foreignTable="RECIPE_DB">
+		<reference local="RECIPE_DB_ID" foreign="RECIPE_DB_ID"/>
+    </foreign-key>
+    <foreign-key foreignTable="FOOD_DB">
+		<reference local="FOOD_DB_ID" foreign="FOOD_DB_ID"/>
+    </foreign-key>
+</table>
+
+<table name="RECIPE_DIRECTION">
+	<column name="RECIPE_DB_ID" primaryKey="true" required="true" type="INTEGER"/>
+    <column name="STEP" primaryKey="true" type="SMALLINT" required="true"/>
+	
+	<column name="DIRECTION" type="LONGVARCHAR"/>
+
+    <foreign-key foreignTable="RECIPE_DB">
+		<reference local="RECIPE_DB_ID" foreign="RECIPE_DB_ID"/>
+    </foreign-key>
+</table>
+
+<table name="FAVORITE_RECIPE">
+	<column name="PERSON_ID" required="true" primaryKey="true" type="INTEGER"/>
+	<column name="RECIPE_DB_ID" required="true" primaryKey="true" type="INTEGER"/>
+
+	<column name="FAVORITE_DATE" required="true" type="DATE"/>
+
+    <foreign-key foreignTable="PERSON">
+		<reference local="PERSON_ID" foreign="PERSONID"/>
+    </foreign-key>
+    <foreign-key foreignTable="RECIPE_DB">
+		<reference local="RECIPE_DB_ID" foreign="RECIPE_DB_ID"/>
+    </foreign-key>
+</table>
+
+
+
+	
+        <!-- End valeo specific tables -->
+</database>

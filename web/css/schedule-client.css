@@ -1,0 +1,170 @@
+body {
+		font: small arial, helvetica, sans-serif;
+	}
+
+	#header ul {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+	}
+
+	#header li {
+		display: inline;
+		margin: 0 2px 0 0;
+	}
+
+	#header a {
+		padding: 0 1em;
+		text-decoration: none;
+		color: #a80;
+		background: #ddd;
+	}
+
+	#header a:hover {
+		background: #426fd9;
+		color: #fff;
+	}
+
+	#header #selected {
+	}
+
+	#header #selected a {
+		padding-bottom: 3px;
+		font-weight: bold;
+		color: #fff;
+        background: #426fd9;
+	}
+	
+	#content {
+		border-top: 2px solid white;
+		padding: 1em;
+	}
+	
+	#content p {
+		margin: 0;
+		padding: 0em;
+	}
+	
+	h1 {
+		font-size: 1.5em;
+		color: #fc0;
+	}
+
+	#content h2 {
+		font-size: 1.25em;
+		color: #000;
+		margin: 0;
+	}
+	 
+#ygunav {background:#fc0; border-bottom:2px solid #ccc; padding:0 10px;font-size:78%;text-align:right;margin-bottom:6px;height:2.5em;line-height:2.5em;}
+html>body #ygunav {overflow:hidden;}
+#ygunav strong {font-family:verdana;}
+#ygunav p {display:inline;margin:0;padding:0;}
+#ygunav p em {float:left;text-align:left;font-style:normal; padding-top:.7em}
+* html #ygunav p em {margin-top:1px;}
+#ygunav p em i {visibility:hidden;}
+#ygunav a {color:#000;}
+#ygunav form {display:inline;margin:0 0 0 1em;}
+#ygsp {width:8em;font-size:110%;padding:0;vertical-align:middle;}
+#ygunav .ygbt {background:#dcdcdc;font:110% verdana;position:relative;top:1px;}
+* html #ygunav .ygbt {top:4px;}
+* html>body #ygunav .ygbt {line-height:0;top:-4px;}
+#ygunav label {color:#666;font-family:tahoma;position:relative;top:1px;}
+
+.adminInput {width:8em;font-size:110%;font-weight:bold;padding:0;vertical-align:middle;}
+
+div.adminItem            { width: 400px;              margin: 2px 0px 3px  0px; }
+div.adminItem div.left   { width: 150px; float: left; }
+div.adminItem div.leftTM { width: 150px; float: left; margin-top: 2px; }
+div.adminItem div.right  { width: 250px; float: left; }
+div.adminItem div.end    { clear: left; }
+
+div.adminItem div.left   { color: #4060af; font-weight: bold; }
+div.adminItem div.leftTM { color: #4060af; font-weight: bold; }
+div.adminItem div.right  { color: #000000;                    }
+	
+
+
+div.tableContainer {clear: both;border: 1px solid #963;	height: 450px;	overflow: auto;	width: 100%;}
+div.tableContainer table {float: left;width: 100%}
+\html div.tableContainer table/* */ {margin: 0 -16px 0 0}
+thead.fixedHeader tr {position: relative;top: expression(document.getElementById("tableContainer").scrollTop);}
+head:first-child+body thead[class].fixedHeader tr {display: block;}
+thead.fixedHeader th {background: #C96;border-left: 1px solid #EB8;border-right: 1px solid #B74;border-top: 1px solid #EB8;font-weight: normal;	padding: 4px 3px;text-align: left; font-weight: bold;}
+thead.fixedHeader a, thead.fixedHeader a:link, thead.fixedHeader a:visited {color: #FFF;display: block;text-decoration: none;width: 100%}
+thead.fixedHeader a:hover {color: #FFF;	display: block;	text-decoration: underline;width: 100%}
+head:first-child+body tbody[class].scrollContent {display: block;height: 425px;overflow: auto;width: 100%}
+tbody.scrollContent td, tbody.scrollContent tr.normalRow td {border-bottom: none;border-left: none;border-right: none;border-top: none;padding: 0px 1px 1px 1px; vertical-align: top; }
+tbody.scrollContent a, tbody.scrollContent a:link, tbody.scrollContent a:visited {color: #FFF;text-decoration: none}
+tbody.scrollContent a:hover {color: #FFF;text-decoration: underline}
+head:first-child+body thead[class].fixedHeader th {width: 200px}
+head:first-child+body thead[class].fixedHeader th + th {width: 240px}
+head:first-child+body thead[class].fixedHeader th + th + th {border-right: none;padding: 4px 4px 4px 3px;width: 316px}
+head:first-child+body tbody[class].scrollContent td {width: 200px}
+head:first-child+body tbody[class].scrollContent td + td {width: 240px}
+head:first-child+body tbody[class].scrollContent td + td + td {border-right: none;padding: 2px 4px 2px 3px;width: 300px}
+
+
+#tblLedger td, th { padding: 0.25em; font-size:100%; }
+#tblLedger td { text-align: right; }
+.classy0 { background-color: #234567; color: #89abcd; }
+.classy1 { background-color: #89abcd; color: #234567; }
+
+#example {height:30em;}
+label { display:block;float:left;width:45%;clear:left; }
+.clear { clear:both; }
+#resp { margin:10px;padding:5px;border:1px solid #ccc;background:#fff;}
+#resp li { font-family:monospace }
+
+
+.crirHidden { position: absolute; left: -1000px; }
+
+label.checkbox_checked {
+	background: #fc0 url(../images/btnCheckbox-selected.gif) no-repeat;
+	margin: 0px;
+	padding: 0px 6px 0px 18px;
+	cursor: pointer;
+}
+label.checkbox_unchecked  {
+	background: #fc0 url(../images/btnCheckbox-none.gif) no-repeat;
+	margin: 0px;
+	padding: 0px 6px 0px 18px;
+	cursor: pointer;
+}
+
+label.radio_checked {
+	background: #fc0 url(../images/btnRadio-selected.gif) no-repeat;
+	margin: 0px;
+	padding: 0px 6px 0px 18px;
+	cursor: pointer;
+}
+label.radio_unchecked  {
+	background: #fc0 url(../images/btnRadio-none.gif) no-repeat;
+	margin: 0px;
+	padding: 0px 6px 0px 18px;
+	cursor: pointer;
+}
+                
+                
+                
+#wrapper {
+	text-align: left;
+	margin: 0px auto;
+	padding: 0px;
+	border:0;
+	width: 100%;
+}
+
+#side-a {
+	float: left;
+	width: 20%;
+}
+
+#side-b { 
+	margin: 0;
+	float: left;
+	width: 80%;
+	height: 1% /* Holly hack for Peekaboo Bug */
+}
+
+.horizontalRule { height: 1px; background-color: #adafaf; }

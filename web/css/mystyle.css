@@ -1,0 +1,558 @@
+hr {color: sienna}
+p {margin-left: 2px}
+
+
+body {
+  margin: 0;
+  padding: 0;
+  }
+
+#menux
+{
+    visibility: hidden;
+}
+
+#menux a {
+  position: absolute;
+  height: 25px;
+  width: 130px;
+  text-decoration: none;
+  z-index:2;
+  }
+  
+#menux-1 a {
+  left: 100px;
+  }
+  
+#menux-2 a {
+  left: 100px;
+  }
+  
+#menux-3 a {
+  left: 100px;
+  }
+  
+#menux-4 a {
+  left: 210px;
+  }
+  
+#menux-5 a {
+  left: 210px;
+  }
+  
+#menux a i { visibility: hidden; }
+  
+a#practitioners { top: 134px; background-image: url(../images/meet-the-practitioners.gif); }
+a#practitioners:hover { background-image: url(../images/meet-the-practitioners-selected.gif); }
+a#staff { top: 159px; background-image: url(../images/meet-the-staff.gif); }
+a#staff:hover { background-image: url(../images/meet-the-staff-selected.gif); }
+a#intro { top: 184px; background-image: url(../images/introduction-to-valeo.gif); }
+a#intro:hover { background-image: url(../images/introduction-to-valeo-selected.gif); }
+
+a#chiropractic { top: 125px; background-image: url(../images/chiropractic.gif); }
+a#chiropractic:hover { background-image: url(../images/chiropractic-selected.gif); }
+a#naturopathy { top: 150px; background-image: url(../images/naturopathy.gif); }
+a#naturopathy:hover { background-image: url(../images/naturopathy-selected.gif); }
+a#massage { top: 175px; background-image: url(../images/massage.gif); }
+a#massage:hover { background-image: url(../images/massage-selected.gif); }
+a#cranio { top: 200px; background-image: url(../images/cst-therapy.gif); }
+a#cranio:hover { background-image: url(../images/cst-therapy-selected.gif); }
+a#lifestyle { top: 225px; background-image: url(../images/lifestyle-coaching.gif); }
+a#lifestyle:hover { background-image: url(../images/lifestyle-coaching-selected.gif); }
+a#defense { top: 250px; background-image: url(../images/self-defense.gif); }
+a#defense:hover { background-image: url(../images/self-defense-selected.gif); }
+a#seminars { top: 275px; background-image: url(../images/seminars.gif); }
+a#seminars:hover { background-image: url(../images/seminars-selected.gif); }
+  
+a#food { top: 155px; background-image: url(../images/whole-food-nutrition.gif); }
+a#food:hover { background-image: url(../images/whole-food-nutrition-selected.gif); }
+a#homeopathics { top: 180px; background-image: url(../images/homeopathics.gif); }
+a#homeopathics:hover { background-image: url(../images/homeopathics-selected.gif); }
+a#oils { top: 205px; background-image: url(../images/essential-oils.gif); }
+a#oils:hover { background-image: url(../images/essential-oils-selected.gif); }
+a#skin { top: 230px; background-image: url(../images/skin-care.gif); }
+a#skin:hover { background-image: url(../images/skin-care-selected.gif); }
+a#valeo { top: 255px; background-image: url(../images/valeo.gif); }
+a#valeo:hover { background-image: url(../images/valeo-selected.gif); }
+a#chiro { top: 280px; background-image: url(../images/chiropractic.gif); }
+a#chiro:hover { background-image: url(../images/chiropractic-selected.gif); }
+
+a#scan { top: 95px; background-image: url(../images/eds-scanning.gif); }
+a#scan:hover { background-image: url(../images/eds-scanning-selected.gif); }
+a#nutrition { top: 120px; background-image: url(../images/nutrition.gif); }
+a#nutrition:hover { background-image: url(../images/nutrition-selected.gif); }
+a#detox { top: 145px; background-image: url(../images/detoxification.gif); }
+a#detox:hover { background-image: url(../images/detoxification-selected.gif); }
+
+a#hormone { top: 170px; background-image: url(../images/hormone-testing.gif); }
+a#hormone:hover { background-image: url(../images/hormone-testing-selected.gif); }
+
+a#hair { top: 195px; background-image: url(../images/hair-analysis.gif); }
+a#hair:hover { background-image: url(../images/hair-analysis-selected.gif); }
+
+
+a#nrt { top: 220px; background-image: url(../images/nutrition-response.gif); }
+a#nrt:hover { background-image: url(../images/nutrition-response-selected.gif); }
+a#homeopathy { top: 245px; background-image: url(../images/homeopathy.gif); }
+a#homeopathy:hover { background-image: url(../images/homeopathy-selected.gif); }
+a#herb { top: 270px; background-image: url(../images/herbology.gif); }
+a#herb:hover { background-image: url(../images/herbology-selected.gif); }
+a#q2 { top: 295px; background-image: url(../images/q2-energy-spa.gif); }
+a#q2:hover { background-image: url(../images/q2-energy-spa-selected.gif); }
+
+a#schedule { top: 230px; background-image: url(../images/training-schedule.gif); }
+a#schedule:hover { background-image: url(../images/training-schedule-selected.gif); }
+a#options { top: 255px; background-image: url(../images/seminar-options.gif); }
+a#options:hover { background-image: url(../images/seminar-options-selected.gif); }
+a#stats { top: 280px; background-image: url(../images/statistics.gif); }
+a#stats:hover { background-image: url(../images/statistics-selected.gif); }
+
+  
+.welcome-home-text A {
+		 font-weight: bold;
+		 color: #ffffff;
+		 
+}
+
+.welcome-home-text A:hover {
+		 color: gold;
+		 
+}
+
+dl, dt, dd, ul, li {
+margin: 0;
+padding: 0;
+list-style-type: none;
+}
+
+
+div.valeo-menu-about-us
+{
+    position: absolute;
+    top: 134px;
+    left: 20px;
+    z-index:2;
+    visibility: visible;
+    background-color: white;
+    border: 1px solid gray;
+    margin-bottom: 0px;
+}
+
+div.valeo-menu-services
+{
+    position: absolute;
+    top: 124px;
+    left: 120px;
+    z-index:2;
+    visibility: visible;
+    background-color: white;
+    border: 1px solid gray;
+    margin-bottom: 0px;
+}
+
+div.valeo-menu-1
+{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+
+div.valeo-menup-2
+{
+    position: absolute;
+    top: 25px;
+    left: 0px;
+}
+
+div.valeo-menu-3
+{
+    position: absolute;
+    top: 50px;
+    left: 0px;
+}
+
+div.valeo-menu-4
+{
+    position: absolute;
+    top: 75px;
+    left: 0px;
+}
+
+div.valeo-menu-5
+{
+    position: absolute;
+    top: 100px;
+    left: 0px;
+}
+
+div.valeo-menu-6
+{
+    position: absolute;
+    top: 125px;
+    left: 0px;
+}
+
+div.valeo-menu-7
+{
+    position: absolute;
+    top: 150px;
+    left: 0px;
+}
+
+ul#example9 li
+{
+  /* list item dimensions */
+
+  width: 130px;
+  height: 25px;
+
+  /* Clear the default margins & padding 
+  for cross-browser efficiency */
+  margin: 0;
+  padding: 0;
+
+  /* suppress item markers */
+  list-style-type: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+table {}
+td {background-color: lightyellow; font: 14px arial;}
+
+
+
+div.valeo-logo
+{
+    position: absolute;
+    top: 25px;
+    left: 32px;
+}
+
+div.vert-bar-grey
+{
+    position: absolute;
+    top: 27px;
+    left: 252px;
+}
+
+div.vert-bar-grey-2
+{
+    position: absolute;
+    top: 341px;
+    left: 252px;
+}
+
+div.exp-life-Gods-way
+{
+    position: absolute;
+    top: 60px;
+    left: 278px;
+}
+
+div.search-site
+{
+    position: absolute;
+    top: 60px;
+    left: 767px;
+}
+
+div.search-button
+{
+    position: absolute;
+    top: 60px;
+    left: 989px;
+}
+
+div.newsletter-button
+{
+    position: absolute;
+    top: 83px;
+    left: 877px;
+}
+
+div.forms-button
+{
+    position: absolute;
+    top: 111px;
+    left: 875px;
+}
+
+div.beach-woman
+{
+    position: absolute;
+    top: 130px;
+    left: 274px;
+}
+
+#navbar {
+    position: absolute;
+    top: 143px;
+    left: 10px;
+}
+
+div.menu-homepage
+{
+    position: absolute;
+    top: 143px;
+    left: 10px;
+}
+
+div.menu-homepage-popup
+{
+    position: absolute;
+    top: 625px;
+    left: 444px;
+}
+
+div.menu-homepage-popup-1
+{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+
+div.menu-homepage-popup-2
+{
+    position: absolute;
+    top: 25px;
+    left: 0px;
+}
+
+div.menu-homepage-popup-3
+{
+    position: absolute;
+    top: 50px;
+    left: 0px;
+}
+
+div.about-us
+{
+    position: absolute;
+    top: 174px;
+    left: 10px;
+}
+
+div.services-x
+{
+    position: absolute;
+    top: 204px;
+    left: 10px;
+}
+
+div.products-x
+{
+    position: absolute;
+    top: 234px;
+    left: 10px;
+}
+
+div.contact-us
+{
+    position: absolute;
+    top: 264px;
+    left: 10px;
+}
+
+div.links
+{
+    position: absolute;
+    top: 294px;
+    left: 10px;
+}
+
+div.menu-sep-x
+{
+    position: absolute;
+    top: 143px;
+    left: 254px;
+}
+
+div.latest-news
+{
+    position: absolute;
+    top: 324px;
+    left: 27px;
+}
+
+div.latest-news-back
+{
+    position: absolute;
+    top: 346px;
+    left: 27px;
+}
+
+div.latest-news-text
+{
+    position: absolute;
+    top: 350px;
+    left: 32px;
+    width: 200px;
+    height: 375px;
+    color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 9pt;
+}
+
+div.vert-home
+{
+    position: absolute;
+    top: 143px;
+    left: 980px;
+}
+
+div.footer
+{
+    position: absolute;
+    top: 743px;
+    left: 10px;
+}
+
+#container{
+	position: absolute;
+	top: 143px;
+	left: 273px;
+}
+
+#main-text-new
+{
+position: relative;
+	
+	top: 143px;
+	left: 273px;
+	width: 498px;
+	background-color: #ffffff;
+}
+
+#footer-new{
+	background-color: #fff;
+
+}
+
+#footerbr { clear: both; }
+
+
+div.welcome-home
+{
+    position: absolute;
+    top: 144px;
+    left: 483px;
+}
+
+div.welcome-home-text
+{
+    position: absolute;
+    top: 207px;
+    left: 502px;
+    width: 450px;
+    color: #ffffff;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+}
+
+div.home-label
+{
+    position: absolute;
+    top: 348px;
+    left: 275px;
+}
+
+div.home-text
+{
+    position: absolute;
+    top: 360px;
+    left: 273px;
+    width: 750px;
+    height: 375px;
+    color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+}
+
+div.main-text
+{
+    position: absolute;
+    top: 143px;
+    left: 275px;
+    width: 750px;
+    height: 375px;
+    color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+}
+
+div.login
+{
+    position: absolute;
+    top: 5px;
+    left: 445px;
+    color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+}
+
+div.input
+{
+    border-style: dashed;
+    position: absolute;
+    top: 48px;
+    width: 200px;
+    color: blue;
+    background-color: lightyellow;
+}
+
+div.search_input
+{
+    position: absolute;
+    top: 68px;
+    left: 25px;
+    visibility: hidden;
+}
+
+div.search_input td { font: 8px arial }
+
+div.in_input
+{
+    position: absolute;
+    top: 68px;
+    left: 25px;
+    visibility: hidden;
+}
+
+div.out_input
+{
+    position: absolute;
+    top: 68px;
+    left: 25px;
+    visibility: hidden;
+}
+
+div.inventory_list
+{
+    padding: 5px;
+    border-style: dashed;
+    position: absolute;
+    top: 885px;
+    left: 55px;
+    width: 640px;
+    color: black;
+    background-color: lightyellow;
+}
+
+div.inventory_list p { font: 14px arial }
+
+table.inventory_table
+{
+    border-style: dashed;
+    width: 75%;
+}

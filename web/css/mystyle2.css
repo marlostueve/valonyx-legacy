@@ -1,0 +1,570 @@
+div, h3, h4, ul
+	{
+	margin: 0;
+	padding: 0;
+	}
+form
+	{
+	margin: 0;
+	}
+label
+	{
+	white-space: nowrap;
+	}
+#navigation
+	{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 48.5em;
+	}
+#main
+	{
+	width: 49.25em; /* 48.25 should be enough, but give IE space */
+	}
+#highlightedfeature
+	{
+	float: left;
+	width: 36em;
+	width: 18.75em;
+	margin-left: 12.25em;
+	padding-left: 17.25em;
+	}
+* html #highlightedfeature, * html #todaywrapper
+	{
+	/*\*/ display: inline; /* */
+	}
+#explore
+	{
+	float: left;
+	width: 12em;
+	margin-left: -48.25em;
+	}
+#todaywrapper
+	{
+	float: left;
+	width: 36em;
+	margin-left: 12.25em;
+	}
+* html #todaywrapper
+	{
+	width: 36.5em;
+	}
+* html #browse_block
+	{
+	margin-left: -48.75em;
+	}
+* html > body #today h2
+	{
+	display: inline-block;
+	width: 35.35em;
+	}
+#services
+	{
+	float: left;
+	width: 24em;
+	}
+#services-wide
+	{
+	float: left;
+	width: 36em;
+	}
+* html #services
+	{
+	width: 24em;
+	}
+* html #services-wide
+	{
+	width: 36em;
+	}
+#whereilive
+	{
+	float: left;
+	width: 11.75em;
+	margin-left: 0.25em;
+	}
+#browse_block
+	{
+	float: left;
+	width: 12em;
+	margin-left: -48.25em;
+	}
+#searchbox
+	{
+	float: left;
+	width: 15em;
+	}
+#searchbutton
+	{
+	float: right;
+	width: 5.35em;
+	height: 2.15em;
+	}
+* html #searchbutton
+	{
+	width: 5.5em;
+	height: 2.22em;
+	}
+	
+#downloads
+	{
+	clear: both;
+	padding: 0.25em;
+	}
+* html #downloads
+	{
+	float: left;
+	width: 36em;
+	width: 35.5em;
+	}
+#footline
+	{
+	clear: both;
+	width: 48.25em;
+	}
+#about
+	{
+	margin-top: 0.25em;
+	}
+div#news, div#sport, div#tv, div#radio, div#news-wide
+	{
+	position: relative;
+	margin-bottom: 0.25em;
+	padding-bottom: 0.25em;
+	}
+div#childrens
+	{
+	position: relative;
+	padding: 0.25em;
+	}
+#headline, #bodyline, #today
+	{
+	/*\*/ overflow: hidden; /* */
+	}
+#bodyline
+	{
+	position: relative; /* so that #browse_block doesn't have to be */
+	}
+* html #headline, * html #bodyline, * html #today
+	{
+	float: left; /* this also needs feeding to Opera */
+	}
+@media all and (min-width: 0px) {
+#explore, #browse_block
+	{
+	width: 17.75em;
+	}
+#headline, #bodyline, #today
+	{
+	float: left;
+	}
+#headline, #bodyline
+	{
+	position: relative;
+	left: -0.25em;
+	}
+#footline
+	{
+	width: 48em;
+	}
+}
+#highlightedfeature, #explore, #services, #services-wide, #whereilive, #browse_block
+	{
+	/*\*/
+	padding-bottom: 20000px;
+	margin-bottom: -20000px;
+	/* */
+	}
+#headline, #bodyline, #today
+	{
+	margin-bottom: 0.25em;
+	}
+#whereilive, div#news, div#sport, div#tv, div#radio, div#childrens, div#news-wide
+	{
+	background: #eceef6;
+	}
+#explore
+	{
+	background: #ffffff;
+	}
+#browse_block, #about, #downloads
+	{
+	background: #cbbad4;
+	}
+#highlights
+	{
+	background: #0878a6
+	}
+#today
+	{
+	background: #ffffff;
+	}
+body
+	{
+	background: #ffffff;
+	font-family: verdana,arial,helvetica,sans-serif;
+	margin: 0.5em;
+	padding-top: 0.0em;
+	}
+h2
+	{
+	font-family: arial,helvetica,sans-serif;
+	margin: 0;
+	padding: 1px 5px 0 5px;
+	font-size: 1em;
+	font-weight: normal;
+	background: #6f3479;
+	color: #ffffff;
+	border-bottom: solid 0.25em #ffffff;
+	}
+a:link, a:visited, a:active
+	{
+	text-decoration: none;
+	}
+a:hover, a
+	{
+	text-decoration: underline;
+	color: #003366;
+	}
+#headline #highlightedfeature *
+	{
+	font-size: 0.65em;
+	color: #ffffff;
+	}
+#headline #highlightedfeature * *
+	{
+	font-size: 1em;
+	}
+#headline #highlightedfeature h3
+	{
+	font-size: 1em;
+	font-weight: normal;
+	margin-top: 0.25em 0 0 0 0;
+	}
+#highlightedfeature ul
+	{
+	list-style-position: inside;
+	font-weight: bold;
+	margin: 1em 0 0.5em 0;
+	}
+#highlightedfeature li
+	{
+	font-size: 0.6em;
+	margin-top: 0.35em;
+	}
+* html #highlightedfeature ul
+	{
+	list-style-position: outside;
+	margin-top: -0.5em;
+	}
+* html #highlightedfeature li
+	{
+	margin-top: 0;
+	}
+#headline #highlightedfeature p
+	{
+	margin-top: 0;
+	margin-right: 1em;
+	}
+p.date
+	{
+	margin-bottom: 0.75em !important;
+	margin-right: 0 !important;
+	font-weight: bold;
+	}
+#today h2 em
+	{
+	font-size: 0.8em;
+	font-style: normal;
+	position: absolute;
+	top: 0.2em;
+	right: 1.5em;
+	}
+* html #today h2 em
+	{
+	top: 0.1em;
+	right: 1em;
+	}
+#main p
+	{
+	font-size: 0.65em;
+	}
+#downloads p a
+	{
+	font-weight: bold;
+	}
+#explore p, #browse_block p
+	{
+	margin: 0 0.5em 0 0.5em;
+	}
+#explore p
+	{
+	margin-top: 0; /*0.3em;*/
+	font-weight: bold;
+	}
+#services p
+	{
+	margin: 0 0.5em 0 9em;
+	}
+#services-wide p
+	{
+	font-size: 1em;
+	font-weight: normal;
+	margin: 0.5em 1.0em 0.5em 1.0em;
+	}
+#services-wide ul
+	{
+	font-size: 1em;
+	font-weight: normal;
+	margin: 0.5em 1.0em 0.5em 1.0em;
+	}
+#services-wide li
+	{
+	font-size: 1em;
+	font-weight: normal;
+	margin: 0.5em 1.0em 0.5em 1.0em;
+	}
+p#languages
+	{
+	font-weight: bold;
+	margin-bottom: 0.5em;
+	}
+p.console
+	{
+	position: absolute;
+	top: 0.5em;
+	right: 0;
+	}
+#main #radio p
+	{
+	margin-left: 0.5em;
+	}
+#main #downloads p
+	{
+	margin: 0;
+	padding: 0;
+	}
+#news ul, #sport ul, #tv ul, #explore ul, #news-wide ul
+	{
+	font-size: 0.65em;
+	margin-left: 9em;
+	margin-top: 0.75em;
+	margin-right: 0.5em;
+	margin-bottom: 0.75em;
+	}
+#explore ul
+	{
+	margin: 0.25em 0.5em 0.5em 2em;
+	font-weight: bold;
+	}
+#main #explore li
+	{
+	margin-top: 0.25em;
+	}
+img
+	{
+	border: none;
+	}
+#news ul img, #sport ul img, #tv ul img, #news-wide ul img
+	{
+	position: absolute;
+	margin-left: -8.5em;
+	}
+#news ul img, #sport ul img, #tv ul img, #whereilive p img
+	{
+	width: 6.35em;
+	height: 4.7em;
+	}
+#news li, #sport li, #tv li, #news-wide li
+	{
+	margin-bottom: 0.35em;
+	}
+* html #news li, * html #sport li, * html #tv li, * html #news-wide li
+	{
+	margin-bottom: 0;
+	}
+#main li strong
+	{
+	font-size: 1.25em;
+	}
+#services-wide li strong
+	{
+	font-size: 1em;
+	}
+#radio h4
+	{
+	font-size: 0.65em;
+	margin-top: 0.5em;
+	margin-left: 0.5em;
+	font-weight: normal;
+	}
+#radio ul
+	{
+	position: relative;
+	font-size: 0.65em;
+	margin: 0.5em;
+	}
+#radio ul li
+	{
+	line-height: 1.2;
+	margin: 0;
+	padding: 0;
+	margin-left: 1.5em;
+	}
+* #radio ul li
+	{
+	position: relative;
+	}
+ul li#fivelive, ul li#bbc7
+	{
+	margin-top: -4.75em;
+	}
+li#fivelive, li#fivelivesportsextra, li#onextra, li#sixmusic
+	{
+	margin-left: 10em !important;
+	}
+li#bbc7, li#asiannetwork, li#worldservice, li#allradio
+	{
+	margin-left: 18.5em !important;
+	}
+div#childrens p
+	{
+	margin: 0;
+	padding: 0;
+	width: 10.5em;
+	font-size: 0.8em;
+	font-weight: bold;
+	}
+#main p img, #searchbutton
+	{
+	vertical-align: middle;
+	}
+#whereilive ul
+	{
+	font-size: 0.75em;
+	margin-left: 1.95em;
+	margin-bottom: 0;
+	}
+#browse_block h3, #services h3, #services-wide h3, #whereilive h3
+	{
+	font-size: 1em;
+	margin: 0 0.3em 0 0.3em;
+	padding: 0;
+	font-weight: normal;
+	}
+#explore h3, #browse_block h4, #whereilive h4, p#popularsearch
+	{
+	font-size: 0.8em;
+	font-weight: bold;
+	margin: 0.25em 0.25em 0.25em 0.25em;
+	padding: 0;
+	}
+#explore h3
+	{
+	clear: both;
+	border-top: solid 0.5em #b5e6f4; /* would be better as transparent, but IE7 don't like it */
+	margin-top: 0.5em;
+	}
+* html #explore h3
+	{
+	border-top: none;
+	}
+p#popularsearch
+	{
+	margin-bottom: 0.5em;
+	}
+#browse_block h5
+	{
+	font-size: 0.8em;
+	font-weight: normal;
+	margin: 0.75em 0.35em 0 0.35em;
+	padding: 0;
+	}
+#directory
+	{
+	position: absolute;
+	top: 0.35em;
+	right: 48em;
+	width: 10em;
+	text-align: right;
+	}
+* html #directory
+	{
+	right: 47em;
+	}
+p#atoz a
+	{
+	font-weight: bold;
+	}
+li
+	{
+	color: #003366;
+	}
+#whereilive td, #whereilive th
+	{
+	vertical-align: top;
+	text-align: left;
+	font-size: 0.5em;
+	padding: 0.25em;
+	}
+#highlightedfeature
+	{
+	background-position: 60% 0%;
+	background-repeat: no-repeat;
+	background-color: #ffffff;
+	height: 9.5em;
+	}
+#whereilive p
+	{
+	position: relative;
+	margin: 0.5em;
+	}
+#changeloc
+	{
+	position: absolute;
+	top: 0;
+	right: 0.25em;
+	}
+#whereilive table img
+	{
+	width: 3.75em;
+	height: 3.25em;
+	}
+body div#navigation h2
+	{
+	background: #999999 !important;
+	color: #ffffff !important;
+	font-size: 1.25em;
+	padding: 0.25em;
+	font-family: Gill Sans, Arial;
+	}
+#navigation h3
+	{
+	margin-left: 0.5em;
+	}
+#navigation p
+	{
+	margin-left: 0.75em;
+	}
+#commentary
+	{
+	margin-top: 2em;
+	}
+html > body #commentary
+	{
+	position: relative;
+	z-index: 2000;
+	}
+#commentary a, #navigation a
+	{
+	text-decoration: underline;
+	}
+	
+div.welcome-home-text
+{
+    position: absolute;
+    top: 65px;
+    left: 410px;
+    width: 320px;
+    color: #ffffff;
+}

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="file:/C:/Documents%20and%20Settings/marlo/My%20Documents/downloads/QBFSWebConnectorSvc.wsdl" uri="src/conf/xml-resources/web-services/QBFSWebConnectorSvc/wsdl/QBFSWebConnectorSvc.wsdl"/>
+    <system systemId="http://developer.intuit.com/uploadedFiles/Support/QBWebConnectorSvc.wsdl" uri="src/conf/xml-resources/web-services/QBWebConnectorSvcSoapImpl/wsdl/developer.intuit.com/uploadedFiles/Support/QBWebConnectorSvc.wsdl"/>
+    <nextCatalog catalog="nbproject/private/retriever/catalog.xml"/>
+</catalog>

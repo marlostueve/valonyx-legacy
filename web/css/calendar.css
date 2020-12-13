@@ -1,0 +1,98 @@
+	.CALENDARcpYearNavigation,
+	.CALENDARcpMonthNavigation
+			{
+			background-color:#3F747C;
+			text-align:center;
+			vertical-align:center;
+			text-decoration:none;
+			color:#FFFFFF;
+			font-weight:bold;
+			}
+	.CALENDARcpDayColumnHeader,
+	.CALENDARcpYearNavigation,
+	.CALENDARcpMonthNavigation,
+	.CALENDARcpCurrentMonthDate,
+	.CALENDARcpCurrentMonthDateDisabled,
+	.CALENDARcpOtherMonthDate,
+	.CALENDARcpOtherMonthDateDisabled,
+	.CALENDARcpCurrentDate,
+	.CALENDARcpCurrentDateDisabled,
+	.CALENDARcpTodayText,
+	.CALENDARcpTodayTextDisabled,
+	.CALENDARcpText
+			{
+			font-family:arial;
+			font-size:8pt;
+			font-weight:normal;
+			}
+	TD.CALENDARcpDayColumnHeader
+			{
+			text-align:right;
+			border:solid thin #3F747C;
+			border-width:0 0 0 0;
+			}
+	.CALENDARcpCurrentMonthDate,
+	.CALENDARcpOtherMonthDate,
+	.CALENDARcpCurrentDate
+			{
+			text-align:right;
+			text-decoration:none;
+			}
+	.CALENDARcpCurrentMonthDateDisabled,
+	.CALENDARcpOtherMonthDateDisabled,
+	.CALENDARcpCurrentDateDisabled
+			{
+			color:#D0D0D0;
+			text-align:right;
+			text-decoration:line-through;
+			}
+	.CALENDARcpCurrentMonthDate
+			{
+			color:#3F747C;
+			font-weight:bold;
+			}
+	.CALENDARcpCurrentDate
+			{
+			color: #FFFFFF;
+			font-weight:bold;
+			}
+	.CALENDARcpOtherMonthDate
+			{
+			color:#808080;
+			}
+	TD.CALENDARcpCurrentDate
+			{
+			color:#FFFFFF;
+			background-color: #3F747C;
+			border-width:1;
+			border:solid thin #000000;
+			}
+	TD.CALENDARcpCurrentDateDisabled
+			{
+			border-width:1;
+			border:solid thin #FFAAAA;
+			}
+	TD.CALENDARcpTodayText,
+	TD.CALENDARcpTodayTextDisabled
+			{
+			border:solid thin #3F747C;
+			border-width:0 0 0 0;
+			}
+	A.CALENDARcpTodayText,
+	SPAN.CALENDARcpTodayTextDisabled
+			{
+			height:20px;
+			}
+	A.CALENDARcpTodayText
+			{
+			color:#3F747C;
+			font-weight:bold;
+			}
+	SPAN.CALENDARcpTodayTextDisabled
+			{
+			color:#D0D0D0;
+			}
+	.CALENDARcpBorder
+			{
+			border:solid thin #3F747C;
+			}

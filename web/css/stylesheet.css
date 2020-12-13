@@ -1,0 +1,374 @@
+body {
+	padding-left: 10px;
+	padding-top: 5px;
+	padding-bottom: 15px;
+}
+.content {
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: Black;
+}
+.content_heading {
+	font-size: 14px;
+	font-weight: bold;
+	font-family: 'Comic Sans MS';
+	padding: 10px;
+	margin: 0px;
+}
+.highlight {
+	color: #CC0015;
+}
+table.teacher_class_list {
+	border: 1px solid Blue;
+	font-size: 11px;
+}
+table.teacher_class_list th {
+	font-family: "Comic Sans MS";
+	font-weight: bold;
+	background-color: Gray;
+	color: White;
+	border-bottom: 1px solid Black;
+}
+table.teacher_class_list td {
+	border-bottom: 1px solid Silver;
+	color: #01159A;
+}
+table.teacher_class_list th, table.teacher_class_list td {
+	padding: 4px 4px;
+}
+table.teacher_class_list tr.highlight {
+	background-color: #FBCC0A;
+	font-weight: bold;
+}
+table.teacher_class_list td.last_row {
+	border-bottom-width: 0px;
+}
+table.teacher_class_list a {
+	padding: 3px 3px;
+}
+table.report_test_status {
+	font-size: 11px;
+	border-left: 1px solid Black;
+	border-bottom: 1px solid Black;
+}
+table.report_test_status th {
+	font-family: "Comic Sans MS";
+	font-weight: bold;
+	background-color: Silver;
+	color: Black;
+	text-align: left;
+	border: 1px solid Black;
+	border-bottom: 0px;
+	border-left: 0px;
+}
+table.report_test_status td {
+	border: 1px solid Black;
+	border-bottom: 0px;
+	border-left: 0px;
+}
+table.report_test_status th, table.report_test_status td {
+	padding: 2px 4px 2px 15px;
+}
+table.report_OnlineActivity_StudentList {
+	border: 1px Solid Blue;
+	font-size: 11px;
+	padding: 5px;
+	color: #075FB0;
+}
+table.report_OnlineActivity_StudentList tr.highlight {
+	font-weight: bold;	
+}
+table.report_OnlineActivity_StudentDetail {
+	border: 1px Solid Blue;
+	font-size: 11px;
+	border-bottom-width: 1px;
+}
+table.report_OnlineActivity_StudentDetail th {
+	font-family: "Comic Sans MS";
+}
+
+table.report_OnlineActivity_StudentDetail span {
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: Black;
+}
+table.report_OnlineActivity_StudentDetail td, table.report_OnlineActivity_StudentDetail th {
+	border-bottom: 0px solid Blue;
+	padding: 0px;
+}
+table.report_ClassRecord {
+	border-right: 1px solid Black;
+	border-top: 1px solid Black;
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: Black;
+}
+table.report_ClassRecord th {
+	font-family: "Comic Sans MS";
+	font-weight: bold;
+	background-color: Silver;
+	text-align: center;
+	border-bottom: 1px solid Black;
+	vertical-align: top;
+}
+table.report_ClassRecord td {
+	border-left: 1px solid Black;
+	border-bottom: 1px solid Black;
+	text-align: center;
+	width: 30px;
+}
+table.report_ClassRecord .colmerge {
+	border-left-width: 0px;
+}
+table.report_ClassRecord .seperator {
+	border-left: 2px solid Black;
+}
+table.report_ClassRecord #prepostshade {
+	background-color: Silver;
+}
+.report_studentname {
+	width: 150px;
+	text-align: left;
+}
+.report_prepost {
+	width: 45px;
+	text-align: left;
+	padding-left: 5px;
+}
+table.report_testscores {
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: Black;
+	width: 60%;
+	border-bottom: 1px solid Blue;
+}
+table.report_testscores tr {
+	padding: 4px;
+}
+table.report_testscores th {
+	font-family: "Comic Sans MS";
+}
+table.report_testscores td {
+	text-align: center;
+	border-top: 1px solid Blue;
+}
+table.report_testscores #Name {
+	text-align: left;
+	padding-left: 5px;
+	border-left: 1px solid Blue;
+}
+table.report_testscores #Increase {
+	border-right: 1px solid Blue;
+}
+table.report_testscores #Averages {
+	font-weight: bold;
+}
+table.report_StudentProgress {
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: Black;
+	width: 85%;
+	border-bottom: 1px solid Blue;
+}
+table.report_StudentProgress #sectionheading, table.report_StudentProgress #sectionheading_first {
+	background-color: Silver;
+	border-left: 1px solid Blue;
+	border-right: 1px solid Blue;
+	font-weight: bold;
+	font-family: "Comic Sans MS";
+	text-align: left;
+}
+table.report_StudentProgress #sectionheading_first {
+	border-top-width: 0px;
+}
+table.report_StudentProgress #obj {
+	border-left: 1px solid Blue;
+}
+table.report_StudentProgress #description {
+	border-right: 1px solid Blue;
+	text-align: left;
+}
+table.report_StudentProgress th {
+	font-family: "Comic Sans MS";
+	text-align: left;
+	border-bottom: 1px solid Blue;
+}
+table.report_StudentProgress td {
+	border-top: 1px solid Black;
+	text-align: center;
+	padding: 5px;
+}
+table.PlanClasses_StudentObjective {
+	font-size: 12px;
+	padding: 5px;
+	text-align: left;
+}
+table.PlanClasses_StudentObjective th {
+	font-weight: bold;
+	border-bottom: 1px solid Black;
+}
+table.PlanClasses_StudentObjective td {
+	border-bottom: 1px dotted Black;
+}
+table.PlanClasses_GeneratePacingPlan {
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	border-bottom: 1px solid black;
+	border-left: 1px solid black;
+}
+table.PlanClasses_GeneratePacingPlan #FirstCell, table.PlanClasses_GeneratePacingPlan th {
+	background-color: Silver;
+}
+table.PlanClasses_GeneratePacingPlan #FirstCell {
+	font-weight: bold;
+}
+table.PlanClasses_GeneratePacingPlan #EndNote td {
+	border-top-width: 2px;
+}
+table.PlanClasses_GeneratePacingPlan th, table.PlanClasses_GeneratePacingPlan td {
+	border-right: 1px solid Black;
+	border-top: 1px solid Black;
+}
+table.PlanClasses_GeneratePacingPlan th {
+	font-weight: bold;
+}
+table.PlanClasses_GeneratePacingPlan td {
+	vertical-align: top;
+	padding: 5px;
+}
+table.PlanClasses_ContentStrand {
+	font-size: 12px;
+}
+table.PlanClasses_ContentStrand th {
+	font-weight: bold;
+	text-align: left;
+	font-size: 13px;
+	padding-bottom: 5px;
+}
+table.admin_MeanScore {
+	border: 1px solid Blue;
+	font-size: 12px;
+	text-align: center;
+}
+table.admin_MeanScore th {
+	font-family: Comic Sans MS;
+	background-color: Silver;
+}
+table.admin_MeanScore th, table.admin_MeanScore td {
+	padding: 5px;
+	border-bottom: 1px solid silver;
+	border-right: 1px solid silver;
+}
+table.admin_MeanPercent {
+	border: 1px solid Blue;
+	font-size: 12px;
+	text-align: center;
+}
+table.admin_MeanPercent th {
+	font-family: Comic Sans MS;
+	background-color: Silver;
+}
+table.admin_MeanPercent td#pretest {
+	background-color: Navy;
+	color: White;
+}
+table.admin_MeanPercent td#posttest {
+	background-color: #CC0015;
+	color: White;
+}
+table.admin_MeanPercent #description {
+	text-align: left;
+}
+table.admin_MeanPercent th, table.admin_MeanPercent td {
+	padding: 5px;
+	border-bottom: 1px solid silver;
+	border-right: 1px solid silver;
+}
+table.admin_printSchoolAccessCodes {
+	border: 1px solid Blue;
+	font-size: 12px;
+	text-align: center;
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+	color: Black;
+	width: 70%;
+}
+table.admin_printSchoolAccessCodes th {
+	font-family: Comic Sans MS;
+	background-color: Silver;
+}
+table.admin_printSchoolAccessCodes th, table.admin_printSchoolAccessCodes td {
+	padding: 3px;
+	border-bottom: 1px solid silver;
+	border-right: 1px solid silver;
+}
+table.admin_GainsByPercentOfIncr, table.admin_ChangeNPGroup, table.admin_QMissedByMoreThanHalf, table.admin_PercentCrctByContentStrand {
+	border: 1px solid Blue;
+	font-size: 12px;
+	text-align: center;
+	width: 60%;
+}
+table.admin_GainsByPercentOfIncr th, table.admin_ChangeNPGroup th, table.admin_QMissedByMoreThanHalf th, table.admin_PercentCrctByContentStrand th {
+	font-family: Comic Sans MS;
+	background-color: Silver;
+}
+table.admin_GainsByPercentOfIncr th, table.admin_GainsByPercentOfIncr td,
+table.admin_ChangeNPGroup th, table.admin_ChangeNPGroup td,
+table.admin_QMissedByMoreThanHalf th, table.admin_QMissedByMoreThanHalf td,
+table.admin_PercentCrctByContentStrand th, table.admin_PercentCrctByContentStrand td {
+	padding: 5px;
+	border-bottom: 1px solid silver;
+	border-right: 1px solid silver;
+}
+table.admin_GainsByPercentOfIncr tr#total,
+table.admin_ChangeNPGroup tr#total,
+table.admin_QMissedByMoreThanHalf tr#total {
+	background-color: #f3f3f3;
+}
+
+table.admin_RankingPercentCrctByObj {
+	border: 1px solid Blue;
+	font-size: 12px;
+	text-align: center;
+	width: 90%;
+}
+table.admin_RankingPercentCrctByObj th {
+	font-family: Comic Sans MS;
+	background-color: Silver;
+	padding: 5px;
+	border-bottom: 1px solid silver;
+	border-right: 1px solid silver;
+}
+table.admin_RankingPercentCrctByObj td {
+	text-align: left;
+	padding: 5px;
+	border-bottom: 1px solid silver;
+	border-right: 1px solid silver;
+}
+table.admin_RankingPercentCrctByObj td#percent {
+	width: 16%;
+	text-align: center;
+}
+table.admin_RankingPercentCrctByObj tr#above50 {
+	background-color: #ffffff;
+}
+table.admin_RankingPercentCrctByObj tr#below50 {
+	background-color: #FFF4D1;
+}
+
+table.admin_DwnldStdInfo01, table.admin_DwnldStdInfo02, table.admin_DwnldStdInfo03 {
+	border: 1px solid Blue;
+	font-size: 12px;
+	text-align: left;
+	width: 100%;
+}
+table.admin_DwnldStdInfo01 th, table.admin_DwnldStdInfo02 th, table.admin_DwnldStdInfo03 th {
+	font-family: Comic Sans MS;
+	background-color: Silver;
+	border-bottom: 1px solid silver;
+}
+table.admin_DwnldStdInfo01 th, table.admin_DwnldStdInfo01 td,
+table.admin_DwnldStdInfo02 th, table.admin_DwnldStdInfo02 td,
+table.admin_DwnldStdInfo03 th, table.admin_DwnldStdInfo03 td {
+	padding-top: 2px;
+	padding-bottom: 2px;
+}

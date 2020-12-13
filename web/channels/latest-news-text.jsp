@@ -1,0 +1,4 @@
+	<div class="latest-news-text">
+		<p><b><a href="http://vitalvotes.com/blogs/public_blog/Get-Your-Folate-From-Whole-Food-Sources-Not-Multi-Vitamins/3688.aspx">Get Your Folate From Whole Food Sources Not Multi-Vitamins</a></b><br /><br />A pair of recent studies released have shown how a lack of folate -- replenished easily and naturally by eating folate-rich whole foods -- can harm the health of athletes as well as young women and, quite possibly, their babies.</p>
+		<p><b><a href="http://www.909shot.com/PressReleases/pr1031flu.htm">Studies Fail to Demonstrate Safety or Effectiveness of Influenza Vaccine in Children and Adults</a></b><br /><br />An independent analysis by the internationally renowned Cochrane Collaboration of worldwide influenza vaccine studies, published in the British Medical Journal on Oct. 28, concluded there is little scientific proof that inactivated influenza vaccine is safe and effective for children and adults.</p>
+	</div>

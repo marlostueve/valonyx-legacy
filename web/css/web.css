@@ -1,0 +1,305 @@
+/* ------------------------------------------------------------------------- */
+/* web.css                                                                   */
+/* ------------------------------------------------------------------------- */
+
+
+
+/* BEGIN HTML Selectors ---------------------------------------------------- */
+
+body {
+	background-color: #ffffff;
+	margin: 0px 0px 0px 0px;
+	padding: 0px 0px 0px 0px;
+	font: normal normal 9pt/normal Arial, Helvetica, sans-serif;
+	text-align: left;
+	vertical-align: baseline;
+	color: #000000;
+}
+p {
+	font: normal normal 9pt/normal Arial, Helvetica, sans-serif;
+	text-align: left;
+	vertical-align: baseline;
+	color: #000000;
+}
+table {
+	width: auto;
+	height: auto;
+	border-collapse: collapse;
+	border-spacing: 0px;
+	empty-cells: show;
+}
+td, th {
+	padding: 0px 0px 0px 0px;
+	margin: 0px 0px 0px 0px;
+	text-align: left;
+	vertical-align: baseline;
+}
+img       { border: 0px;                                }
+input     { font-size: 13px;                            }
+a:link    { color: #007ac9; text-decoration: none;      }
+a:visited { color: #007ac9; text-decoration: none;      }
+a:hover   { color: #007ac9; text-decoration: underline; }
+a:active  { color: #007ac9; text-decoration: none;      }
+
+/* END HTML Selectors ------------------------------------------------------ */
+
+
+
+/* BEGIN Class Selectors --------------------------------------------------- */
+
+.crirHidden { position: absolute; left: -1000px; }
+
+label.checkbox_checked {
+	background: #ffffff url(../images/btnCheckbox-selected.gif) no-repeat;
+	margin: 0px;
+	padding: 0px 6px 0px 18px;
+	cursor: pointer;
+}
+label.checkbox_unchecked  {
+	background: #ffffff url(../images/btnCheckbox-none.gif) no-repeat;
+	margin: 0px;
+	padding: 0px 6px 0px 18px;
+	cursor: pointer;
+}
+
+label.radio_checked {
+	background: #ffffff url(../images/btnRadio-selected.gif) no-repeat;
+	margin: 0px;
+	padding: 0px 6px 0px 18px;
+	cursor: pointer;
+}
+label.radio_unchecked  {
+	background: #ffffff url(../images/btnRadio-none.gif) no-repeat;
+	margin: 0px;
+	padding: 0px 6px 0px 18px;
+	cursor: pointer;
+}
+
+.formbutton {
+	background-color: #eeeeee;
+	border: 1px solid #adafaf;
+	color: #007ac9;
+}
+
+.horizontalRule { height: 1px; background-color: #adafaf; }
+
+.inputbox       { font-size: 13px; border: 1px solid #adafaf; color: #666666; height: 17px; vertical-align: top; }
+.select         { font-size: 13px; border: 1px solid #adafaf; color: #666666; height: 19px; vertical-align: top; }
+.multipleSelect { font-size: 13px; border: 1px solid #adafaf; color: #666666;               vertical-align: top; }
+.textarea       { font-size: 13px; border: 1px solid #adafaf; color: #666666;               vertical-align: top; }
+
+
+.content_TextBlock                 { margin:  0px 23px 34px 19px; padding: 0px; }
+.content_TextBlock .horizontalRule { margin: 17px 0px 17px 0px; }
+.content_TextBlock p               { margin:  0px  0px 13px  0px; padding: 0px; }
+.content_TextBlock p.headline      { font-size: 16px; font-weight: bold; color: #4fa800; }
+
+.content_TextBlock li              { margin-bottom: 6px; }
+
+.content_TextBlock table.help      { border: 1px solid #adafaf;                                       }
+.content_TextBlock table.help td   { border: 1px solid #adafaf; padding: 4px; vertical-align: middle; }
+
+
+
+.content_Administration                   { margin: -17px 23px  0px 19px; padding: 0px; }
+.content_Administration .horizontalRule   { margin: 17px 0px 17px 0px; }
+.content_Administration p                 { margin:  0px  0px 13px  0px; padding: 0px; }
+.content_Administration p.headlineA       { font-size: 16px; font-weight: bold; color: #4fa800; }
+.content_Administration p.headlineB       { font-size: 14px; font-weight: bold; color: #4060af; }
+.content_Administration p.headlineC       { font-size: 12px; font-weight: bold; color: #000000; }
+
+.content_Administration div.subnav        { width: 225px; float: left; margin-right: 11px; }
+.content_Administration div.subnav a      { display: block; margin-bottom: 5px; }
+.content_Administration div.subnav span   { display: block; margin-bottom: 5px; color: #adafaf; cursor: default; }
+.content_Administration div.subnav a.lvl1, .content_Administration div.subnav span.lvl1  { margin-left:  0px; }
+.content_Administration div.subnav a.lvl2, .content_Administration div.subnav span.lvl2  { margin-left: 15px; }
+.content_Administration div.subnav a.lvl3, .content_Administration div.subnav span.lvl3  { margin-left: 30px; }
+.content_Administration div.subnav a.lvl4, .content_Administration div.subnav span.lvl4  { margin-left: 45px; }
+
+
+.content_Administration div.main { width: 492px; float: left; }
+
+.content_Administration div.main p.currentObjectName { font-weight: bold; color: #e47913; }
+
+.content_Administration div.main div.adminItem            { width: 492px;              margin: 9px 0px 14px  0px; }
+.content_Administration div.main div.adminItem div.left   { width: 150px; float: left; }
+.content_Administration div.main div.adminItem div.leftTM { width: 150px; float: left; margin-top: 2px; }
+.content_Administration div.main div.adminItem div.right  { width: 342px; float: left; }
+.content_Administration div.main div.adminItem div.end    { clear: left; }
+
+.content_Administration div.main div.adminItem div.left   { color: #4060af; font-weight: bold; }
+.content_Administration div.main div.adminItem div.leftTM { color: #4060af; font-weight: bold; }
+.content_Administration div.main div.adminItem div.right  { color: #000000;                    }
+
+.content_Administration div.end           { clear: left; }
+
+
+
+.content_Details                   { margin: -17px 23px  0px 19px; padding: 0px; }
+.content_Details p                 { margin:   0px  0px 14px  0px; padding: 0px; width: 477px; }
+.content_Details div.subnav        { float: right; text-align: right; }
+.content_Details div.subnav a      { display: block; margin-bottom: 5px; }
+.content_Details div.subnav span   { display: block; margin-bottom: 5px; color: #adafaf; cursor: default; }
+
+.content_Details div.detailItem           { width: 477px;              margin: 9px 0px 14px  0px; }
+.content_Details div.detailItem div.left  { width: 124px; float: left; }
+.content_Details div.detailItem div.right { width: 353px; float: left; }
+.content_Details div.detailItem div.end   { clear: left; }
+
+.content_Details div.detailItem div.left  { color: #4060af; font-weight: bold; }
+.content_Details div.detailItem div.right { color: #000000;                    }
+
+
+
+.content_Assessment                    { margin: -17px 23px  0px 19px; padding: 0px; }
+.content_Assessment p                  { margin:   0px  0px 14px  0px; padding: 0px; width: 477px; }
+.content_Assessment div.subnav         { float: right; text-align: right; }
+.content_Assessment div.subnav a       { display: block; margin-bottom: 5px; }
+.content_Assessment div.subnav span    { display: block; margin-bottom: 5px; color: #adafaf; cursor: default; }
+.content_Assessment div.horizontalRule { width: 477px; }
+
+/* HANGING INDENT (DISABLED) */
+/* .content_Assessment p.choice {  text-indent: -18px;  margin-left: 16px; } */
+/* .content_Assessment p.choice { _text-indent:   0px; _margin-left:  0px; } */
+
+.content_Assessment input.formbutton { margin: 3px 0px 20px 0px; }
+
+
+
+.content_Table               { margin: -17px 23px 37px 19px; padding: 0px; }
+.content_DetailsTable        { margin:  10px  0px 10px  0px; padding: 0px; }
+.content_AdministrationTable { margin:  10px  0px 10px  0px; padding: 0px; }
+
+.content_Table .horizontalRule,       .content_DetailsTable .horizontalRule,       .content_AdministrationTable .horizontalRule       { margin: 0px; }
+
+.content_Table div.heading,           .content_DetailsTable div.heading,           .content_AdministrationTable div.heading           { margin: 4px 0px; padding: 0px;   }
+.content_Table div.heading td,        .content_DetailsTable div.heading td,        .content_AdministrationTable div.heading td        { font-size: 11px; color: #666666; }
+
+.content_Table div.container,         .content_DetailsTable div.container,         .content_AdministrationTable div.container         { margin: 0px; padding: 0px; }
+.content_Table div.course,            .content_DetailsTable div.course,            .content_AdministrationTable div.course            { margin: 5px 0px 5px 0px; padding: 0px; }
+.content_Table div.lesson,            .content_DetailsTable div.lesson,            .content_AdministrationTable div.lesson            { margin: 5px 0px 3px 0px; padding: 0px; }
+.content_Table div.activity,          .content_DetailsTable div.activity,          .content_AdministrationTable div.activity          { margin: 4px 0px 0px 0px; padding: 0px; }
+.content_Table div.course td,         .content_DetailsTable div.course td,         .content_AdministrationTable div.course td         { background-color: #eeeeee; font-size: 14px; color: #4fa800; vertical-align: middle;}
+.content_Table div.lesson td,         .content_DetailsTable div.lesson td,         .content_AdministrationTable div.lesson td         { background-color: #ffffff; font-size: 12px; color: #000000; vertical-align: middle;}
+.content_Table div.activity td,       .content_DetailsTable div.activity td,       .content_AdministrationTable div.activity td       { background-color: #ffffff; font-size: 12px; color: #000000; vertical-align: middle;}
+
+.content_Table div.certification,     .content_DetailsTable div.certification,     .content_AdministrationTable div.certification     { margin: 5px 0px 5px 0px; padding: 0px; }
+.content_Table div.certification td,  .content_DetailsTable div.certification td,  .content_AdministrationTable div.certification td  { background-color: #ffffff; font-size: 12px; color: #000000; vertical-align: middle;}
+
+.content_Table div.resource,          .content_DetailsTable div.resource,          .content_AdministrationTable div.resource          { margin: 5px 0px 5px 0px; padding: 0px; }
+.content_Table div.resource td,       .content_DetailsTable div.resource td,       .content_AdministrationTable div.resource td       { background-color: #ffffff; font-size: 12px; color: #000000; vertical-align: middle;}
+
+.content_Table div.user,              .content_DetailsTable div.user,              .content_AdministrationTable div.user              { margin: 5px 0px 5px 0px; padding: 0px; }
+.content_Table div.user td,           .content_DetailsTable div.user td,           .content_AdministrationTable div.user td           { background-color: #ffffff; font-size: 12px; color: #000000; vertical-align: middle;}
+
+.content_Table div.searchResult,      .content_DetailsTable div.searchResult,      .content_AdministrationTable div.searchResult      { margin: 5px 0px 5px 0px; padding: 0px; }
+.content_Table div.searchResult td,   .content_DetailsTable div.searchResult td,   .content_AdministrationTable div.searchResult td   { background-color: #ffffff; font-size: 12px; color: #000000; vertical-align: middle;}
+
+.content_Table div.organization,      .content_DetailsTable div.organization,      .content_AdministrationTable div.organization      { margin: 5px 0px 5px 0px; padding: 0px; }
+.content_Table div.organization td,   .content_DetailsTable div.organization td,   .content_AdministrationTable div.organization td   { background-color: #ffffff; font-size: 12px; color: #000000; vertical-align: middle;}
+
+.content_Table div.department,        .content_DetailsTable div.department,        .content_AdministrationTable div.department        { margin: 5px 0px 5px 0px; padding: 0px; }
+.content_Table div.department td,     .content_DetailsTable div.department td,     .content_AdministrationTable div.department td     { background-color: #ffffff; font-size: 12px; color: #000000; vertical-align: middle;}
+
+.content_Table div.departmentType,    .content_DetailsTable div.departmentType,    .content_AdministrationTable div.departmentType    { margin: 5px 0px 5px 0px; padding: 0px; }
+.content_Table div.departmentType td, .content_DetailsTable div.departmentType td, .content_AdministrationTable div.departmentType td { background-color: #ffffff; font-size: 12px; color: #000000; vertical-align: middle;}
+
+.content_Table div.jobTitle,          .content_DetailsTable div.jobTitle,          .content_AdministrationTable div.jobTitle          { margin: 5px 0px 5px 0px; padding: 0px; }
+.content_Table div.jobTitle td,       .content_DetailsTable div.jobTitle td,       .content_AdministrationTable div.jobTitle td       { background-color: #ffffff; font-size: 12px; color: #000000; vertical-align: middle;}
+
+.content_Table div.userGroup,         .content_DetailsTable div.userGroup,         .content_AdministrationTable div.userGroup         { margin: 5px 0px 5px 0px; padding: 0px; }
+.content_Table div.userGroup td,      .content_DetailsTable div.userGroup td,      .content_AdministrationTable div.userGroup td      { background-color: #ffffff; font-size: 12px; color: #000000; vertical-align: middle;}
+
+.content_Table div.audience,          .content_DetailsTable div.audience,          .content_AdministrationTable div.audience          { margin: 5px 0px 5px 0px; padding: 0px; }
+.content_Table div.audience td,       .content_DetailsTable div.audience td,       .content_AdministrationTable div.audience td       { background-color: #ffffff; font-size: 12px; color: #000000; vertical-align: middle;}
+
+.content_Table div.media,             .content_DetailsTable div.media,             .content_AdministrationTable div.media             { margin: 5px 0px 5px 0px; padding: 0px; }
+.content_Table div.media td,          .content_DetailsTable div.media td,          .content_AdministrationTable div.media td          { background-color: #ffffff; font-size: 12px; color: #000000; vertical-align: middle;}
+
+.content_Table div.question,          .content_DetailsTable div.question,          .content_AdministrationTable div.question          { margin: 5px 0px 5px 0px; padding: 0px; }
+.content_Table div.question td,       .content_DetailsTable div.question td,       .content_AdministrationTable div.question td       { background-color: #ffffff; font-size: 12px; color: #000000; vertical-align: middle;}
+.content_Table div.questionAnswer,    .content_DetailsTable div.questionAnswer,    .content_AdministrationTable div.questionAnswer    { margin: 5px 0px 5px 22px; padding: 0px; }
+.content_Table div.questionAnswer td, .content_DetailsTable div.questionAnswer td, .content_AdministrationTable div.questionAnswer td { background-color: #ffffff; font-size: 11px; color: #000000; vertical-align: middle;}
+
+.content_Table div.report,            .content_DetailsTable div.report,            .content_AdministrationTable div.report            { margin: 5px 0px 5px 0px; padding: 0px; }
+.content_Table div.report td,         .content_DetailsTable div.report td,         .content_AdministrationTable div.report td         { background-color: #ffffff; font-size: 10px; color: #000000; vertical-align: middle;}
+
+
+
+.content_AdvancedSearch,                          .content_Login                         { margin: -17px 23px  0px 19px; padding: 0px; }
+
+.content_AdvancedSearch div.searchItem,           .content_Login div.loginItem           { width: 728px;              margin-top: 9px; margin-bottom: 14px; }
+.content_AdvancedSearch div.searchItem div.left,  .content_Login div.loginItem div.left  { width: 124px; float: left; margin-top: 2px;                      }
+.content_AdvancedSearch div.searchItem div.right, .content_Login div.loginItem div.right { width: 604px; float: left;                                       }
+.content_AdvancedSearch div.searchItem div.end,   .content_Login div.loginItem div.end   { clear: left; }
+
+.content_AdvancedSearch div.searchItem div.left,  .content_Login div.loginItem div.left  { color: #4060af; font-weight: bold; }
+.content_AdvancedSearch div.searchItem div.right, .content_Login div.loginItem div.right { color: #000000;                    }
+
+
+
+.content_Synchronize             { margin: -17px 23px  0px 19px; padding: 0px; }
+
+.content_Synchronize .headline   { margin-bottom: 10px; font-size: 16px; font-weight: bold; color: #4060af; }
+.content_Synchronize .status     { margin: 5px 0px 0px 40px; padding: 0px; }
+
+.content_Synchronize img         { margin: 0px 8px 0px 0px; }
+
+.content_Synchronize div.statusColumn { width: 242px; float: left; margin-top: 2px; }
+.content_Synchronize div.end          { clear: left; }
+
+
+
+
+
+
+
+
+/* END Class Selectors ----------------------------------------------------- */
+
+
+
+/* BEGIN ID Selectors ------------------------------------------------------ */
+
+#main { width: 100%; }
+
+#header, #content, #footer {
+	position: relative;
+	width: 771px;
+	left: 50%;
+}
+
+#header  { margin:  0px 0px  0px -385px; padding: 0px;  height:  96px;                    }
+#content { margin: 17px 0px 47px -385px; padding: 0px; _height: 252px; min-height: 252px; }
+#footer  { margin:  0px 0px  0px -385px; padding: 0px;  height:  28px;                    }
+
+
+
+#header_LogoAndTagline   { position: absolute; top: 20px; left:  19px;               text-align: left;  }
+
+
+
+#header_UserProperName   { position: absolute; top: 31px; left: 499px; width: 250px; text-align: left;  }
+#header_UserProperName   { _top: 43px; }  /* for IE */
+#header_UserProperName p { font-weight: bold; color: #e47913; text-align: right; }
+
+#header_MainNavigation   { position: absolute; top: 74px; left:  19px;               text-align: left;  }
+#header_UserNavigation   { position: absolute; top: 74px; left: 599px; width: 150px; text-align: right; }
+
+#header_MainNavigation a { margin-right: 25px; }
+
+#header_MainNavigation span { margin-right: 25px; color: #adafaf; cursor: default; }
+#header_UserNavigation span {                     color: #adafaf; cursor: default; }
+
+
+
+#content_SimpleSearch    { position: absolute; top: -2px; left: 499px; width: 250px; text-align: right;  }
+
+
+
+#footer_Copyright        { position: absolute; top:  7px; left:  20px;               text-align: left;  }
+#footer_Copyright p      { font-size: 11px; color: #adafaf; margin: 0px; padding: 0px; }
+
+
+
+/* END ID Selectors -------------------------------------------------------- */

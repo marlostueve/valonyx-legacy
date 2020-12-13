@@ -1,0 +1,14 @@
+	#explore
+		{
+		float: left;
+		width: 14em;
+		}
+		 
+	#stats
+		{
+		float: left;
+		}
+	* html #stats
+		{
+		/*\*/ display: inline; /* */
+		}

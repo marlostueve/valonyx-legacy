@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!DOCTYPE form-validation PUBLIC
+          "-//Apache Software Foundation//DTD Commons Validator Rules Configuration 1.1//EN"
+          "http://jakarta.apache.org/commons/dtds/validator_1_1.dtd">
+
+<!--
+    Validation Rules for the Struts Example Web Application
+
+    $Id: validation.xml,v 1.7 2007/04/17 14:14:17 marlo Exp $
+-->
+
+<form-validation>
+
+
+    <!-- ========== Default Language Form Definitions ===================== -->
+    <formset>
+
+        <form name="loginForm">
+         <field property="username" depends="required">
+          <arg0 key="prompt.username"/>
+         </field>
+         <field property="password" depends="required">
+          <arg0 key="prompt.password"/>
+         </field>
+        </form>
+
+
+        <form name="registrationForm">
+         <field property="username" depends="required">
+          <arg0 key="prompt.employeeId"/>
+         </field>
+        </form>
+        
+        
+        <form name="personSearchForm">
+            <field property="lastNameSearch" depends="required">
+                <arg0   key="prompt.lastNameSearch"/>
+            </field>
+        </form>
+        
+        <form name="userProfileEditForm">
+         <field property="first_name" depends="required">
+          <arg0 key="prompt.firstName"/>
+         </field>
+         <field property="last_name" depends="required">
+          <arg0 key="prompt.lastName"/>
+         </field>
+         <field property="username" depends="required">
+          <arg0 key="prompt.username"/>
+         </field>
+         <field property="password" depends="required">
+          <arg0 key="prompt.password"/>
+         </field>
+        </form>
+        
+        <form name="courseBasicForm">
+            <field property="titleInput" depends="required">
+                <arg0   key="prompt.courseTitle"/>
+            </field>
+            <field property="releasedDateInput" depends="required">
+                <arg0   key="prompt.courseReleasedDate"/>
+            </field>
+            <field property="expiresDateInput" depends="required">
+                <arg0   key="prompt.courseExpiresDate"/>
+            </field>
+        </form>
+        
+        <form name="certificationBasicForm">
+            <field property="titleInput" depends="required">
+                <arg0   key="prompt.courseTitle"/>
+            </field>
+            <field property="releasedDateInput" depends="required">
+                <arg0   key="prompt.courseReleasedDate"/>
+            </field>
+            <field property="expiresDateInput" depends="required">
+                <arg0   key="prompt.courseExpiresDate"/>
+            </field>
+        </form>
+        
+        <form name="certificationAudienceForm">
+            <field property="audienceNameInput" depends="required">
+                <arg0   key="prompt.audienceTitle"/>
+            </field>
+        </form>
+        
+        <form name="assessmentMainForm">
+            <field property="nameInput" depends="required">
+                <arg0   key="prompt.assessmentTitle"/>
+            </field>
+            <field property="passFailInput" depends="required">
+                <arg0   key="prompt.assessmentPassFail"/>
+            </field>
+        </form>
+        
+        <form name="assessmentQuestionForm">
+            <field property="questionInput" depends="required">
+                <arg0   key="prompt.assessmentQuestionTitle"/>
+            </field>
+            <field property="answerAInput" depends="required">
+                <arg0   key="prompt.assessmentAnswerA"/>
+            </field>
+            <field property="answerBInput" depends="required">
+                <arg0   key="prompt.assessmentAnswerB"/>
+            </field>
+        </form>
+        
+        <form name="assessmentTFQuestionForm">
+            <field property="questionInput" depends="required">
+                <arg0   key="prompt.assessmentQuestionTitle"/>
+            </field>
+            <field property="answerAInput" depends="required">
+                <arg0   key="prompt.assessmentAnswerA"/>
+            </field>
+            <field property="answerBInput" depends="required">
+                <arg0   key="prompt.assessmentAnswerB"/>
+            </field>
+        </form>
+        
+		<!--
+        <form name="newsItemForm">
+            <field property="nameInput" depends="required">
+                <arg0   key="prompt.newsItemTitle"/>
+            </field>
+            <field property="shortDescInput" depends="required">
+                <arg0   key="prompt.newsItemShortDescription"/>
+            </field>
+            <field property="newsTextInput"
+                    depends="required,maxlength"
+                    bundle="alternate">
+                <arg0   key="prompt.newsText"/>
+                <arg1   key="${var:maxlength}" name="maxlength"
+                   resource="false"/>
+                <var>
+                    <var-name>maxlength</var-name>
+                    <var-value>4096</var-value>
+                </var>
+            </field>
+            <field property="releasedDateInput" depends="required">
+                <arg0   key="prompt.courseReleasedDate"/>
+            </field>
+            <field property="expiresDateInput" depends="required">
+                <arg0   key="prompt.courseExpiresDate"/>
+            </field>
+        </form>
+		-->
+        
+        <form name="faqBasicForm">
+            <field property="nameInput" depends="required">
+                <arg0   key="prompt.faqNameInput"/>
+            </field>
+            <field property="releasedDateInput" depends="required">
+                <arg0   key="prompt.courseReleasedDate"/>
+            </field>
+            <field property="expiresDateInput" depends="required">
+                <arg0   key="prompt.courseExpiresDate"/>
+            </field>
+        </form>
+        
+		<!-- 
+        <form name="faqSearchForm">
+        </form>
+		-->
+        
+        <form name="faqContentForm">
+            <field property="questionInput" depends="required">
+                <arg0   key="prompt.faqQuestionInput"/>
+            </field>
+            <field property="answerInput" depends="required">
+                <arg0   key="prompt.faqAnswerInput"/>
+            </field>
+        </form>
+	
+        <form name="resourceNewForm">
+            <field property="nameInput" depends="required">
+                <arg0   key="prompt.resourceNameInput"/>
+            </field>
+        </form>
+        
+	<!--
+        <form name="resourceBasicForm">
+            <field property="nameInput" depends="required">
+                <arg0   key="prompt.resourceNameInput"/>
+            </field>
+        </form>
+	-->
+        
+        <form name="resourceUploadForm">
+            <field property="uploadInput" depends="required">
+                <arg0   key="prompt.uploadInput"/>
+            </field>
+        </form>
+        
+        <form name="resourceUrlForm">
+            <field property="urlInput" depends="required">
+                <arg0   key="prompt.resourceNameInput"/>
+            </field>
+        </form>
+	
+        <form name="userUploadForm">
+            <field property="uploadInput" depends="required">
+                <arg0   key="prompt.uploadInput"/>
+            </field>
+        </form>
+        
+        <form name="courseUploadForm">
+            <field property="uploadInput" depends="required">
+                <arg0   key="prompt.uploadInput"/>
+            </field>
+        </form>
+        
+        <form name="courseUrlForm">
+            <field property="urlInput" depends="required">
+                <arg0   key="prompt.resourceNameInput"/>
+            </field>
+        </form>
+        
+        <form name="courseCatalogForm">
+            <field property="keywordInput" depends="required">
+                <arg0   key="prompt.keyword"/>
+            </field>
+        </form>
+        
+        <form name="usergroupBasicForm">
+            <field property="nameInput" depends="required">
+                <arg0   key="prompt.userGroupName"/>
+            </field>
+        </form>
+        
+        <form name="resourceBasicForm">
+            <field property="nameInput" depends="required">
+                <arg0   key="prompt.resourceNameInput"/>
+            </field>
+            <field property="releasedDateInput" depends="required">
+                <arg0   key="prompt.resourceReleasedDate"/>
+            </field>
+            <field property="expiresDateInput" depends="required">
+                <arg0   key="prompt.resourceExpiresDate"/>
+            </field>
+        </form>
+
+    </formset>
+
+
+</form-validation>
